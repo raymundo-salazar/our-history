@@ -19,17 +19,19 @@ export const HuntPage = () => {
 	const hasMoreHints = hintLevel < station.searchHints.length - 1
 
 	return (
-		<JourneyTemplate back={location.state?.direction === "back"}>
+		<JourneyTemplate tone="challenge" back={location.state?.direction === "back"}>
 			<ProgressIndicator current={stationIndex} total={HUNT_TOTAL} />
-			<div className="text-xs font-semibold tracking-[0.18em] text-[#9d6674]">
+			<div className="text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
 				{stationIndex === 0 ? FIRST_HINT_LABEL : `${NEXT_HINT_LABEL} ${stationIndex + 1}`}
 			</div>
-			<h1 className="mt-4 font-display text-4xl leading-tight tracking-[-0.035em]">
+			<h1 className="mt-5 text-center font-display text-[clamp(38px,10vw,54px)] leading-[1.12] tracking-[-.035em]">
 				{stationIndex === 0 ? HUNT_TITLE : NEXT_TITLE}
 			</h1>
-			<p className="mt-6 font-display text-2xl leading-relaxed">
-				{station.searchHints[hintLevel]}
-			</p>
+			<div className="mt-7 rounded-[28px] border border-white/25 bg-white/10 p-6 text-center">
+				<p className="text-base leading-8 text-[#f5dfec]">
+					{station.searchHints[hintLevel]}
+				</p>
+			</div>
 			<HintActions
 				canRequestHint={hasMoreHints}
 				continueLabel={hasMoreHints ? "Ya sé dónde buscar" : "Abrir lector QR"}

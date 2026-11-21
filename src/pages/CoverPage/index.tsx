@@ -10,19 +10,22 @@ export const CoverPage = () => {
 
 	return (
 		<JourneyTemplate>
-			<div className="text-xs font-semibold tracking-[0.18em] text-[#9d6674]">
+			<div className="mx-auto grid size-24 place-items-center rounded-full border border-[#e8c6d8] bg-white/70 font-display text-3xl text-plum shadow-soft">
+				R <span className="text-rose">♥</span> G
+			</div>
+			<div className="mt-8 text-center text-[10px] font-bold uppercase tracking-[.22em] text-plum">
 				{COVER_DATE}
 			</div>
-			<h1 className="mt-4 max-w-2xl font-display text-5xl leading-[1.08] tracking-[-0.035em] sm:text-7xl">
+			<h1 className="mt-5 text-center font-display text-[clamp(42px,10vw,64px)] leading-[1.07] tracking-[-.045em]">
 				{welcomeCopy.title}
 			</h1>
-			<p className="mt-6 max-w-sm font-display text-2xl leading-snug text-[#855365]">
+			<p className="mx-auto mt-6 max-w-sm text-center text-base leading-8 text-muted">
 				{welcomeCopy.dek}
 			</p>
-			<Button className="mt-8" onClick={() => navigate("/historia")}>
+			<Button fullWidth className="mt-8" onClick={() => navigate("/historia")}>
 				Comenzar <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>
-			<small className="mt-5 block text-[#987a80]">{COVER_SUBTITLE}</small>
+			<small className="mt-5 block text-center text-muted">{COVER_SUBTITLE}</small>
 		</JourneyTemplate>
 	)
 }

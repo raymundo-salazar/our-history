@@ -1,17 +1,46 @@
 import { IconHeart } from "@tabler/icons-react"
 import type { JourneyFrameProps } from "./types"
 
-export const JourneyFrame = ({ children, dark = false, back = false }: JourneyFrameProps) => (
-	<main
-		className={`min-h-svh overflow-hidden bg-[#f6f0e8] text-[#3b2730] ${dark ? "bg-[#321d2a] text-[#f8eee3]" : ""}`}
-	>
-		<section
-			className={`mx-auto w-[calc(100%-2.5rem)] max-w-[570px] py-[clamp(2.6rem,10vh,6.25rem)] ${back ? "animate-[slide-back_300ms_ease_both]" : "animate-[slide-forward_300ms_ease_both]"}`}
-		>
-			{children}
-		</section>
-		<footer className="flex items-center justify-center gap-1 pb-5 text-xs tracking-[0.13em] opacity-65">
-			R <IconHeart size={14} stroke={1.7} aria-hidden="true" /> G · Te Yoyo
-		</footer>
-	</main>
-)
+export const JourneyFrame = ({
+	children,
+	dark = false,
+	back = false,
+	tone = "editorial",
+}: JourneyFrameProps) => {
+	const surface =
+		dark || tone === "challenge"
+			? "bg-night text-white"
+			: tone === "discovery"
+				? "bg-[radial-gradient(ellipse_at_90%_0%,#f6d8e9_0,transparent_50%),#fbf5f8] text-ink"
+				: "bg-canvas text-ink"
+
+	return (
+		<main className={`min-h-dvh overflow-x-hidden ${surface}`}>
+			<section
+				className={`mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-6 pt-[calc(env(safe-area-inset-top)+24px)] pb-[calc(env(safe-area-inset-bottom)+26px)] sm:px-10 ${back ? "animate-[slide-back_300ms_ease_both]" : "animate-[slide-forward_300ms_ease_both]"}`}
+			>
+				<div className="flex items-center justify-between text-[10px] font-bold uppercase tracking-[.16em] text-plum">
+					<span className="font-display text-xl normal-case tracking-normal">
+						R{" "}
+						<IconHeart
+							className="inline text-rose"
+							size={15}
+							fill="currentColor"
+							aria-hidden="true"
+						/>{" "}
+						G
+					</span>
+					<span className={surface ? "text-[#f5b7d1]" : "text-muted"}>
+						8 años · Nuestra historia
+					</span>
+				</div>
+				<div className="flex flex-1 flex-col py-8">{children}</div>
+				<footer
+					className={`pt-6 text-center text-xs tracking-[.13em] ${surface ? "text-[#e4c9da]" : "text-muted"}`}
+				>
+					Te Yoyo · nuestra historia <span className="text-rose">♡</span>
+				</footer>
+			</section>
+		</main>
+	)
+}

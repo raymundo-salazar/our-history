@@ -8,6 +8,7 @@ import { SCANNER_COPY, SCANNER_READY, SCANNER_START, SCANNER_TITLE } from "./con
 import type { ScannerPanelProps } from "./types"
 
 export const ScannerPanel = ({
+	stationId,
 	onBack,
 	onCode,
 	manualCode,
@@ -18,36 +19,37 @@ export const ScannerPanel = ({
 	const { videoRef, started, start, stop } = useQrScanner({ onCode, onError: setCameraNotice })
 
 	return (
-		<div>
-			<div className="mb-7 flex items-center justify-center">
+		<div className="-mx-6 -my-8 flex min-h-[calc(100dvh-8rem)] flex-col sm:-mx-10">
+			<div className="flex items-center justify-between">
 				<IconButton
+					className="min-h-11 rounded-full bg-black/30 px-3 text-white/80"
 					onClick={() => {
 						stop()
 						onBack()
 					}}
 					aria-label="Volver a la pista"
 				>
-					<IconArrowLeft size={18} stroke={1.8} aria-hidden="true" /> Volver
+					<IconArrowLeft size={18} stroke={1.8} aria-hidden="true" />
 				</IconButton>
-				<span className="text-xs font-semibold tracking-[0.18em] text-[#9d6674]">
-					ESCANEAR
+				<span className="text-[10px] font-bold uppercase tracking-[.16em] text-[#f5b7d1]">
+					Capítulo {stationId ?? ""} de 6
 				</span>
 			</div>
-			<h2 className="font-display text-4xl leading-tight tracking-[-0.035em]">
+			<h2 className="mt-8 text-center font-display text-[clamp(36px,10vw,48px)] leading-tight text-white">
 				{SCANNER_TITLE}
 			</h2>
-			<p className="mt-5 text-base leading-7">{SCANNER_COPY}</p>
-			<div className="relative my-6 grid h-[310px] place-items-center overflow-hidden rounded-sm bg-[#1f1820] text-xs text-[#e8d9d1]">
+			<p className="mt-3 text-center text-sm leading-7 text-white/75">{SCANNER_COPY}</p>
+			<div className="relative mx-6 my-7 grid h-[min(62vw,320px)] min-h-56 place-items-center overflow-hidden rounded-[30px] bg-[#19131d] text-xs text-white/70 shadow-[0_0_0_999px_#19131d]">
 				<video
 					ref={videoRef}
 					className="absolute inset-0 h-full w-full object-cover"
 					playsInline
 					muted
 				/>
-				<div className="relative z-10 h-48 w-48 border border-[#f8eee3] shadow-[0_0_0_999px_#0006]" />
+				<div className="relative z-10 size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[3px] border-[#f3a2bb] bg-white/5 shadow-[0_0_0_999px_#0006]" />
 				<span className="absolute bottom-4 z-10">{SCANNER_READY}</span>
 			</div>
-			<Button fullWidth onClick={start} disabled={started}>
+			<Button fullWidth className="mt-auto" onClick={start} disabled={started}>
 				{SCANNER_START}
 			</Button>
 			<ManualCodeInput
@@ -56,7 +58,7 @@ export const ScannerPanel = ({
 				onSubmit={() => onCode(manualCode)}
 			/>
 			{(notice || cameraNotice) && (
-				<div className="mt-5 border-l-4 border-[#a96a7a] bg-[#eadbd4] p-4 text-sm">
+				<div className="mt-5 rounded-2xl bg-white/10 p-4 text-sm text-[#f5dfec]">
 					{notice || cameraNotice}
 				</div>
 			)}

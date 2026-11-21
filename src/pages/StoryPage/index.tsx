@@ -12,11 +12,13 @@ export const StoryPage = () => {
 	return (
 		<JourneyTemplate>
 			<ProgressIndicator current={0} total={6} />
-			<h1 className="font-display text-4xl leading-tight tracking-[-0.035em]">
+			<h1 className="font-display text-[clamp(36px,10vw,54px)] leading-[1.15] tracking-[-.035em]">
 				{STORY_TITLE}
 			</h1>
-			<p className="mt-5 text-base leading-7">{welcomeCopy.story}</p>
-			<Button className="mt-8" onClick={() => navigate("/instrucciones")}>
+			<div className="mt-6 rounded-[30px] bg-white/80 p-6 shadow-soft">
+				<p className="text-base leading-[1.85] text-muted">{welcomeCopy.story}</p>
+			</div>
+			<Button fullWidth className="mt-8" onClick={() => navigate("/instrucciones")}>
 				{STORY_ACTION} <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>
 		</JourneyTemplate>

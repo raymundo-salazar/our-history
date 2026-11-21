@@ -28,9 +28,10 @@ export const ScanPage = () => {
 	}
 
 	return (
-		<JourneyTemplate>
+		<JourneyTemplate dark>
 			<ProgressIndicator current={stationIndex} total={SCAN_TOTAL} />
 			<ScannerPanel
+				stationId={stationId}
 				onBack={() => navigate(`/pista/${stationId}`, { state: { direction: "back" } })}
 				onCode={validateCode}
 				manualCode={manualCode}

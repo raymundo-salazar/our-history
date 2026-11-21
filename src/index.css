@@ -4,4 +4,35 @@
 @theme {
 	--font-display: "Playfair Display", Georgia, serif;
 	--font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+	--color-canvas: #fbf5f8;
+	--color-ink: #342537;
+	--color-muted: #685568;
+	--color-rose: #ed7089;
+	--color-plum: #a45177;
+	--color-night: #34243d;
+	--color-lilac: #f0e2f5;
+	--color-blush: #fff2f4;
+	--color-line: #ead4e2;
+	--color-mist: #f6d8e9;
+	--shadow-soft: 0 14px 42px #927a931a;
+	--shadow-pink: 0 12px 24px #ed70892b;
+}
+
+:root {
+	color: var(--color-ink);
+	background: var(--color-canvas);
+	font-family: var(--font-sans);
+}
+* {
+	box-sizing: border-box;
+}
+body {
+	min-width: 320px;
+	min-height: 100dvh;
+	margin: 0;
+	background: var(--color-canvas);
+}
+button,
+input {
+	font: inherit;
 }

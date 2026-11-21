@@ -26,15 +26,26 @@ export const StationPage = () => {
 		stationIndex === 2 ? isWordGameCorrect : stationIndex === 4 ? isAnswerCorrect : true
 
 	return (
-		<JourneyTemplate dark={isFinal}>
+		<JourneyTemplate
+			dark={isFinal}
+			tone={
+				stationIndex === 2
+					? "challenge"
+					: stationIndex === 1 || stationIndex === 3
+						? "discovery"
+						: undefined
+			}
+		>
 			<ProgressIndicator current={stationIndex + 1} total={STATION_TOTAL} />
-			<div className="text-xs font-semibold tracking-[0.18em] text-[#9d6674]">
+			<div className="text-[10px] font-bold uppercase tracking-[.2em] text-plum">
 				ESTACIÓN {station.label}
 			</div>
-			<h1 className="mt-4 font-display text-4xl leading-tight tracking-[-0.035em]">
+			<h1 className="mt-5 font-display text-[clamp(36px,10vw,54px)] leading-[1.15] tracking-[-.035em]">
 				{station.intro}
 			</h1>
-			<p className="mt-5 text-base leading-7">{station.body}</p>
+			<p className="mt-6 rounded-[28px] bg-white/80 p-6 text-base leading-[1.85] text-muted shadow-soft">
+				{station.body}
+			</p>
 			{stationIndex === 2 && <WordOrderGame value={words} onChange={setWords} />}
 			{stationIndex === 4 && (
 				<ChoiceList value={answer} options={STATION_OPTIONS} onChange={setAnswer} />
