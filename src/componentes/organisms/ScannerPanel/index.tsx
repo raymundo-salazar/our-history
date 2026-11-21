@@ -42,11 +42,12 @@ export const ScannerPanel = ({
 			<div className="relative mx-6 my-7 grid h-[min(62vw,320px)] min-h-56 place-items-center overflow-hidden rounded-[30px] bg-[#19131d] text-xs text-white/70 shadow-[0_0_0_999px_#19131d]">
 				<video
 					ref={videoRef}
-					className="absolute inset-0 h-full w-full object-cover"
+					className="absolute inset-0 z-0 h-full w-full object-cover"
+					autoPlay
 					playsInline
 					muted
 				/>
-				<div className="relative z-10 size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[3px] border-[#f3a2bb] bg-white/5 shadow-[0_0_0_999px_#0006]" />
+				<div className="relative z-10 size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[3px] border-[#f3a2bb] bg-white/5" />
 				<span className="absolute bottom-4 z-10">{SCANNER_READY}</span>
 			</div>
 			<Button fullWidth className="mt-auto" onClick={start} disabled={started}>
