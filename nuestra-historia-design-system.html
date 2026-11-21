@@ -1,0 +1,990 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta name="theme-color" content="#fbf5f8" />
+		<title>Design System · Nuestra historia</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							body: ["DM Sans", "sans-serif"],
+							display: ["Playfair Display", "serif"],
+						},
+						colors: {
+							canvas: "#fbf5f8",
+							ink: "#342537",
+							muted: "#685568",
+							rose: "#ed7089",
+							plum: "#a45177",
+							night: "#34243d",
+							lilac: "#f0e2f5",
+							blush: "#fff2f4",
+							line: "#ead4e2",
+							mist: "#f6d8e9",
+						},
+						boxShadow: { soft: "0 14px 42px #927a931a", pink: "0 12px 24px #ed70892b" },
+					},
+				},
+			}
+		</script>
+	</head>
+	<body class="bg-canvas font-body text-ink antialiased selection:bg-[#f3c1d7]">
+		<div class="min-h-screen lg:grid lg:grid-cols-[260px_minmax(0,1fr)]">
+			<aside
+				class="border-b border-line bg-white/80 px-6 py-6 lg:sticky lg:top-0 lg:h-screen lg:overflow-y-auto lg:border-b-0 lg:border-r lg:px-7 lg:py-9"
+			>
+				<div class="font-display text-3xl text-plum">
+					R <span class="text-rose">♥</span> G
+				</div>
+				<p class="mt-2 text-[10px] font-bold uppercase tracking-[.22em] text-plum">
+					Design System · v1.0
+				</p>
+				<p class="mt-4 text-sm leading-6 text-muted">
+					Nuestra historia, un tesoro a la vez. Referencia de diseño para implementación
+					en React + Vite + Tailwind.
+				</p>
+				<nav
+					aria-label="Secciones"
+					class="mt-6 grid grid-cols-2 gap-2 text-[13px] font-semibold text-muted sm:grid-cols-4 lg:grid-cols-1"
+				>
+					<a
+						class="rounded-xl px-3 py-2 hover:bg-blush hover:text-plum"
+						href="#principios"
+						>01 · Principios</a
+					><a class="rounded-xl px-3 py-2 hover:bg-blush hover:text-plum" href="#tokens"
+						>02 · Tokens</a
+					><a
+						class="rounded-xl px-3 py-2 hover:bg-blush hover:text-plum"
+						href="#tipografia"
+						>03 · Tipografía</a
+					><a
+						class="rounded-xl px-3 py-2 hover:bg-blush hover:text-plum"
+						href="#componentes"
+						>04 · Componentes</a
+					><a
+						class="rounded-xl px-3 py-2 hover:bg-blush hover:text-plum"
+						href="#pantallas"
+						>05 · Pantallas</a
+					><a class="rounded-xl px-3 py-2 hover:bg-blush hover:text-plum" href="#flujos"
+						>06 · Flujos</a
+					><a class="rounded-xl px-3 py-2 hover:bg-blush hover:text-plum" href="#codex"
+						>07 · Reglas Codex</a
+					>
+				</nav>
+				<div class="mt-8 rounded-2xl bg-blush p-4 text-xs leading-5 text-plum">
+					Documento de referencia, no aplicación funcional. Las vistas son ejemplos de UI.
+				</div>
+			</aside>
+			<main class="min-w-0 px-5 pb-24 pt-10 sm:px-10 lg:px-14 lg:pt-14 xl:px-20">
+				<header class="mx-auto max-w-6xl border-b border-line pb-12">
+					<span class="text-xs font-bold uppercase tracking-[.24em] text-plum"
+						>Identidad visual / Especificación UI</span
+					>
+					<h1
+						class="mt-5 max-w-4xl font-display text-[clamp(42px,6vw,78px)] leading-[1.07] tracking-[-.045em]"
+					>
+						Una historia que se <em class="text-plum">siente</em>, no solo se lee.
+					</h1>
+					<p class="mt-6 max-w-2xl text-base leading-8 text-muted">
+						Sistema de diseño para una aventura romántica de seis capítulos,
+						desbloqueados mediante códigos QR. Editorial, íntimo, cálido, accesible y,
+						sobre todo, <strong>mobile first</strong>.
+					</p>
+					<div class="mt-8 flex flex-wrap gap-2">
+						<span
+							class="rounded-full bg-white px-4 py-2 text-xs font-semibold text-plum shadow-sm"
+							>Tailwind CSS</span
+						><span
+							class="rounded-full bg-white px-4 py-2 text-xs font-semibold text-plum shadow-sm"
+							>React + Vite</span
+						><span
+							class="rounded-full bg-white px-4 py-2 text-xs font-semibold text-plum shadow-sm"
+							>6 capítulos</span
+						><span
+							class="rounded-full bg-white px-4 py-2 text-xs font-semibold text-plum shadow-sm"
+							>QR fullscreen</span
+						>
+					</div>
+				</header>
+				<section id="principios" class="mx-auto max-w-6xl scroll-mt-8 py-14">
+					<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+						01 / Fundamentos
+					</p>
+					<h2 class="mt-3 font-display text-4xl">Principios de diseño</h2>
+					<div class="mt-7 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+						<div class="rounded-3xl bg-white p-6 shadow-soft">
+							<span class="text-3xl text-rose">♡</span>
+							<h3 class="mt-4 font-semibold">Romántico, no cursi</h3>
+							<p class="mt-2 text-sm leading-6 text-muted">
+								Detalles delicados, composición sobria y mensajes personales. Evitar
+								corazones y adornos en exceso.
+							</p>
+						</div>
+						<div class="rounded-3xl bg-white p-6 shadow-soft">
+							<span class="text-3xl text-plum">✧</span>
+							<h3 class="mt-4 font-semibold">La historia primero</h3>
+							<p class="mt-2 text-sm leading-6 text-muted">
+								Una acción principal por pantalla. Lectura cómoda, jerarquía clara y
+								pausas narrativas.
+							</p>
+						</div>
+						<div class="rounded-3xl bg-white p-6 shadow-soft">
+							<span class="text-3xl text-plum">⌗</span>
+							<h3 class="mt-4 font-semibold">Misterio reconocible</h3>
+							<p class="mt-2 text-sm leading-6 text-muted">
+								Las pistas siempre usan fondo ciruela oscuro y composición
+								distintiva.
+							</p>
+						</div>
+						<div class="rounded-3xl bg-white p-6 shadow-soft">
+							<span class="text-3xl text-rose">↗</span>
+							<h3 class="mt-4 font-semibold">Mobile first real</h3>
+							<p class="mt-2 text-sm leading-6 text-muted">
+								La interfaz ocupa el teléfono completo. Nunca mostrar un teléfono
+								decorativo dentro de la app.
+							</p>
+						</div>
+					</div>
+				</section>
+				<section
+					id="tokens"
+					class="mx-auto max-w-6xl scroll-mt-8 border-t border-line py-14"
+				>
+					<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+						02 / Fundamentos
+					</p>
+					<h2 class="mt-3 font-display text-4xl">Color y superficies</h2>
+					<p class="mt-3 max-w-2xl text-sm leading-7 text-muted">
+						Usar tokens semánticos. Los valores hexadecimales se centralizan en
+						<code class="rounded bg-white px-1">tailwind.config</code> durante el
+						prototipo y en el tema Tailwind del proyecto.
+					</p>
+					<div class="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-3 xl:grid-cols-4">
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-canvas"></div>
+							<div class="p-4">
+								<b class="text-sm">Canvas</b>
+								<p class="mt-1 font-mono text-xs text-muted">#FBF5F8</p>
+								<p class="mt-1 text-xs text-muted">Fondo general</p>
+							</div>
+						</div>
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-ink"></div>
+							<div class="p-4">
+								<b class="text-sm">Ink</b>
+								<p class="mt-1 font-mono text-xs text-muted">#342537</p>
+								<p class="mt-1 text-xs text-muted">Títulos y texto fuerte</p>
+							</div>
+						</div>
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-muted"></div>
+							<div class="p-4">
+								<b class="text-sm">Muted</b>
+								<p class="mt-1 font-mono text-xs text-muted">#685568</p>
+								<p class="mt-1 text-xs text-muted">Texto secundario</p>
+							</div>
+						</div>
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-rose"></div>
+							<div class="p-4">
+								<b class="text-sm">Rose</b>
+								<p class="mt-1 font-mono text-xs text-muted">#ED7089</p>
+								<p class="mt-1 text-xs text-muted">CTA primario</p>
+							</div>
+						</div>
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-plum"></div>
+							<div class="p-4">
+								<b class="text-sm">Plum</b>
+								<p class="mt-1 font-mono text-xs text-muted">#A45177</p>
+								<p class="mt-1 text-xs text-muted">Acentos</p>
+							</div>
+						</div>
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-night"></div>
+							<div class="p-4">
+								<b class="text-sm">Night</b>
+								<p class="mt-1 font-mono text-xs text-muted">#34243D</p>
+								<p class="mt-1 text-xs text-muted">Pantallas de pista</p>
+							</div>
+						</div>
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-lilac"></div>
+							<div class="p-4">
+								<b class="text-sm">Lilac</b>
+								<p class="mt-1 font-mono text-xs text-muted">#F0E2F5</p>
+								<p class="mt-1 text-xs text-muted">Retos</p>
+							</div>
+						</div>
+						<div class="overflow-hidden rounded-2xl border border-line bg-white">
+							<div class="h-24 bg-blush"></div>
+							<div class="p-4">
+								<b class="text-sm">Blush</b>
+								<p class="mt-1 font-mono text-xs text-muted">#FFF2F4</p>
+								<p class="mt-1 text-xs text-muted">Descubrimientos</p>
+							</div>
+						</div>
+					</div>
+					<div class="mt-6 grid gap-3 md:grid-cols-3">
+						<div class="rounded-2xl border border-line bg-white p-5">
+							<b class="text-sm">Radio</b>
+							<p class="mt-2 text-sm text-muted">
+								Tarjetas: 24–30 px · Botones: 20 px · Etiquetas: 9999 px
+							</p>
+						</div>
+						<div class="rounded-2xl border border-line bg-white p-5">
+							<b class="text-sm">Espaciado</b>
+							<p class="mt-2 text-sm text-muted">
+								Base 4 px · Pantalla móvil: 24 px · Separación bloques: 24–32 px
+							</p>
+						</div>
+						<div class="rounded-2xl border border-line bg-white p-5">
+							<b class="text-sm">Elevación</b>
+							<p class="mt-2 text-sm text-muted">
+								Sombras suaves solo en tarjetas y CTA. Sin efectos neón ni
+								glassmorphism excesivo.
+							</p>
+						</div>
+					</div>
+				</section>
+				<section
+					id="tipografia"
+					class="mx-auto max-w-6xl scroll-mt-8 border-t border-line py-14"
+				>
+					<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+						03 / Fundamentos
+					</p>
+					<h2 class="mt-3 font-display text-4xl">Tipografía y jerarquía</h2>
+					<div class="mt-7 grid gap-5 lg:grid-cols-2">
+						<div class="rounded-3xl bg-white p-7 shadow-soft">
+							<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+								Display / Playfair Display
+							</p>
+							<h3 class="mt-5 font-display text-5xl leading-tight">
+								Los ciclos de <em>nuestra historia</em>
+							</h3>
+							<p class="mt-4 text-sm text-muted">
+								Titulares, capítulos y dedicatorias. Peso 500–600. Tracking negativo
+								sutil.
+							</p>
+						</div>
+						<div class="rounded-3xl bg-white p-7 shadow-soft">
+							<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+								Body / DM Sans
+							</p>
+							<h3 class="mt-5 text-2xl font-semibold">Cada momento cuenta</h3>
+							<p class="mt-4 text-base leading-8 text-muted">
+								La vida nos ha dado muchas vueltas, cielito. Algunas nos han hecho
+								reír y otras nos han enseñado a seguir adelante. El cuerpo de texto
+								debe ser cómodo y respirable.
+							</p>
+							<p class="mt-4 text-sm text-muted">
+								Cuerpo: 16 px / 1.8 · Microtexto: 11–12 px · Botones: 15 px / 700.
+							</p>
+						</div>
+					</div>
+				</section>
+				<section
+					id="componentes"
+					class="mx-auto max-w-6xl scroll-mt-8 border-t border-line py-14"
+				>
+					<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+						04 / Biblioteca UI
+					</p>
+					<h2 class="mt-3 font-display text-4xl">Componentes</h2>
+					<div class="mt-7 grid gap-5 lg:grid-cols-2">
+						<div class="rounded-3xl bg-white p-7 shadow-soft">
+							<h3 class="font-semibold">Botones y acciones</h3>
+							<p class="mt-2 text-sm text-muted">
+								Alto mínimo 56 px. Una acción primaria por pantalla.
+							</p>
+							<div class="mt-6 grid gap-3">
+								<button
+									class="min-h-14 rounded-[20px] bg-rose px-5 py-3 font-bold text-white shadow-pink transition active:scale-[.985] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-plum"
+								>
+									Continuar nuestra historia →</button
+								><button
+									class="min-h-14 rounded-[20px] border border-line bg-blush px-5 py-3 font-bold text-plum transition active:scale-[.985]"
+								>
+									Volver</button
+								><button
+									disabled
+									class="min-h-14 cursor-not-allowed rounded-[20px] bg-[#eddce6] px-5 py-3 font-bold text-[#9d8796]"
+								>
+									Continuar · Bloqueado
+								</button>
+							</div>
+						</div>
+						<div class="rounded-3xl bg-white p-7 shadow-soft">
+							<h3 class="font-semibold">Etiquetas, progreso y cabecera</h3>
+							<div class="mt-6 flex items-center justify-between">
+								<span class="font-display text-2xl text-plum">R ♥ G</span
+								><span
+									class="text-[10px] font-bold uppercase tracking-[.12em] text-muted"
+									>8 años · Nuestra historia</span
+								>
+							</div>
+							<div class="mt-6 flex flex-wrap gap-2">
+								<span
+									class="rounded-full bg-blush px-3 py-2 text-[11px] font-bold uppercase tracking-[.12em] text-plum"
+									>Capítulo 2 de 6</span
+								><span
+									class="rounded-full bg-lilac px-3 py-2 text-[11px] font-bold uppercase tracking-[.12em] text-[#735584]"
+									>Un pequeño reto</span
+								><span
+									class="rounded-full bg-night px-3 py-2 text-[11px] font-bold uppercase tracking-[.12em] text-[#f5b7d1]"
+									>Tu siguiente pista</span
+								>
+							</div>
+							<div class="mt-6 flex gap-2" aria-label="Progreso de ejemplo">
+								<div class="h-1.5 flex-1 rounded-full bg-rose"></div>
+								<div class="h-1.5 flex-1 rounded-full bg-rose"></div>
+								<div class="h-1.5 flex-1 rounded-full bg-line"></div>
+								<div class="h-1.5 flex-1 rounded-full bg-line"></div>
+								<div class="h-1.5 flex-1 rounded-full bg-line"></div>
+								<div class="h-1.5 flex-1 rounded-full bg-line"></div>
+							</div>
+						</div>
+						<div class="rounded-3xl bg-white p-7 shadow-soft">
+							<h3 class="font-semibold">Tarjeta narrativa</h3>
+							<div class="mt-5 rounded-[30px] bg-canvas p-6">
+								<p
+									class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+								>
+									Una carta para ti
+								</p>
+								<p class="mt-4 text-base leading-8 text-muted">
+									Gracias por estos ocho años, por nuestra familia y por todo lo
+									que todavía nos espera. Te Yoyo. ♡
+								</p>
+							</div>
+						</div>
+						<div class="rounded-3xl bg-white p-7 shadow-soft">
+							<h3 class="font-semibold">Tarjeta de descubrimiento</h3>
+							<div class="mt-5 rounded-[30px] border border-[#f5d9e2] bg-blush p-6">
+								<div
+									class="mb-4 grid size-12 place-items-center rounded-full bg-[#f9e0ea] text-2xl text-plum"
+								>
+									♡
+								</div>
+								<p
+									class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+								>
+									Un pequeño detalle
+								</p>
+								<p class="mt-3 text-base leading-8 text-muted">
+									Algo dulce para acompañarte en esta aventura, cielo.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section
+					id="pantallas"
+					class="mx-auto max-w-6xl scroll-mt-8 border-t border-line py-14"
+				>
+					<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+						05 / Patrones de pantalla
+					</p>
+					<h2 class="mt-3 font-display text-4xl">Una identidad para cada momento</h2>
+					<p class="mt-3 max-w-3xl text-sm leading-7 text-muted">
+						Estas son vistas representativas del diseño dentro de la aplicación. Cada
+						marco representa el viewport móvil, no un teléfono ornamental. En
+						producción, la pantalla ocupará el viewport completo.
+					</p>
+					<div class="mt-8 grid gap-7 md:grid-cols-2 xl:grid-cols-3">
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">01 · Bienvenida</h3>
+								<span class="text-xs text-muted">Claro / editorial</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col rounded-[30px] border border-line bg-[radial-gradient(ellipse_at_90%_0%,#f6d8e9_0,transparent_50%),#fbf5f8] p-6 shadow-soft"
+							>
+								<div class="flex justify-between text-[10px] font-bold text-plum">
+									<span class="font-display text-lg">R ♥ G</span
+									><span>8 AÑOS</span>
+								</div>
+								<div
+									class="flex flex-1 flex-col items-center justify-center gap-6 text-center"
+								>
+									<div
+										class="grid size-24 place-items-center rounded-full border border-[#e8c6d8] bg-white/70 font-display text-3xl text-plum"
+									>
+										R ♥ G
+									</div>
+									<p
+										class="text-[10px] font-bold uppercase tracking-[.22em] text-plum"
+									>
+										Una aventura para ti
+									</p>
+									<h4 class="font-display text-[39px] leading-[1.13]">
+										Nuestra historia,<br /><em class="text-plum"
+											>un tesoro a la vez.</em
+										>
+									</h4>
+									<p class="max-w-[250px] text-sm leading-7 text-muted">
+										Ocho años. Mil recuerdos. Una historia que seguimos
+										escribiendo.
+									</p>
+								</div>
+								<button
+									class="min-h-14 rounded-[20px] bg-rose font-bold text-white shadow-pink"
+								>
+									COMENZAR ♡
+								</button>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">02 · Pista</h3>
+								<span class="text-xs text-muted">Oscuro / misterio</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col rounded-[30px] bg-night p-6 text-white shadow-soft"
+							>
+								<div
+									class="flex justify-between text-[10px] font-bold text-[#e9c8d9]"
+								>
+									<span class="font-display text-lg">R ♥ G</span
+									><span>ANTES DEL CAPÍTULO 1</span>
+								</div>
+								<div class="flex flex-1 flex-col justify-center gap-6">
+									<p class="text-center text-5xl text-[#f4bfd8]">✧</p>
+									<p
+										class="text-center text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]"
+									>
+										Tu primera pista
+									</p>
+									<h4 class="text-center font-display text-[40px] leading-tight">
+										Un lugar de <em class="text-[#f4bfd8]">muchas vueltas.</em>
+									</h4>
+									<div
+										class="rounded-[26px] border border-white/25 bg-white/10 p-6"
+									>
+										<p class="text-sm leading-7 text-[#f5dfec]">
+											Busca ese lugar donde las cosas dan vueltas y vueltas,
+											pero terminan listas para empezar de nuevo.
+										</p>
+									</div>
+									<p class="text-center text-xs text-[#e4c9da]">
+										Sigue las palabras, cielo.
+									</p>
+								</div>
+								<button
+									class="min-h-14 rounded-[20px] bg-rose font-bold text-white"
+								>
+									Escanear código QR ⌗
+								</button>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">03 · Transición</h3>
+								<span class="text-xs text-muted">Pausa / capítulo</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col rounded-[30px] border border-line bg-canvas p-6 shadow-soft"
+							>
+								<div class="flex justify-between text-[10px] font-bold text-plum">
+									<span class="font-display text-lg">R ♥ G</span
+									><span>8 AÑOS</span>
+								</div>
+								<div
+									class="flex flex-1 flex-col items-center justify-center gap-7 text-center"
+								>
+									<div
+										class="grid size-24 place-items-center rounded-full border border-[#e6b8d0] bg-white/70 font-display text-5xl text-plum shadow-soft"
+									>
+										1
+									</div>
+									<p
+										class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+									>
+										Capítulo 1 de 6
+									</p>
+									<h4 class="font-display text-[38px] leading-tight">
+										Los ciclos de <em>nuestra historia</em>
+									</h4>
+									<p class="text-sm text-muted">
+										Un pedacito más de nuestra historia ♡
+									</p>
+									<div class="flex gap-2">
+										<span class="size-2 rounded-full bg-rose"></span
+										><span class="size-2 rounded-full bg-[#d3a6df]"></span
+										><span class="size-2 rounded-full bg-rose"></span>
+									</div>
+								</div>
+								<button
+									class="min-h-14 rounded-[20px] border border-line bg-white/70 font-semibold text-plum"
+								>
+									Continuar ahora →
+								</button>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">04 · Mensaje</h3>
+								<span class="text-xs text-muted">Claro / lectura</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col rounded-[30px] border border-line bg-canvas p-6 shadow-soft"
+							>
+								<div class="flex justify-between text-[10px] font-bold text-plum">
+									<span class="font-display text-lg">R ♥ G</span
+									><span>CAPÍTULO 1 · PÁGINA 1/2</span>
+								</div>
+								<div class="flex flex-1 flex-col justify-center gap-6">
+									<p
+										class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+									>
+										Una carta para ti
+									</p>
+									<h4 class="font-display text-[41px] leading-tight">
+										Las vueltas de <em>la vida</em>
+									</h4>
+									<div class="rounded-[28px] bg-white/80 p-6 shadow-sm">
+										<p class="text-[15px] leading-8 text-muted">
+											¡Encontraste la lavandería, cielito! Así como la ropa
+											pasa por diferentes ciclos, nosotros también hemos
+											pasado por muchas etapas. Todas forman parte de nuestra
+											historia.
+										</p>
+									</div>
+								</div>
+								<button
+									class="min-h-14 rounded-[20px] bg-rose font-bold text-white"
+								>
+									Continuar →
+								</button>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">05 · Minijuego</h3>
+								<span class="text-xs text-muted">Lavanda / interacción</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col rounded-[30px] border border-line bg-canvas p-6 shadow-soft"
+							>
+								<div class="flex justify-between text-[10px] font-bold text-plum">
+									<span class="font-display text-lg">R ♥ G</span
+									><span>CAPÍTULO 3</span>
+								</div>
+								<div class="flex flex-1 flex-col justify-center gap-5">
+									<p
+										class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+									>
+										Un pequeño desafío
+									</p>
+									<h4 class="font-display text-[39px] leading-tight">
+										Lo que <em>construimos</em>
+									</h4>
+									<p class="text-sm leading-7 text-muted">
+										Ordena las palabras para formar la frase que quiero decirte.
+									</p>
+									<div class="rounded-[28px] bg-lilac p-5">
+										<p class="mb-4 text-xs font-semibold text-[#735584]">
+											Selecciona la frase correcta
+										</p>
+										<div class="grid gap-3">
+											<div
+												class="rounded-2xl border border-[#d9c2e5] bg-white p-4 text-sm text-[#513f5a]"
+											>
+												Contigo es lugar mi favorito
+											</div>
+											<div
+												class="rounded-2xl border-2 border-plum bg-white p-4 text-sm font-semibold text-[#513f5a]"
+											>
+												Mi lugar favorito es contigo ✓
+											</div>
+											<div
+												class="rounded-2xl border border-[#d9c2e5] bg-white p-4 text-sm text-[#513f5a]"
+											>
+												Favorito mi es contigo lugar
+											</div>
+										</div>
+									</div>
+								</div>
+								<button
+									class="min-h-14 rounded-[20px] bg-rose font-bold text-white"
+								>
+									Continuar →
+								</button>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">06 · Detalle encontrado</h3>
+								<span class="text-xs text-muted">Rosa / descubrimiento</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col rounded-[30px] border border-line bg-canvas p-6 shadow-soft"
+							>
+								<div class="flex justify-between text-[10px] font-bold text-plum">
+									<span class="font-display text-lg">R ♥ G</span
+									><span>CAPÍTULO 1</span>
+								</div>
+								<div class="flex flex-1 flex-col justify-center gap-6">
+									<div
+										class="grid size-16 place-items-center rounded-full bg-[#f9e0ea] text-3xl text-plum"
+									>
+										♡
+									</div>
+									<p
+										class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+									>
+										Un pequeño detalle
+									</p>
+									<h4 class="font-display text-[40px] leading-tight">
+										Algo dulce <em>para empezar.</em>
+									</h4>
+									<div
+										class="rounded-[28px] border border-[#f5d9e2] bg-blush p-6"
+									>
+										<p class="text-[15px] leading-8 text-muted">
+											Quise dejarte una pequeña sorpresa para acompañarte en
+											esta aventura. No es una parte de el regalo; es un
+											detallito para hacerte sonreír, cielo.
+										</p>
+									</div>
+								</div>
+								<button
+									class="min-h-14 rounded-[20px] bg-rose font-bold text-white"
+								>
+									Continuar nuestra historia →
+								</button>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">07 · Lector QR</h3>
+								<span class="text-xs text-muted">Fullscreen / cámara</span>
+							</div>
+							<div
+								class="relative flex min-h-[520px] flex-col overflow-hidden rounded-[30px] bg-[#19131d] p-6 text-white shadow-soft"
+							>
+								<div
+									class="absolute inset-0 bg-[radial-gradient(circle_at_50%_42%,#685068_0%,#19131d_65%)]"
+								></div>
+								<div class="relative z-10 flex justify-between">
+									<span
+										class="grid size-10 place-items-center rounded-full bg-black/40 text-2xl"
+										>×</span
+									><span
+										class="text-[10px] font-bold uppercase tracking-[.16em] text-[#f5b7d1]"
+										>Capítulo 2 de 6</span
+									>
+								</div>
+								<div
+									class="relative z-10 flex flex-1 flex-col items-center justify-center gap-6 text-center"
+								>
+									<h4 class="font-display text-3xl">Encuentra el código</h4>
+									<p class="text-sm text-white/75">
+										Apunta al QR escondido, cielo.
+									</p>
+									<div
+										class="grid size-56 place-items-center rounded-[30px] border-[3px] border-[#f3a2bb] bg-white/5"
+									>
+										<span class="text-6xl text-white/40">⌗</span>
+									</div>
+								</div>
+								<div
+									class="relative z-10 rounded-2xl bg-black/40 p-3 text-center text-xs text-white/85"
+								>
+									Buscando el código QR…
+								</div>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">08 · Éxito</h3>
+								<span class="text-xs text-muted">Confirmación / automática</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col items-center justify-center gap-6 rounded-[30px] border border-line bg-canvas p-6 text-center shadow-soft"
+							>
+								<div
+									class="grid size-28 place-items-center rounded-full bg-[#fce1ec] text-6xl text-plum shadow-[0_0_0_18px_#fce1ec66]"
+								>
+									✓
+								</div>
+								<p
+									class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+								>
+									Pista encontrada
+								</p>
+								<h4 class="font-display text-4xl">¡Lo lograste, cielo!</h4>
+								<p class="text-sm text-muted">
+									Un capítulo más de nuestra historia ♡
+								</p>
+								<p class="text-xs text-muted">
+									Avanza automáticamente después de ~1.7 s
+								</p>
+							</div>
+						</article>
+						<article>
+							<div class="mb-3 flex items-center justify-between">
+								<h3 class="font-semibold">09 · Gran revelación</h3>
+								<span class="text-xs text-muted">Emotivo / sorpresa</span>
+							</div>
+							<div
+								class="flex min-h-[520px] flex-col rounded-[30px] border border-line bg-[radial-gradient(ellipse_at_50%_20%,#f7d6e6_0,transparent_65%),#fbf5f8] p-6 shadow-soft"
+							>
+								<div class="flex justify-between text-[10px] font-bold text-plum">
+									<span class="font-display text-lg">R ♥ G</span
+									><span>CAPÍTULO 6</span>
+								</div>
+								<div
+									class="flex flex-1 flex-col items-center justify-center gap-6 text-center"
+								>
+									<div
+										class="grid size-16 place-items-center rounded-full bg-white/75 text-3xl text-plum"
+									>
+										✧
+									</div>
+									<p
+										class="text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+									>
+										Una última sorpresa
+									</p>
+									<h4 class="font-display text-[42px] leading-tight">
+										¡Nos vamos <em>juntos!</em>
+									</h4>
+									<div
+										class="w-full rounded-[28px] border border-[#f5d9e2] bg-white/75 p-6"
+									>
+										<p class="font-display text-2xl">
+											Hablemos de lo que no existe
+										</p>
+										<p class="mt-3 text-sm leading-7 text-muted">
+											1 de diciembre · Río 70 · Monterrey
+										</p>
+									</div>
+									<p class="text-sm leading-7 text-muted">
+										Todavía nos esperan muchas aventuras, preciosa.
+									</p>
+								</div>
+								<button
+									class="min-h-14 rounded-[20px] bg-rose font-bold text-white"
+								>
+									Leer mi última carta ♡
+								</button>
+							</div>
+						</article>
+					</div>
+				</section>
+				<section
+					id="flujos"
+					class="mx-auto max-w-6xl scroll-mt-8 border-t border-line py-14"
+				>
+					<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+						06 / Arquitectura de experiencia
+					</p>
+					<h2 class="mt-3 font-display text-4xl">Capítulos, pantallas y flujo</h2>
+					<div class="mt-7 overflow-x-auto rounded-3xl border border-line bg-white">
+						<table class="w-full min-w-[660px] text-left text-sm">
+							<thead class="bg-blush text-plum">
+								<tr>
+									<th class="p-4">Etapa</th>
+									<th class="p-4">Lugar</th>
+									<th class="p-4">Pantallas previstas</th>
+									<th class="p-4">Encuentro físico</th>
+								</tr>
+							</thead>
+							<tbody class="divide-y divide-line text-muted">
+								<tr>
+									<td class="p-4 font-semibold text-ink">Prólogo</td>
+									<td class="p-4">Tarjeta de despertar</td>
+									<td class="p-4">Bienvenida → carta → reglas → primera pista</td>
+									<td class="p-4">QR inicial abre la web</td>
+								</tr>
+								<tr>
+									<td class="p-4 font-semibold text-ink">Capítulo 1</td>
+									<td class="p-4">Lavandería</td>
+									<td class="p-4">Transición → detalle → mensaje → pista</td>
+									<td class="p-4">Chocolates / dulces</td>
+								</tr>
+								<tr>
+									<td class="p-4 font-semibold text-ink">Capítulo 2</td>
+									<td class="p-4">Cajuela</td>
+									<td class="p-4">
+										Transición → descubrimiento → dedicatoria → pista
+									</td>
+									<td class="p-4">Cuadro R ♥ G</td>
+								</tr>
+								<tr>
+									<td class="p-4 font-semibold text-ink">Capítulo 3</td>
+									<td class="p-4">Oficina y taller</td>
+									<td class="p-4">
+										Transición → detalle → mensaje → minijuego → pista
+									</td>
+									<td class="p-4">Dulces / nota</td>
+								</tr>
+								<tr>
+									<td class="p-4 font-semibold text-ink">Capítulo 4</td>
+									<td class="p-4">Horno frío</td>
+									<td class="p-4">
+										Transición → descubrimiento → dedicatoria → pista
+									</td>
+									<td class="p-4">Pingüinos de piedra</td>
+								</tr>
+								<tr>
+									<td class="p-4 font-semibold text-ink">Capítulo 5</td>
+									<td class="p-4">Habitación</td>
+									<td class="p-4">
+										Transición → detalle → mensaje → minijuego → pista
+									</td>
+									<td class="p-4">Chocolates / detalle</td>
+								</tr>
+								<tr>
+									<td class="p-4 font-semibold text-ink">Capítulo 6</td>
+									<td class="p-4">Terraza</td>
+									<td class="p-4">
+										Transición → suspenso → revelación → carta final
+									</td>
+									<td class="p-4">Boletos del evento</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="mt-6 grid gap-4 lg:grid-cols-2">
+						<div class="rounded-3xl bg-night p-6 text-white">
+							<h3 class="font-display text-2xl">Regla de desbloqueo</h3>
+							<p class="mt-3 text-sm leading-7 text-[#f5dfec]">
+								Pista → cámara a pantalla completa → QR válido de la estación
+								esperada → detener cámara → animación de éxito → transición de
+								capítulo → primera página. Los QR anteriores o futuros no deben
+								avanzar el estado.
+							</p>
+						</div>
+						<div class="rounded-3xl bg-lilac p-6">
+							<h3 class="font-display text-2xl">Regla narrativa</h3>
+							<p class="mt-3 text-sm leading-7 text-[#5b4665]">
+								No revelar el siguiente lugar en el título de la pista. Cada
+								capítulo puede tener tantas páginas como necesite. Los dulces son
+								detalles, no nuevas partes de «el regalo». No mostrar fotos del
+								regalo antes de encontrarlo.
+							</p>
+						</div>
+					</div>
+				</section>
+				<section
+					id="codex"
+					class="mx-auto max-w-6xl scroll-mt-8 border-t border-line py-14"
+				>
+					<p class="text-xs font-bold uppercase tracking-[.2em] text-plum">
+						07 / Implementación
+					</p>
+					<h2 class="mt-3 font-display text-4xl">
+						Contrato de implementación para Codex
+					</h2>
+					<div
+						class="mt-7 rounded-3xl bg-night p-6 text-sm leading-8 text-[#f5dfec] sm:p-9"
+					>
+						<p class="font-semibold text-white">Objetivo:</p>
+						<p class="mt-2">
+							Implementar la aplicación «Nuestra historia, un tesoro a la vez» en
+							React + Vite + Tailwind CSS, utilizando este archivo HTML como fuente de
+							verdad visual. Mantener los tokens, tipografías, espaciado, patrones de
+							pantalla y diferenciación semántica. El HTML es documentación visual: no
+							copiar su estructura de catálogo dentro de la aplicación final.
+						</p>
+						<ul class="mt-5 list-disc space-y-2 pl-5">
+							<li>
+								Instalar Tailwind en Vite; no usar CDN en producción. Centralizar
+								los tokens de color y fuentes en el tema.
+							</li>
+							<li>
+								Estilos exclusivamente con clases/utilidades Tailwind; no crear CSS
+								ad hoc para componentes. Usar estilos globales mínimos solo si son
+								técnicamente necesarios para Tailwind y las fuentes.
+							</li>
+							<li>
+								Componentizar: AppShell, ChapterTransition, ClueScreen,
+								NarrativeScreen, GiftRevealScreen, DetailScreen, MiniGameScreen,
+								FullscreenQrScanner, ScanSuccess, PrimaryButton, ProgressIndicator.
+							</li>
+							<li>
+								Una pantalla a la vez, ancho completo del viewport móvil, áreas
+								seguras (safe-area), scroll cuando el contenido lo requiera y CTA
+								accesible.
+							</li>
+							<li>
+								Escáner QR con cámara trasera, video object-cover ocupando la
+								pantalla, cierre automático al validar, liberación de tracks y
+								estados de permiso/error.
+							</li>
+							<li>
+								Respetar reduced motion, contraste, foco visible, etiquetas
+								accesibles y botones de al menos 44 × 44 px (preferido 56 px).
+							</li>
+							<li>
+								Persistir avance en localStorage; habilitar modo demo solo en
+								desarrollo. No permitir saltar capítulos por QR de estaciones
+								futuras.
+							</li>
+							<li>
+								Transición automática de capítulo (~2.1 s) con botón para saltar;
+								éxito QR (~1.7 s) antes de transición. Evitar bloqueos si el usuario
+								prefiere movimiento reducido.
+							</li>
+							<li>
+								QR inicial del prólogo distinto de los seis QR de estación. La app
+								no debe revelar ni adelantar sorpresas.
+							</li>
+						</ul>
+					</div>
+					<div class="mt-6 rounded-3xl border border-line bg-white p-6">
+						<h3 class="font-semibold">Referencia de clases Tailwind</h3>
+						<div class="mt-4 space-y-3 text-xs leading-6 text-muted">
+							<p>
+								<strong class="text-ink">Shell:</strong>
+								<code class="break-all"
+									>min-h-dvh px-6 pt-[calc(env(safe-area-inset-top)+24px)]
+									pb-[calc(env(safe-area-inset-bottom)+26px)]</code
+								>
+							</p>
+							<p>
+								<strong class="text-ink">Título:</strong>
+								<code class="break-all"
+									>font-display text-[clamp(36px,10vw,54px)] leading-[1.15]
+									tracking-[-.035em]</code
+								>
+							</p>
+							<p>
+								<strong class="text-ink">Cuerpo:</strong>
+								<code class="break-all">text-base leading-[1.85] text-muted</code>
+							</p>
+							<p>
+								<strong class="text-ink">CTA:</strong>
+								<code class="break-all"
+									>min-h-14 w-full rounded-[20px] bg-rose px-5 py-3.5 font-bold
+									text-white shadow-pink</code
+								>
+							</p>
+							<p>
+								<strong class="text-ink">Pista:</strong>
+								<code class="break-all">min-h-dvh bg-night text-[#fff3f7]</code>
+							</p>
+						</div>
+					</div>
+				</section>
+				<footer class="mx-auto max-w-6xl border-t border-line pt-8 text-sm text-muted">
+					Nuestra historia · Design System v1.0 · Hecho para una experiencia íntima, móvil
+					y memorable. ♡
+				</footer>
+			</main>
+		</div>
+	</body>
+</html>

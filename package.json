@@ -1,0 +1,52 @@
+{
+	"name": "nuestra-historia-tesoro",
+	"private": true,
+	"version": "1.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"preview": "vite preview",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"lint": "eslint .",
+		"format": "prettier --write .",
+		"format:check": "prettier --check .",
+		"typecheck": "tsc --noEmit",
+		"prepare": "husky",
+		"qr:generate": "node scripts/generate-qr.mjs"
+	},
+	"dependencies": {
+		"@tabler/icons-react": "^3.52.0",
+		"@tailwindcss/vite": "^4.3.5",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"@vitejs/plugin-react": "^4.7.0",
+		"@zxing/browser": "^0.1.5",
+		"jsqr": "^1.4.0",
+		"pdf-lib": "^1.17.1",
+		"pngjs": "^7.0.0",
+		"qrcode": "^1.5.4",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0",
+		"react-router-dom": "^7.18.6",
+		"tailwindcss": "^4.3.5",
+		"vite": "^6.3.5"
+	},
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@testing-library/jest-dom": "^8.0.0",
+		"@testing-library/react": "^16.3.3",
+		"eslint": "^10.15.0",
+		"eslint-plugin-react-hooks": "^7.1.1",
+		"eslint-plugin-react-refresh": "^0.5.8",
+		"globals": "^17.14.0",
+		"husky": "^9.1.7",
+		"jsdom": "^31.0.1",
+		"lint-staged": "^17.6.1",
+		"prettier": "^3.10.1",
+		"typescript": "^5.9.3",
+		"typescript-eslint": "^8.73.0",
+		"vitest": "^5.1.1"
+	}
+}

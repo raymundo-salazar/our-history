@@ -1,0 +1,9 @@
+dist
+node_modules
+print/qr/*.png
+print/qr/*.svg
+print/qr/*.pdf
+print/qr/guia-colocacion.md
+package-lock.json
+pnpm-lock.yaml
+pnpm-workspace.yaml
