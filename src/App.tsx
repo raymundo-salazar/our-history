@@ -22,6 +22,19 @@ const ScrollToTop = () => {
 
 export const App = () => {
 	useEffect(() => {
+		const enterFullscreen = () => {
+			if (document.fullscreenElement || !document.documentElement.requestFullscreen) return
+
+			document.documentElement
+				.requestFullscreen({ navigationUI: "hide" })
+				.catch(() => undefined)
+		}
+
+		window.addEventListener("pointerdown", enterFullscreen, { once: true, passive: true })
+		return () => window.removeEventListener("pointerdown", enterFullscreen)
+	}, [])
+
+	useEffect(() => {
 		if (!import.meta.env.DEV) return
 		const demo = new URLSearchParams(window.location.search).get("demo")
 		const chapter = demo === "final" ? 6 : Number(demo?.replace("chapter-", ""))
