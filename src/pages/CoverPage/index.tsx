@@ -11,11 +11,11 @@ export const CoverPage = () => {
 	return (
 		<JourneyTemplate>
 			<img
-				className="mx-auto block h-auto w-[min(78vw,520px)] object-contain"
-				src="/assets/gina-ray-logo.webp"
-				alt="Logo de Gina y Ray con un corazón"
-				width="900"
-				height="300"
+				className="relative left-1/2 block aspect-square w-screen max-w-[640px] -translate-x-1/2 object-contain"
+				src="/assets/pareja-rg.webp"
+				alt="Gina y Ray juntos, con un corazón"
+				width="640"
+				height="640"
 				fetchPriority="high"
 			/>
 			<div className="text-center text-[10px] font-bold uppercase tracking-[.22em] text-plum">
