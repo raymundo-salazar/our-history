@@ -18,7 +18,7 @@ export const CoverPage = () => {
 				height="640"
 				fetchPriority="high"
 			/>
-			<div className="mt-8 text-center text-[10px] font-bold uppercase tracking-[.22em] text-plum">
+			<div className="mt-3 text-center text-[10px] font-bold uppercase tracking-[.22em] text-plum">
 				{COVER_DATE}
 			</div>
 			<h1 className="mt-5 text-center font-display text-[clamp(42px,10vw,64px)] leading-[1.07] tracking-[-.045em]">
