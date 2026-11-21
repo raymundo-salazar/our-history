@@ -1,7 +1,5 @@
-import { IconArrowRight } from "@tabler/icons-react"
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { Button } from "../../componentes/atoms/Button"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { chapters } from "../../content"
@@ -31,24 +29,31 @@ export const ChapterTransitionPage = () => {
 	return (
 		<JourneyTemplate>
 			<ProgressIndicator current={chapter.id} total={6} />
-			<div className="flex flex-1 flex-col items-center justify-center text-center">
+			<div
+				className="flex flex-1 cursor-pointer flex-col items-center justify-center text-center"
+				tabIndex={0}
+				role="button"
+				aria-label="Continuar al capítulo"
+				onClick={() => navigate(`/estacion/${stationId}`)}
+				onKeyDown={event => {
+					if (event.key === "Enter" || event.key === " ") {
+						event.preventDefault()
+						navigate(`/estacion/${stationId}`)
+					}
+				}}
+			>
 				<div className="grid size-28 place-items-center rounded-full border border-[#e6b8d0] bg-white/70 font-display text-6xl text-plum shadow-soft">
-					{chapter.id}
+					{String(chapter.id).padStart(2, "0")}
 				</div>
 				<p className="mt-8 text-[11px] font-bold uppercase tracking-[.2em] text-plum">
-					Capítulo {chapter.id} de 6
+					CAPÍTULO {String(chapter.id).padStart(2, "0")} DE 06
 				</p>
 				<h1 className="mt-5 max-w-md font-display text-[clamp(38px,10vw,56px)] leading-[1.12] tracking-[-.035em]">
-					{chapter.title}
+					{chapter.transitionTitle}
 				</h1>
-				<p className="mt-5 text-sm text-muted">Un pedacito más de nuestra historia ♡</p>
-				<Button
-					fullWidth
-					className="mt-10"
-					onClick={() => navigate(`/estacion/${stationId}`)}
-				>
-					Continuar ahora <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
-				</Button>
+				<p className="mt-5 max-w-md text-sm leading-7 text-muted">
+					{chapter.transitionPhrase}
+				</p>
 			</div>
 		</JourneyTemplate>
 	)

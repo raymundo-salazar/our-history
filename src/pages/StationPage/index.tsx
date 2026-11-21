@@ -104,9 +104,17 @@ const ScreenLabel = ({ children }: { children: React.ReactNode }) => (
 	<p className="text-[11px] font-bold uppercase tracking-[.2em] text-plum">{children}</p>
 )
 
-const ContinueButton = ({ disabled, onClick }: { disabled?: boolean; onClick: () => void }) => (
+const ContinueButton = ({
+	disabled,
+	label = "Continuar",
+	onClick,
+}: {
+	disabled?: boolean
+	label?: string
+	onClick: () => void
+}) => (
 	<Button fullWidth className="mt-8" disabled={disabled} onClick={onClick}>
-		Continuar <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+		{label} <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 	</Button>
 )
 
@@ -132,10 +140,14 @@ const DetailScreen = ({
 				{chapter.detailTitle}
 			</h1>
 			<div className="mt-6 rounded-[28px] border border-[#f5d9e2] bg-blush p-6">
-				<p className="text-base leading-8 text-muted">{chapter.detailBody}</p>
+				<div className="space-y-4 text-base leading-8 text-muted">
+					{chapter.detailBody.split("\n\n").map(paragraph => (
+						<p key={paragraph}>{paragraph}</p>
+					))}
+				</div>
 			</div>
 		</div>
-		<ContinueButton onClick={onNext} />
+		<ContinueButton label={chapter.detailAction} onClick={onNext} />
 	</JourneyTemplate>
 )
 

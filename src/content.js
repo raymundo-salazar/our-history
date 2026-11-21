@@ -98,9 +98,13 @@ export const chapters = [
 	{
 		id: 1,
 		title: "Los ciclos de nuestra historia",
-		detailTitle: "Algo dulce para empezar.",
+		transitionTitle: "Las vueltas de la vida",
+		transitionPhrase:
+			"Porque incluso después de tantas vueltas, seguimos encontrando la manera de avanzar juntos.",
+		detailTitle: "¡Comenzamos, cielo! ♡",
 		detailBody:
-			"Porque una historia como la nuestra también está hecha de pequeños momentos que nos endulzan la vida. Y porque sé que un chocolatito nunca está de más, cielo.",
+			"¡Encontraste nuestro primer capítulo!\n\nDicen que los pequeños detalles hacen grandes diferencias, así que quise comenzar esta aventura con algo sencillo, pero preparado especialmente para ti.\n\nEspero que hayas encontrado algo que te endulce un poquito el día, porque esto apenas comienza, preciosa.",
+		detailAction: "Continuar nuestra historia",
 		narrativeTitle: "Las vueltas de la vida",
 		narrativeBody:
 			"¡Encontraste la lavandería, cielito! Así como la ropa pasa por diferentes ciclos, nosotros también hemos pasado por muchas etapas. Algunas más fáciles que otras, pero todas forman parte de nuestra historia. Y aunque a veces nos toque dar otra vuelta, me encanta que sigamos encontrando la manera de volver a empezar juntos.",
@@ -109,9 +113,13 @@ export const chapters = [
 	{
 		id: 2,
 		title: "Lo que quedó pendiente",
-		detailTitle: "Una parte especial de el regalo.",
+		transitionTitle: "Recuerdos que permanecen",
+		transitionPhrase:
+			"Hay cosas que el tiempo no borra, y otras que todavía nos quedan por completar.",
+		detailTitle: "Un recuerdo que nos faltaba ♡",
 		detailBody:
-			"Encontraste algo que tenía pendiente contigo. Es una parte hecha con mis manos para guardar un pedacito de nuestra historia.",
+			"¡Lo encontraste, bebé!\n\nLo que tienes frente a ti es algo que había quedado pendiente desde nuestro aniversario pasado. Quizá llegó un poquito tarde, pero no quería que se quedara solamente como una idea.\n\nEste es el primer pedacito de el regalo que preparé para ti.\n\nY aunque todavía le faltan algunos detalles, hay una razón muy especial para ello.",
+		detailAction: "Descubrir su historia",
 		narrativeTitle: "Nuestra historia en cuatro fotografías",
 		narrativeBody:
 			"El cuadro tiene cuatro espacios vacíos porque quiero que las fotos las elijamos juntos. Y sí, ya sé que dice 22 de septiembre de 2025, aunque nuestro aniversario es el 21. Aquella pequeña equivocación se quedó como un recuerdo más de nosotros: hay errores que terminan formando parte de la historia que vale la pena conservar. Feliz séptimo aniversario atrasado, amor. Te Yoyo.",
@@ -120,9 +128,13 @@ export const chapters = [
 	{
 		id: 3,
 		title: "Lo que construimos",
-		detailTitle: "Un detalle entre proyectos.",
+		transitionTitle: "Lo que construimos juntos",
+		transitionPhrase:
+			"Entre ideas, sueños y uno que otro intento fallido, seguimos creando algo muy nuestro.",
+		detailTitle: "Entre ideas y proyectos ♡",
 		detailBody:
-			"Entre tantas ideas, proyectos y pendientes, siempre hay espacio para algo dulce contigo.",
+			"¡Muy bien, mi reina! Ya llegaste al tercer capítulo.\n\nEste lugar conoce muchas de nuestras ideas, nuestros planes y también uno que otro proyecto que todavía tenemos pendiente.\n\nPero hoy no venimos a trabajar ni a resolver problemas.\n\nHoy solamente quiero que disfrutes el pequeño detalle que dejé para ti antes de continuar con nuestra aventura.",
+		detailAction: "Continuar",
 		narrativeTitle: "Lo que construimos juntos",
 		narrativeBody:
 			"Aquí hemos creado cosas, resuelto problemas y trabajado para sacar adelante nuestros sueños. Este espacio no es solamente donde trabajamos: también es una muestra de las ganas que tenemos de construir una vida juntos, proyecto por proyecto.",
@@ -131,9 +143,13 @@ export const chapters = [
 	{
 		id: 4,
 		title: "Siempre tú",
-		detailTitle: "Aquella tarde en el río.",
+		transitionTitle: "Siempre a tu lado",
+		transitionPhrase:
+			"Hay momentos que parecen pequeños, pero terminan guardando recuerdos enormes.",
+		detailTitle: "Dos pequeños compañeros ♡",
 		detailBody:
-			"¿Te acuerdas de nuestra aventura al río Ramos? Queríamos ir a Cozumelito, pero entre una cosa y otra terminamos llegando alrededor de las 4:08 de la tarde. Estas piedras vienen de aquella salida.",
+			"¡Llegaste, cielito!\n\nLo que acabas de encontrar puede parecer algo muy sencillo: dos pequeñas piedras convertidas en pingüinos.\n\nPero para mí tienen un significado mucho más grande.\n\nNo las elegí al azar ni las compré en algún lugar. Son parte de un recuerdo que vivimos juntos y que quise transformar en algo que pudiéramos conservar.\n\n¿Te acuerdas de dónde salieron?",
+		detailAction: "Recordar aquel día",
 		narrativeTitle: "Siempre juntos",
 		narrativeBody:
 			"Las convertí en estos dos pingüinos porque quería regalarte un recuerdo de lo que quiero seguir viviendo contigo: acompañarnos durante cada etapa, aunque cambien los caminos. Este año celebramos nuestras bodas de bronce, pero estas piedras valen para mí mucho más que cualquier material. Feliz octavo aniversario, amor. Te Yoyo, bebé.",
@@ -142,9 +158,13 @@ export const chapters = [
 	{
 		id: 5,
 		title: "Nuestro lugar",
-		detailTitle: "Los pequeños detalles.",
+		transitionTitle: "Un lugar para nosotros",
+		transitionPhrase:
+			"Algunos espacios necesitan tiempo y cariño para volver a sentirse como nuestro hogar.",
+		detailTitle: "Un lugar que nos espera ♡",
 		detailBody:
-			"No todo tiene que estar perfecto para ser bonito. A veces basta con un pequeño detalle y la persona correcta.",
+			"¡Ya casi llegamos al final, preciosa!\n\nEste lugar todavía tiene algunas cosas pendientes. Poco a poco lo estamos arreglando, acomodando y preparando para volver a disfrutarlo juntos.\n\nMientras llega ese momento, quise dejarte aquí un pequeño detalle.\n\nPorque incluso los lugares que están en proceso de cambiar pueden guardar algo bonito.",
+		detailAction: "Continuar nuestra historia",
 		narrativeTitle: "Nuestro lugar",
 		narrativeBody:
 			"Nuestro cuarto ahorita tiene más cosas de las que debería, pero me gusta pensar que es como muchas partes de nuestra vida: algo que estamos arreglando y organizando juntos. No se trata de tenerlo todo perfecto, sino de ayudarnos y construir poco a poco el lugar donde queremos estar.",
@@ -153,9 +173,13 @@ export const chapters = [
 	{
 		id: 6,
 		title: "Lo que parecía imposible",
-		detailTitle: "Hay cosas que parecen imposibles.",
+		transitionTitle: "Lo que parecía imposible",
+		transitionPhrase:
+			"A veces, cuando creemos que una oportunidad se ha ido, la vida todavía guarda una sorpresa.",
+		detailTitle: "Llegaste hasta el final... casi ♡",
 		detailBody:
-			"A veces creemos que una oportunidad ya se fue, que se nos hizo tarde o que tendremos que esperar otra ocasión. Pero la vida todavía puede guardarnos una sorpresa.",
+			"¡Lo lograste, cielo!\n\nEncontraste los seis capítulos y llegaste al último rincón de esta aventura.\n\nEspero que hayas disfrutado cada pista, cada recuerdo y cada pequeño detalle que fui dejando en el camino.\n\nPero todavía no hemos terminado.\n\nHay una última cosa que quiero contarte. Algo que quizá pensaste que ya no sería posible...",
+		detailAction: "¿Qué será?",
 		narrativeTitle: "¿Recuerdas lo que te dije?",
 		narrativeBody:
 			"Te dije que ya casi no había lugares, que probablemente no alcanzaríamos boletos y que esta vez no íbamos a poder ir. Pero resulta que todavía quedaba una oportunidad...",
