@@ -17,8 +17,15 @@ export const StoryPage = () => {
 			</h1>
 			<div className="mt-6 rounded-[30px] bg-white/80 p-6 shadow-soft">
 				<div className="space-y-5 text-base leading-[1.85] text-muted">
-					{welcomeCopy.story.map(paragraph => (
-						<p key={paragraph}>{paragraph}</p>
+					{welcomeCopy.story.map((paragraph, index) => (
+						<p
+							className={
+								index === welcomeCopy.story.length - 1 ? "font-bold text-ink" : ""
+							}
+							key={paragraph}
+						>
+							{paragraph}
+						</p>
 					))}
 				</div>
 			</div>
