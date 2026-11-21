@@ -10,9 +10,14 @@ export const CoverPage = () => {
 
 	return (
 		<JourneyTemplate>
-			<div className="mx-auto grid size-24 place-items-center rounded-full border border-[#e8c6d8] bg-white/70 font-display text-3xl text-plum shadow-soft">
-				R <span className="text-rose">♥</span> G
-			</div>
+			<img
+				className="mx-auto size-40 object-contain sm:size-48"
+				src="/assets/pareja-rg.webp"
+				alt="Gina y Ray juntos, con un corazón"
+				width="640"
+				height="640"
+				fetchPriority="high"
+			/>
 			<div className="mt-8 text-center text-[10px] font-bold uppercase tracking-[.22em] text-plum">
 				{COVER_DATE}
 			</div>
