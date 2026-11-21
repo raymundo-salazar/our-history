@@ -30,7 +30,7 @@ export const CoverPage = () => {
 			<Button fullWidth className="mt-8" onClick={() => navigate("/historia")}>
 				COMENZAR <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>
-			<p className="mt-5 flex items-center justify-center gap-2 text-sm text-muted">
+			<p className="flex items-center justify-center gap-2 text-sm text-muted">
 				Hecho para mi esponjosita
 				<IconHeart className="text-rose" size={16} fill="currentColor" aria-hidden="true" />
 			</p>
