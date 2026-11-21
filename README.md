@@ -35,6 +35,8 @@ Esto crea exactamente siete SVG, siete PNG de 1400×1400 y `print/qr/qr-imprimib
 
 La publicación debe usar HTTPS para que `getUserMedia` funcione. El escáner se inicia únicamente al tocar “Activar cámara”, prefiere la cámara trasera, detiene el lector al salir y ofrece entrada manual como respaldo. El progreso se guarda con versión en `localStorage` y no hay backend: un usuario técnico puede inspeccionar tokens o contenido.
 
+En desarrollo puede abrirse `?demo=chapter-3` o `?demo=final` para revisar capítulos sin escanear códigos. Este modo no se activa en producción.
+
 ## Checklist manual móvil
 
 - [ ] Probar en Safari iOS y Chrome Android con permisos aceptados y denegados.

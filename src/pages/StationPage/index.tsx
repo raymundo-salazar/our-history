@@ -37,7 +37,7 @@ export const StationPage = () => {
 
 	if (!chapter || !progress.scanned.includes(stationIndex)) return null
 
-	const lastScreen = isFinal ? 4 : isWordGame || isChoiceGame ? 3 : 2
+	const lastScreen = isFinal ? 5 : isWordGame || isChoiceGame ? 3 : 2
 	const advance = () => {
 		if (screen < lastScreen) {
 			if (isWordGame && screen === 2) solveChallenge(stationIndex)
@@ -188,14 +188,14 @@ const FinalChapter = ({ screen, onNext }: { screen: number; onNext: () => void }
 			<ScreenLabel>
 				{screen === 2
 					? "Una última sorpresa"
-					: screen === 3
+					: screen === 3 || screen === 4
 						? "La gran sorpresa"
 						: "Nuestra historia continúa"}
 			</ScreenLabel>
 			<h1 className="mt-5 font-display text-[clamp(38px,10vw,54px)] leading-[1.12]">
 				{screen === 2
 					? "¿Todavía puede pasar?"
-					: screen === 3
+					: screen === 3 || screen === 4
 						? "Hablemos de lo que no existe"
 						: "Te sigo eligiendo"}
 			</h1>
@@ -204,13 +204,15 @@ const FinalChapter = ({ screen, onNext }: { screen: number; onNext: () => void }
 					{screen === 2
 						? "Tal vez esta vez sí encontremos una manera de vivir esa aventura que parecía imposible."
 						: screen === 3
-							? "Conseguí los boletos, amor. El 1 de diciembre de 2026 nos espera Río 70, en Monterrey."
-							: "Ocho años de matrimonio, una familia, días buenos, días difíciles y tantos caminos recorridos. Gracias por seguir construyendo conmigo. Quiero seguir eligiéndote cada día, en cada aventura y en todo lo que todavía nos espera. Te Yoyo, mi esponjosita. ♡"}
+							? "Conseguí los boletos, amor. Para una noche que quiero vivir contigo: Hablemos de lo que no existe."
+							: screen === 4
+								? "1 de diciembre de 2026 · Río 70 · Monterrey"
+								: "Ocho años de matrimonio, una familia, días buenos, días difíciles y tantos caminos recorridos. Gracias por seguir construyendo conmigo. Quiero seguir eligiéndote cada día, en cada aventura y en todo lo que todavía nos espera. Te Yoyo, mi esponjosita. ♡"}
 				</p>
 			</div>
 		</div>
 		<Button fullWidth className="mt-8" onClick={onNext}>
-			{screen === 4 ? "Terminar nuestra historia" : "Continuar"}{" "}
+			{screen === 5 ? "Terminar nuestra historia" : "Continuar"}{" "}
 			<IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 		</Button>
 	</JourneyTemplate>
