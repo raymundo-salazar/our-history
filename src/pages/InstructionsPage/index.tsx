@@ -48,13 +48,17 @@ export const InstructionsPage = () => {
 				</div>
 				<div className="mt-7 space-y-5 border-t border-line pt-7 text-base leading-[1.85] text-muted">
 					{INSTRUCTIONS_OUTRO.map((paragraph, index) => (
-						<p
-							className={
-								index === INSTRUCTIONS_OUTRO.length - 1 ? "font-bold text-ink" : ""
-							}
-							key={paragraph}
-						>
-							{paragraph}
+						<p className="text-muted" key={paragraph}>
+							{index === INSTRUCTIONS_OUTRO.length - 1 ? (
+								<>
+									{paragraph.split("no intentes")[0]}
+									<strong className="font-bold text-ink">
+										no intentes{paragraph.split("no intentes")[1]}
+									</strong>
+								</>
+							) : (
+								paragraph
+							)}
 						</p>
 					))}
 				</div>
