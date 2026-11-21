@@ -19,7 +19,7 @@ export const ScannerPanel = ({
 	const { videoRef, started, start, stop } = useQrScanner({ onCode, onError: setCameraNotice })
 
 	return (
-		<div className="-mx-6 -my-8 flex min-h-[calc(100dvh-8rem)] flex-col sm:-mx-10">
+		<div className="flex min-h-[calc(100dvh-8rem)] flex-col">
 			<div className="flex items-center justify-between">
 				<IconButton
 					className="min-h-11 rounded-full bg-black/30 px-3 text-white/80"

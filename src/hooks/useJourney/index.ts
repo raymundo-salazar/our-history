@@ -3,12 +3,21 @@ import { JOURNEY_STORAGE_KEY, JOURNEY_STORAGE_VERSION } from "../../domain/const
 import type { JourneyProgress } from "../../domain/types"
 import type { UseJourneyResult } from "./types"
 
-const EMPTY_PROGRESS: JourneyProgress = { version: JOURNEY_STORAGE_VERSION, scanned: [] }
+const EMPTY_PROGRESS: JourneyProgress = {
+	version: JOURNEY_STORAGE_VERSION,
+	scanned: [],
+	completed: [],
+	currentScreen: {},
+	challenges: {},
+	finished: false,
+}
 
 const readProgress = (): JourneyProgress => {
 	try {
 		const value = JSON.parse(localStorage.getItem(JOURNEY_STORAGE_KEY) ?? "null")
-		if (value?.version === JOURNEY_STORAGE_VERSION && Array.isArray(value.scanned)) return value
+		if (value?.version === JOURNEY_STORAGE_VERSION && Array.isArray(value.scanned)) {
+			return { ...EMPTY_PROGRESS, ...value }
+		}
 	} catch {
 		return EMPTY_PROGRESS
 	}
@@ -26,5 +35,50 @@ export const useJourney = (): UseJourneyResult => {
 		})
 	}, [])
 
-	return { progress, markScanned }
+	const setScreen = useCallback((station: number, screen: number) => {
+		setProgress(current => {
+			const next = {
+				...current,
+				currentScreen: { ...current.currentScreen, [station]: screen },
+			}
+			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
+			return next
+		})
+	}, [])
+
+	const completeChapter = useCallback((station: number) => {
+		setProgress(current => {
+			const next = { ...current, completed: [...new Set([...current.completed, station])] }
+			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
+			return next
+		})
+	}, [])
+
+	const solveChallenge = useCallback((station: number) => {
+		setProgress(current => {
+			const next = { ...current, challenges: { ...current.challenges, [station]: true } }
+			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
+			return next
+		})
+	}, [])
+
+	const finishJourney = useCallback(() => {
+		setProgress(current => {
+			const next = { ...current, finished: true }
+			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
+			return next
+		})
+	}, [])
+
+	const nextChapter = progress.scanned.length + 1
+
+	return {
+		progress,
+		markScanned,
+		setScreen,
+		completeChapter,
+		solveChallenge,
+		finishJourney,
+		nextChapter,
+	}
 }

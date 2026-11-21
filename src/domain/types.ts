@@ -11,4 +11,8 @@ export type Station = {
 export type JourneyProgress = {
 	version: number
 	scanned: number[]
+	completed: number[]
+	currentScreen: Record<string, number>
+	challenges: Record<string, boolean>
+	finished: boolean
 }

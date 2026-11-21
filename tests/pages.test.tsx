@@ -21,7 +21,7 @@ describe("journey pages", () => {
 			</MemoryRouter>
 		)
 
-		expect(screen.getByRole("button", { name: /Ya sé dónde buscar/ })).toBeInTheDocument()
+		expect(screen.getByRole("button", { name: /Escanear código QR/ })).toBeInTheDocument()
 		expect(screen.getByRole("button", { name: /Necesito otra pista/ })).toBeInTheDocument()
 	})
 })

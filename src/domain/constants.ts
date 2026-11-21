@@ -3,3 +3,5 @@ export const JOURNEY_STORAGE_VERSION = 2
 export const FIRST_STATION = 0
 export const FINAL_STATION = 5
 export const HINT_COUNT = 3
+export const TRANSITION_DURATION = 2100
+export const SUCCESS_DURATION = 1700

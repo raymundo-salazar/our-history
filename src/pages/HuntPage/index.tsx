@@ -1,9 +1,10 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import { HintActions } from "../../componentes/molecules/HintActions"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { stations } from "../../content"
+import { useJourney } from "../../hooks/useJourney"
 import { FIRST_HINT_LABEL, HUNT_TITLE, HUNT_TOTAL, NEXT_HINT_LABEL, NEXT_TITLE } from "./constants"
 
 export const HuntPage = () => {
@@ -12,9 +13,16 @@ export const HuntPage = () => {
 	const { stationId = "1" } = useParams()
 	const stationIndex = Math.max(0, Number(stationId) - 1)
 	const station = stations[stationIndex]
+	const { nextChapter } = useJourney()
 	const [hintLevel, setHintLevel] = useState(0)
+	const isOutOfOrder = stationIndex + 1 !== nextChapter
+
+	useEffect(() => {
+		if (!station || isOutOfOrder) navigate(`/pista/${nextChapter}`, { replace: true })
+	}, [isOutOfOrder, navigate, nextChapter, station])
 
 	if (!station) return null
+	if (isOutOfOrder) return null
 
 	const hasMoreHints = hintLevel < station.searchHints.length - 1
 
@@ -34,7 +42,7 @@ export const HuntPage = () => {
 			</div>
 			<HintActions
 				canRequestHint={hasMoreHints}
-				continueLabel={hasMoreHints ? "Ya sé dónde buscar" : "Abrir lector QR"}
+				continueLabel="Escanear código QR"
 				onContinue={() => navigate(`/escanear/${stationIndex + 1}`)}
 				onRequestHint={() => setHintLevel(level => level + 1)}
 			/>

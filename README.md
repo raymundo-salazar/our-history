@@ -10,7 +10,7 @@ La aplicación usa TypeScript, Tailwind CSS v4 y rutas reales con React Router p
 - `src/componentes/molecules`: combinaciones pequeñas con interacción.
 - `src/componentes/organisms`: bloques de experiencia, como el escáner.
 - `src/templates`: composición de layout reutilizable.
-- `src/pages`: páginas asociadas a rutas reales (`/historia`, `/instrucciones`, `/pista/:stationId`, `/escanear/:stationId` y `/estacion/:stationId`).
+- `src/pages`: páginas asociadas a rutas reales (`/historia`, `/instrucciones`, `/pista/:stationId`, `/escanear/:stationId`, `/exito/:stationId`, `/transicion/:stationId` y `/estacion/:stationId`).
 - `src/hooks` y `src/domain`: lógica y configuración separadas de la UI.
 
 Cada componente mantiene sus tipos, constantes y hooks locales en su propia carpeta cuando son necesarios. Prettier, ESLint y Husky están configurados; el hook pre-commit valida formato y bloquea `console.log`.
@@ -33,7 +33,7 @@ PUBLIC_APP_URL=https://tu-dominio.example npm run qr:generate
 
 Esto crea exactamente siete SVG, siete PNG de 1400×1400 y `print/qr/qr-imprimibles.pdf`, además de la guía de colocación. Imprime a escala 100% y prueba los siete códigos desde un móvil antes de comenzar. El QR 00 va sobre la cama; 01–06 se colocan en lavandería, cajuela, nuestra oficina y taller, horno frío, habitación y terraza.
 
-La publicación debe usar HTTPS para que `getUserMedia` funcione. El escáner se inicia únicamente al tocar “Activar cámara”, prefiere la cámara trasera, detiene el lector al salir y ofrece entrada manual como respaldo. El progreso se guarda con versión en `localStorage` y no hay backend: un usuario técnico puede inspeccionar tokens o contenido. Para QA del organizador, abre explícitamente `?qa=organizer` (no hay enlace desde la experiencia pública): aparecen controles de reinicio, salto al final y simulación de escaneo; son utilidades de prueba, no un mecanismo de seguridad.
+La publicación debe usar HTTPS para que `getUserMedia` funcione. El escáner se inicia únicamente al tocar “Activar cámara”, prefiere la cámara trasera, detiene el lector al salir y ofrece entrada manual como respaldo. El progreso se guarda con versión en `localStorage` y no hay backend: un usuario técnico puede inspeccionar tokens o contenido.
 
 ## Checklist manual móvil
 

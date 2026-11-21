@@ -23,7 +23,7 @@ export const CoverPage = () => {
 				{welcomeCopy.dek}
 			</p>
 			<Button fullWidth className="mt-8" onClick={() => navigate("/historia")}>
-				Comenzar <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+				COMENZAR <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>
 			<small className="mt-5 block text-center text-muted">{COVER_SUBTITLE}</small>
 		</JourneyTemplate>
