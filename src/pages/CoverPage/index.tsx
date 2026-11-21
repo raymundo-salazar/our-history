@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import { Button } from "../../componentes/atoms/Button"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { welcomeCopy } from "../../content"
-import { COVER_DATE, COVER_SUBTITLE } from "./constants"
+import { COVER_DATE } from "./constants"
 
 export const CoverPage = () => {
 	const navigate = useNavigate()
@@ -30,7 +30,6 @@ export const CoverPage = () => {
 			<Button fullWidth className="mt-8" onClick={() => navigate("/historia")}>
 				COMENZAR <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>
-			<small className="mt-5 block text-center text-muted">{COVER_SUBTITLE}</small>
 		</JourneyTemplate>
 	)
 }

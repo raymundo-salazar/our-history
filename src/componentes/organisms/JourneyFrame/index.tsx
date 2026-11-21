@@ -35,11 +35,6 @@ export const JourneyFrame = ({
 					</span>
 				</div>
 				<div className="flex flex-1 flex-col py-8">{children}</div>
-				<footer
-					className={`pt-6 text-center text-xs tracking-[.13em] ${surface ? "text-[#e4c9da]" : "text-muted"}`}
-				>
-					Te Yoyo · nuestra historia <span className="text-rose">♡</span>
-				</footer>
 			</section>
 		</main>
 	)
