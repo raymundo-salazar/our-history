@@ -16,7 +16,11 @@ export const StoryPage = () => {
 				{STORY_TITLE}
 			</h1>
 			<div className="mt-6 rounded-[30px] bg-white/80 p-6 shadow-soft">
-				<p className="text-base leading-[1.85] text-muted">{welcomeCopy.story}</p>
+				<div className="space-y-5 text-base leading-[1.85] text-muted">
+					{welcomeCopy.story.map(paragraph => (
+						<p key={paragraph}>{paragraph}</p>
+					))}
+				</div>
 			</div>
 			<Button fullWidth className="mt-8" onClick={() => navigate("/instrucciones")}>
 				{STORY_ACTION} <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />

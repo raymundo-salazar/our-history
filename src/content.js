@@ -1,7 +1,13 @@
 export const welcomeCopy = {
 	title: "Nuestra historia, un tesoro a la vez",
 	dek: "Hay algo que quiero darte. Pero esta vez tendrás que encontrarlo.",
-	story: "Han pasado ocho años desde que comenzó nuestra historia. Y aunque no todo ha sido perfecto, hemos vivido momentos increíbles y también algunos difíciles. Hemos tenido días buenos, días malos, momentos altos y otros no tanto. Pero hay algo que me encanta de nuestra historia: que, de una u otra forma, siempre hemos encontrado la manera de seguir juntos. Hemos construido una familia, acumulado recuerdos, vivido aventuras y aprendido muchas cosas en el camino. Y si algo tengo claro después de estos ocho años, es que quiero seguir escribiendo esta historia contigo. Este año quise prepararte algo diferente. Bueno, tampoco tan diferente, porque tú y yo ya tenemos experiencia con esto de las búsquedas del tesoro. Pero esta vez decidí agregarle un poquito de mi toque tecnológico. Así que prepárate, bebé, porque vas a tener que recorrer algunos lugares para encontrar tu regalo. ¿Lista para otra aventura conmigo, aunque esta vez te toque hacer el recorrido solita? Te Yoyo.",
+	story: [
+		"Han pasado ocho años desde que comenzó nuestra historia. Y aunque no todo ha sido perfecto, hemos vivido momentos increíbles y también algunos difíciles. Hemos tenido días buenos, días malos, momentos altos y otros no tanto.",
+		"Pero hay algo que me encanta de nuestra historia: que, de una u otra forma, siempre hemos encontrado la manera de seguir juntos. Hemos construido una familia, acumulado recuerdos, vivido aventuras y aprendido muchas cosas en el camino.",
+		"Y si algo tengo claro después de estos ocho años, es que quiero seguir escribiendo esta historia contigo. Este año quise prepararte algo diferente.",
+		"Bueno, tampoco tan diferente, porque tú y yo ya tenemos experiencia con esto de las búsquedas del tesoro. Pero esta vez decidí agregarle un poquito de mi toque tecnológico.",
+		"Así que prepárate, bebé, porque vas a tener que recorrer algunos lugares para encontrar tu regalo. ¿Lista para otra aventura conmigo, aunque esta vez te toque hacer el recorrido solita? Te Yoyo.",
+	],
 	instructions:
 		"Preparé seis lugares de la casa que tendrás que descubrir siguiendo algunas pistas. En cada lugar encontrarás un código QR. Cuando lo encuentres, presiona Escanear dentro de esta aplicación. A veces tendrás que resolver un acertijo. Otras veces, simplemente seguir una pista. No te preocupes por equivocarte: puedes pedir ayuda cuando la necesites. No te saltes las pistas, no hagas trampa y disfruta cada momento.",
 }
