@@ -35,6 +35,10 @@ export const StationPage = () => {
 		}
 	}, [chapter, navigate, nextChapter, progress.scanned, stationIndex])
 
+	useEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+	}, [screen])
+
 	if (!chapter || !progress.scanned.includes(stationIndex)) return null
 
 	const lastScreen = isFinal ? 5 : isWordGame || isChoiceGame ? 3 : 2

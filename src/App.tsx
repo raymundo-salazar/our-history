@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Navigate, Route, Routes } from "react-router-dom"
+import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { CoverPage } from "./pages/CoverPage"
 
 import { ChapterTransitionPage } from "./pages/ChapterTransitionPage"
@@ -9,6 +9,16 @@ import { ScanPage } from "./pages/ScanPage"
 import { ScanSuccessPage } from "./pages/ScanSuccessPage"
 import { StationPage } from "./pages/StationPage"
 import { StoryPage } from "./pages/StoryPage"
+
+const ScrollToTop = () => {
+	const { pathname } = useLocation()
+
+	useEffect(() => {
+		window.scrollTo({ top: 0, left: 0, behavior: "auto" })
+	}, [pathname])
+
+	return null
+}
 
 export const App = () => {
 	useEffect(() => {
@@ -30,16 +40,19 @@ export const App = () => {
 	}, [])
 
 	return (
-		<Routes>
-			<Route path="/" element={<CoverPage />} />
-			<Route path="/historia" element={<StoryPage />} />
-			<Route path="/instrucciones" element={<InstructionsPage />} />
-			<Route path="/pista/:stationId" element={<HuntPage />} />
-			<Route path="/escanear/:stationId" element={<ScanPage />} />
-			<Route path="/exito/:stationId" element={<ScanSuccessPage />} />
-			<Route path="/transicion/:stationId" element={<ChapterTransitionPage />} />
-			<Route path="/estacion/:stationId" element={<StationPage />} />
-			<Route path="*" element={<Navigate to="/" replace />} />
-		</Routes>
+		<>
+			<ScrollToTop />
+			<Routes>
+				<Route path="/" element={<CoverPage />} />
+				<Route path="/historia" element={<StoryPage />} />
+				<Route path="/instrucciones" element={<InstructionsPage />} />
+				<Route path="/pista/:stationId" element={<HuntPage />} />
+				<Route path="/escanear/:stationId" element={<ScanPage />} />
+				<Route path="/exito/:stationId" element={<ScanSuccessPage />} />
+				<Route path="/transicion/:stationId" element={<ChapterTransitionPage />} />
+				<Route path="/estacion/:stationId" element={<StationPage />} />
+				<Route path="*" element={<Navigate to="/" replace />} />
+			</Routes>
+		</>
 	)
 }
