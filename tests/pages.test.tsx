@@ -11,7 +11,7 @@ describe("journey pages", () => {
 			</MemoryRouter>
 		)
 
-		expect(screen.getByRole("heading", { name: "Unas reglas sencillas" })).toBeInTheDocument()
+		expect(screen.getByRole("heading", { name: "Una aventura para ti." })).toBeInTheDocument()
 	})
 
 	it("renders the first hunt page with optional help", () => {
