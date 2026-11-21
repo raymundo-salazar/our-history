@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { ScannerPanel } from "../../componentes/organisms/ScannerPanel"
@@ -14,9 +14,11 @@ export const ScanPage = () => {
 	const { markScanned, progress, nextChapter } = useJourney()
 	const [manualCode, setManualCode] = useState("")
 	const [notice, setNotice] = useState("")
+	const validScanRef = useRef(false)
 	const isOutOfOrder = stationIndex + 1 !== nextChapter
 
 	useEffect(() => {
+		if (validScanRef.current) return
 		if (station && isOutOfOrder) navigate(`/pista/${nextChapter}`, { replace: true })
 	}, [isOutOfOrder, navigate, nextChapter, station])
 
@@ -25,6 +27,7 @@ export const ScanPage = () => {
 
 	const validateCode = (value: string) => {
 		if (value === station.token) {
+			validScanRef.current = true
 			markScanned(stationIndex)
 			navigate(`/exito/${stationId}`)
 			return

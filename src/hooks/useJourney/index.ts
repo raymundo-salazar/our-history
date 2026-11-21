@@ -30,11 +30,10 @@ export const useJourney = (): UseJourneyResult => {
 	const [progress, setProgress] = useState<JourneyProgress>(readProgress)
 
 	const markScanned = useCallback((station: number) => {
-		setProgress(current => {
-			const next = { ...current, scanned: [...new Set([...current.scanned, station])] }
-			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
-			return next
-		})
+		const current = readProgress()
+		const next = { ...current, scanned: [...new Set([...current.scanned, station])] }
+		localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
+		setProgress(next)
 	}, [])
 
 	const unlockHint = useCallback((station: number, hintCount: number) => {

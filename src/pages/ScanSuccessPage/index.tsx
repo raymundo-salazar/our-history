@@ -16,7 +16,7 @@ export const ScanSuccessPage = () => {
 			navigate(`/pista/${nextChapter}`, { replace: true })
 			return
 		}
-		const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+		const duration = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
 			? 0
 			: SUCCESS_DURATION
 		const timeout = window.setTimeout(() => navigate(`/transicion/${stationId}`), duration)

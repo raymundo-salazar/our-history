@@ -47,4 +47,21 @@ describe("journey pages", () => {
 		fireEvent.click(screen.getByRole("button", { name: "Ver pista siguiente" }))
 		expect(screen.getByText(/Piensa en ese lugar donde la ropa sucia/)).toBeInTheDocument()
 	})
+
+	it("keeps the scanned chapter when routing to its success screen", () => {
+		localStorage.clear()
+		render(
+			<MemoryRouter initialEntries={["/escanear/1"]}>
+				<App />
+			</MemoryRouter>
+		)
+
+		fireEvent.change(screen.getByLabelText("¿La cámara no funciona?"), {
+			target: { value: "nh-01-luna-azul" },
+		})
+		fireEvent.click(screen.getByRole("button", { name: "Validar" }))
+
+		expect(screen.getByRole("heading", { name: "¡Lo lograste, cielo!" })).toBeInTheDocument()
+		expect(JSON.parse(localStorage.getItem("nuestra-historia:v2") ?? "{}").scanned).toEqual([0])
+	})
 })

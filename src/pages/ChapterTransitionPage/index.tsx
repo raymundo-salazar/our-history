@@ -17,7 +17,7 @@ export const ChapterTransitionPage = () => {
 			navigate(`/pista/${nextChapter}`, { replace: true })
 			return
 		}
-		const duration = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+		const duration = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
 			? 0
 			: TRANSITION_DURATION
 		const timeout = window.setTimeout(() => navigate(`/estacion/${stationId}`), duration)

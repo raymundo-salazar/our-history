@@ -20,7 +20,9 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 		controlsRef.current?.stop()
 		controlsRef.current = null
 		const stream = videoRef.current?.srcObject
-		if (stream instanceof MediaStream) stream.getTracks().forEach(track => track.stop())
+		if (typeof MediaStream !== "undefined" && stream instanceof MediaStream) {
+			stream.getTracks().forEach(track => track.stop())
+		}
 		if (videoRef.current) videoRef.current.srcObject = null
 		setStarted(false)
 	}, [])
