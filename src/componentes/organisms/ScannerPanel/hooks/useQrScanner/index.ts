@@ -1,6 +1,6 @@
-import { BrowserMultiFormatReader } from "@zxing/browser"
+import { BrowserQRCodeReader } from "@zxing/browser"
 import { useEffect, useRef, useState } from "react"
-import { CAMERA_ERROR } from "./constants"
+import { CAMERA_ERROR, CAMERA_PERMISSION_ERROR, CAMERA_UNSUPPORTED_ERROR } from "./constants"
 import type { UseQrScannerProps } from "./types"
 
 export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
@@ -20,25 +20,48 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 	}
 
 	const start = async () => {
+		if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) {
+			onError(CAMERA_UNSUPPORTED_ERROR)
+			return
+		}
+
 		activeRef.current = true
 		setStarted(true)
+		let stream: MediaStream | null = null
 		try {
-			const reader = new BrowserMultiFormatReader()
-			const controls = await reader.decodeFromConstraints(
-				{ video: { facingMode: { ideal: "environment" } } },
-				videoRef.current ?? undefined,
-				result => {
-					if (!result || !activeRef.current) return
-					stop()
-					onCode(result.getText())
-				}
-			)
+			stream = await navigator.mediaDevices.getUserMedia({
+				audio: false,
+				video: {
+					facingMode: { ideal: "environment" },
+					width: { ideal: 1280 },
+					height: { ideal: 720 },
+				},
+			})
+			const video = videoRef.current
+			if (!video) throw new Error("Video preview is unavailable")
+
+			video.srcObject = stream
+			video.muted = true
+			video.playsInline = true
+			await video.play()
+
+			const reader = new BrowserQRCodeReader()
+			const controls = await reader.decodeFromStream(stream, video, result => {
+				if (!result || !activeRef.current) return
+				stop()
+				onCode(result.getText())
+			})
 			if (activeRef.current) controlsRef.current = controls
 			else controls.stop()
-		} catch {
+		} catch (error) {
+			stream?.getTracks().forEach(track => track.stop())
 			if (activeRef.current) {
 				setStarted(false)
-				onError(CAMERA_ERROR)
+				onError(
+					error instanceof DOMException && error.name === "NotAllowedError"
+						? CAMERA_PERMISSION_ERROR
+						: CAMERA_ERROR
+				)
 			}
 		}
 	}
