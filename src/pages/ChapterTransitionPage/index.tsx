@@ -1,9 +1,10 @@
 import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { IconArrowRight } from "@tabler/icons-react"
+import { Button } from "../../componentes/atoms/Button"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { chapters } from "../../content"
-import { TRANSITION_DURATION } from "../../domain/constants"
 import { useJourney } from "../../hooks/useJourney"
 
 export const ChapterTransitionPage = () => {
@@ -17,11 +18,6 @@ export const ChapterTransitionPage = () => {
 			navigate(`/pista/${nextChapter}`, { replace: true })
 			return
 		}
-		const duration = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
-			? 0
-			: TRANSITION_DURATION
-		const timeout = window.setTimeout(() => navigate(`/estacion/${stationId}`), duration)
-		return () => window.clearTimeout(timeout)
 	}, [chapter, navigate, nextChapter, progress.scanned, stationId])
 
 	if (!chapter) return null
@@ -29,19 +25,7 @@ export const ChapterTransitionPage = () => {
 	return (
 		<JourneyTemplate>
 			<ProgressIndicator current={chapter.id} total={6} />
-			<div
-				className="flex flex-1 cursor-pointer flex-col items-center justify-center text-center"
-				tabIndex={0}
-				role="button"
-				aria-label="Continuar al capítulo"
-				onClick={() => navigate(`/estacion/${stationId}`)}
-				onKeyDown={event => {
-					if (event.key === "Enter" || event.key === " ") {
-						event.preventDefault()
-						navigate(`/estacion/${stationId}`)
-					}
-				}}
-			>
+			<div className="flex flex-1 flex-col items-center justify-center text-center">
 				<div className="grid size-28 place-items-center rounded-full border border-[#e6b8d0] bg-white/70 font-display text-6xl text-plum shadow-soft">
 					{String(chapter.id).padStart(2, "0")}
 				</div>
@@ -54,6 +38,13 @@ export const ChapterTransitionPage = () => {
 				<p className="mt-5 max-w-md text-sm leading-7 text-muted">
 					{chapter.transitionPhrase}
 				</p>
+				<Button
+					fullWidth
+					className="mt-10"
+					onClick={() => navigate(`/estacion/${stationId}`)}
+				>
+					Continuar <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+				</Button>
 			</div>
 		</JourneyTemplate>
 	)
