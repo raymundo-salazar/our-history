@@ -15,7 +15,9 @@ export const HintActions = ({
 				<IconCamera size={18} stroke={1.8} aria-hidden="true" />
 			)}
 			{continueLabel}
-			<IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+			{continueLabel !== "Escanear código QR" && (
+				<IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+			)}
 		</Button>
 		{canRequestHint && (
 			<Button variant="outline" fullWidth onClick={onRequestHint}>
