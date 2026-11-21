@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react"
 import type { JourneyFrameProps } from "./types"
 
 export const JourneyFrame = ({
@@ -6,6 +7,15 @@ export const JourneyFrame = ({
 	back = false,
 	tone = "editorial",
 }: JourneyFrameProps) => {
+	const [isScrolled, setIsScrolled] = useState(false)
+
+	useEffect(() => {
+		const updateScrollState = () => setIsScrolled(window.scrollY > 4)
+		updateScrollState()
+		window.addEventListener("scroll", updateScrollState, { passive: true })
+		return () => window.removeEventListener("scroll", updateScrollState)
+	}, [])
+
 	const surface =
 		dark || tone === "challenge"
 			? "bg-night text-white"
@@ -20,12 +30,10 @@ export const JourneyFrame = ({
 				: "bg-canvas"
 
 	return (
-		<main className={`min-h-dvh overflow-x-hidden ${surface}`}>
-			<section
-				className={`mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-6 pb-[calc(env(safe-area-inset-bottom)+26px)] sm:px-10 ${back ? "animate-[slide-back_300ms_ease_both]" : "animate-[slide-forward_300ms_ease_both]"}`}
-			>
+		<main className={`min-h-dvh overflow-x-clip ${surface}`}>
+			<section className="mx-auto flex min-h-dvh w-full max-w-2xl flex-col px-6 pb-[calc(env(safe-area-inset-bottom)+26px)] sm:px-10">
 				<header
-					className={`sticky top-0 z-20 -mx-6 flex items-center justify-between px-6 pb-3 pt-[calc(env(safe-area-inset-top)+24px)] text-[10px] font-bold uppercase tracking-[.16em] ${headerSurface} sm:-mx-10 sm:px-10`}
+					className={`sticky top-0 z-20 -mx-6 flex items-center justify-between px-6 pb-3 pt-[calc(env(safe-area-inset-top)+24px)] text-[10px] font-bold uppercase tracking-[.16em] transition-shadow duration-300 ${headerSurface} ${isScrolled ? "shadow-soft" : "shadow-none"} sm:-mx-10 sm:px-10`}
 				>
 					<img
 						className="h-auto w-32 object-contain sm:w-36"
@@ -38,7 +46,11 @@ export const JourneyFrame = ({
 						8 años · Nuestra historia
 					</span>
 				</header>
-				<div className="flex flex-1 flex-col py-8">{children}</div>
+				<div
+					className={`flex flex-1 flex-col py-8 ${back ? "animate-[slide-back_300ms_ease_both]" : "animate-[slide-forward_300ms_ease_both]"}`}
+				>
+					{children}
+				</div>
 			</section>
 		</main>
 	)
