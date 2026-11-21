@@ -1,5 +1,5 @@
 import { IconArrowLeft } from "@tabler/icons-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useQrScanner } from "./hooks/useQrScanner"
 import { Button } from "../../atoms/Button"
 import { IconButton } from "../../atoms/IconButton"
@@ -18,8 +18,12 @@ export const ScannerPanel = ({
 	const [cameraNotice, setCameraNotice] = useState("")
 	const { videoRef, started, start, stop } = useQrScanner({ onCode, onError: setCameraNotice })
 
+	useEffect(() => {
+		void start()
+	}, [start])
+
 	return (
-		<div className="flex min-h-[calc(100dvh-8rem)] flex-col">
+		<div className="relative z-10 flex min-h-[calc(100dvh-8rem)] flex-col">
 			<div className="flex items-center justify-between">
 				<IconButton
 					className="min-h-11 rounded-full bg-black/30 px-3 text-white/80"
@@ -39,7 +43,7 @@ export const ScannerPanel = ({
 				{SCANNER_TITLE}
 			</h2>
 			<p className="mt-3 text-center text-sm leading-7 text-white/75">{SCANNER_COPY}</p>
-			<div className="relative mx-6 my-7 grid h-[min(62vw,320px)] min-h-56 place-items-center overflow-hidden rounded-[30px] bg-[#19131d] text-xs text-white/70 shadow-[0_0_0_999px_#19131d]">
+			<div className="fixed inset-0 z-0 grid min-h-dvh place-items-center overflow-hidden bg-[#19131d] text-xs text-white/70">
 				<video
 					ref={videoRef}
 					className="absolute inset-0 z-0 h-full w-full object-cover"

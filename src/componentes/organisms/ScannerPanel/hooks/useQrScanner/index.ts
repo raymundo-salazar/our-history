@@ -1,5 +1,5 @@
 import { BrowserQRCodeReader } from "@zxing/browser"
-import { useEffect, useRef, useState } from "react"
+import { useCallback, useEffect, useRef, useState } from "react"
 import { CAMERA_ERROR, CAMERA_PERMISSION_ERROR, CAMERA_UNSUPPORTED_ERROR } from "./constants"
 import type { UseQrScannerProps } from "./types"
 
@@ -7,9 +7,15 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 	const videoRef = useRef<HTMLVideoElement>(null)
 	const controlsRef = useRef<{ stop: () => void } | null>(null)
 	const activeRef = useRef(false)
+	const onCodeRef = useRef(onCode)
+	const onErrorRef = useRef(onError)
 	const [started, setStarted] = useState(false)
+	useEffect(() => {
+		onCodeRef.current = onCode
+		onErrorRef.current = onError
+	}, [onCode, onError])
 
-	const stop = () => {
+	const stop = useCallback(() => {
 		activeRef.current = false
 		controlsRef.current?.stop()
 		controlsRef.current = null
@@ -17,11 +23,12 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 		if (stream instanceof MediaStream) stream.getTracks().forEach(track => track.stop())
 		if (videoRef.current) videoRef.current.srcObject = null
 		setStarted(false)
-	}
+	}, [])
 
-	const start = async () => {
+	const start = useCallback(async () => {
+		if (activeRef.current) return
 		if (!window.isSecureContext || !navigator.mediaDevices?.getUserMedia) {
-			onError(CAMERA_UNSUPPORTED_ERROR)
+			onErrorRef.current(CAMERA_UNSUPPORTED_ERROR)
 			return
 		}
 
@@ -49,7 +56,7 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 			const controls = await reader.decodeFromStream(stream, video, result => {
 				if (!result || !activeRef.current) return
 				stop()
-				onCode(result.getText())
+				onCodeRef.current(result.getText())
 			})
 			if (activeRef.current) controlsRef.current = controls
 			else controls.stop()
@@ -57,16 +64,16 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 			stream?.getTracks().forEach(track => track.stop())
 			if (activeRef.current) {
 				setStarted(false)
-				onError(
+				onErrorRef.current(
 					error instanceof DOMException && error.name === "NotAllowedError"
 						? CAMERA_PERMISSION_ERROR
 						: CAMERA_ERROR
 				)
 			}
 		}
-	}
+	}, [stop])
 
-	useEffect(() => stop, [])
+	useEffect(() => stop, [stop])
 
 	return { videoRef, started, start, stop }
 }
