@@ -1,4 +1,4 @@
-import { IconArrowRight, IconHelpCircle } from "@tabler/icons-react"
+import { IconArrowRight, IconCamera, IconHelpCircle } from "@tabler/icons-react"
 import { Button } from "../../atoms/Button"
 import { HINT_ACTION_LABEL } from "./constants"
 import type { HintActionsProps } from "./types"
@@ -11,6 +11,9 @@ export const HintActions = ({
 }: HintActionsProps) => (
 	<div className="mt-8 flex w-full flex-col gap-3">
 		<Button fullWidth onClick={onContinue}>
+			{continueLabel === "Escanear código QR" && (
+				<IconCamera size={18} stroke={1.8} aria-hidden="true" />
+			)}
 			{continueLabel}
 			<IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 		</Button>
