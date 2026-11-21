@@ -3,7 +3,7 @@ import type { ButtonProps } from "./types"
 const variantClasses = {
 	solid: "border border-rose bg-rose text-white shadow-pink hover:bg-plum",
 	outline:
-		"focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border border-[#d7b4ce] bg-white/15 text-plum hover:bg-white/30",
+		"focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 border border-[#d7b4ce] bg-white/15 text-white hover:bg-white/30",
 	ghost: "border border-transparent bg-transparent text-plum underline-offset-4 hover:underline",
 }
 
