@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react"
 import { JOURNEY_STORAGE_KEY, JOURNEY_STORAGE_VERSION } from "../../domain/constants"
+import { HINT_COUNT } from "../../domain/constants"
 import type { JourneyProgress } from "../../domain/types"
 import type { UseJourneyResult } from "./types"
 
@@ -7,6 +8,7 @@ const EMPTY_PROGRESS: JourneyProgress = {
 	version: JOURNEY_STORAGE_VERSION,
 	scanned: [],
 	completed: [],
+	hintLevels: {},
 	currentScreen: {},
 	challenges: {},
 	finished: false,
@@ -30,6 +32,21 @@ export const useJourney = (): UseJourneyResult => {
 	const markScanned = useCallback((station: number) => {
 		setProgress(current => {
 			const next = { ...current, scanned: [...new Set([...current.scanned, station])] }
+			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
+			return next
+		})
+	}, [])
+
+	const unlockHint = useCallback((station: number, hintCount: number) => {
+		setProgress(current => {
+			const nextCount = Math.min(
+				HINT_COUNT,
+				Math.max(current.hintLevels[String(station)] ?? 1, hintCount)
+			)
+			const next = {
+				...current,
+				hintLevels: { ...current.hintLevels, [station]: nextCount },
+			}
 			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
 			return next
 		})
@@ -75,6 +92,7 @@ export const useJourney = (): UseJourneyResult => {
 	return {
 		progress,
 		markScanned,
+		unlockHint,
 		setScreen,
 		completeChapter,
 		solveChallenge,

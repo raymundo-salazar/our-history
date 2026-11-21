@@ -12,6 +12,7 @@ export type JourneyProgress = {
 	version: number
 	scanned: number[]
 	completed: number[]
+	hintLevels: Record<string, number>
 	currentScreen: Record<string, number>
 	challenges: Record<string, boolean>
 	finished: boolean

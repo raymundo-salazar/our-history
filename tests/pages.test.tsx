@@ -45,6 +45,6 @@ describe("journey pages", () => {
 		fireEvent.click(requestHint)
 		fireEvent.click(screen.getByRole("button", { name: "Ver pista anterior" }))
 		fireEvent.click(screen.getByRole("button", { name: "Ver pista siguiente" }))
-		expect(screen.getByText(/Busca donde los ciclos terminan/)).toBeInTheDocument()
+		expect(screen.getByText(/Piensa en ese lugar donde la ropa sucia/)).toBeInTheDocument()
 	})
 })

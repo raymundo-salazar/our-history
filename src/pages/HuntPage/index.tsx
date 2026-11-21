@@ -5,18 +5,30 @@ import { HintActions } from "../../componentes/molecules/HintActions"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { stations } from "../../content"
+import { HINT_COUNT } from "../../domain/constants"
 import { useJourney } from "../../hooks/useJourney"
 import { FIRST_HINT_LABEL, HUNT_TITLE, HUNT_TOTAL, NEXT_HINT_LABEL, NEXT_TITLE } from "./constants"
 
 export const HuntPage = () => {
+	const { stationId = "1" } = useParams()
+
+	return <HuntPageContent key={stationId} stationId={stationId} />
+}
+
+type HuntPageContentProps = {
+	stationId: string
+}
+
+const HuntPageContent = ({ stationId }: HuntPageContentProps) => {
 	const navigate = useNavigate()
 	const location = useLocation()
-	const { stationId = "1" } = useParams()
 	const stationIndex = Math.max(0, Number(stationId) - 1)
 	const station = stations[stationIndex]
-	const { nextChapter } = useJourney()
+	const { nextChapter, progress, unlockHint } = useJourney()
 	const [hintLevel, setHintLevel] = useState(0)
-	const [revealedHintCount, setRevealedHintCount] = useState(1)
+	const [revealedHintCount, setRevealedHintCount] = useState(() =>
+		Math.min(HINT_COUNT, Math.max(1, progress.hintLevels[String(stationIndex)] ?? 1))
+	)
 	const isOutOfOrder = stationIndex + 1 !== nextChapter
 
 	useEffect(() => {
@@ -33,6 +45,7 @@ export const HuntPage = () => {
 		if (!hasMoreHints) return
 		setHintLevel(revealedHintCount)
 		setRevealedHintCount(count => count + 1)
+		unlockHint(stationIndex, revealedHintCount + 1)
 	}
 
 	return (
@@ -55,11 +68,20 @@ export const HuntPage = () => {
 				</h1>
 				<div className="relative mt-7">
 					<div className="rounded-[28px] border border-white/25 bg-white/10 p-6">
+						<div className="mb-4 text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
+							Pista {hintLevel + 1} de {HINT_COUNT}
+						</div>
 						<div className="space-y-4 text-base leading-8 text-[#f5dfec]">
 							{station.searchHints[hintLevel].split("\n\n").map(paragraph => (
 								<p key={paragraph}>{paragraph}</p>
 							))}
 						</div>
+						{stationIndex === 3 && (
+							<p className="mt-5 border-t border-white/15 pt-5 text-sm font-bold leading-6 text-[#f5b7d1]">
+								Antes de buscar, asegúrate de que el horno esté apagado y
+								completamente frío
+							</p>
+						)}
 					</div>
 					{hasRevealedExtraHints && (
 						<HintCarousel
