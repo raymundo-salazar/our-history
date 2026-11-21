@@ -35,7 +35,7 @@ export const HuntPage = () => {
 						? FIRST_HINT_LABEL
 						: `${NEXT_HINT_LABEL} ${stationIndex + 1}`}
 				</div>
-				<h1 className="mt-5 text-center font-display text-[clamp(38px,10vw,54px)] leading-[1.12] tracking-[-.035em]">
+				<h1 className="text-center font-display text-[clamp(38px,10vw,54px)] leading-[1.12] tracking-[-.035em]">
 					{stationIndex === 0 ? HUNT_TITLE : NEXT_TITLE}
 				</h1>
 				<div className="mt-7 rounded-[28px] border border-white/25 bg-white/10 p-6 text-center">
