@@ -1,5 +1,7 @@
-import { useEffect } from "react"
+import { IconArrowRight } from "@tabler/icons-react"
+import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { Button } from "../../componentes/atoms/Button"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { SUCCESS_DURATION } from "../../domain/constants"
 import { chapters } from "../../content"
@@ -10,18 +12,28 @@ export const ScanSuccessPage = () => {
 	const { stationId = "1" } = useParams()
 	const chapter = chapters[Number(stationId) - 1]
 	const { progress, nextChapter } = useJourney()
+	const [remainingSeconds, setRemainingSeconds] = useState(SUCCESS_DURATION / 1000)
+	const showFallback = remainingSeconds === 0
 
 	useEffect(() => {
 		if (!chapter || !progress.scanned.includes(Number(stationId) - 1)) {
 			navigate(`/pista/${nextChapter}`, { replace: true })
 			return
 		}
-		const timeout = window.setTimeout(
-			() => navigate(`/transicion/${stationId}`),
-			SUCCESS_DURATION
-		)
-		return () => window.clearTimeout(timeout)
 	}, [chapter, navigate, nextChapter, progress.scanned, stationId])
+
+	useEffect(() => {
+		if (!chapter || !progress.scanned.includes(Number(stationId) - 1)) return
+		const interval = window.setInterval(() => {
+			setRemainingSeconds(seconds => Math.max(0, seconds - 1))
+		}, 1000)
+		return () => window.clearInterval(interval)
+	}, [chapter, progress.scanned, stationId])
+
+	useEffect(() => {
+		if (remainingSeconds !== 0) return
+		navigate(`/transicion/${stationId}`)
+	}, [navigate, remainingSeconds, stationId])
 
 	if (!chapter) return null
 
@@ -36,6 +48,23 @@ export const ScanSuccessPage = () => {
 				</p>
 				<h1 className="mt-5 font-display text-4xl">¡Lo lograste, cielo!</h1>
 				<p className="mt-3 text-sm text-muted">Un capítulo más de nuestra historia ♡</p>
+				<p
+					className="mt-8 text-[11px] font-bold uppercase tracking-[.2em] text-plum"
+					aria-live="polite"
+				>
+					{remainingSeconds > 0
+						? `Continuamos en ${remainingSeconds}`
+						: "Si no avanzas, continúa manualmente"}
+				</p>
+				{showFallback && (
+					<Button
+						fullWidth
+						className="mt-6"
+						onClick={() => navigate(`/transicion/${stationId}`)}
+					>
+						Continuar <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+					</Button>
+				)}
 			</div>
 		</JourneyTemplate>
 	)
