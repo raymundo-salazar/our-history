@@ -16,4 +16,16 @@ describe("station configuration", () => {
 	it("does not accept a future station token for the current station", () => {
 		expect(stations[0].token).not.toBe(stations[1].token)
 	})
+
+	it("keeps every station code mapped to its printed station label", () => {
+		expect(stations.map(station => station.label)).toEqual(["01", "02", "03", "04", "05", "06"])
+		expect(stations.map(station => station.token)).toEqual([
+			"nh-01-luna-azul",
+			"nh-02-brisa-cobre",
+			"nh-03-norte-sutil",
+			"nh-04-ramos-tarde",
+			"nh-05-casa-viva",
+			"nh-06-ultimo-suspiro",
+		])
+	})
 })
