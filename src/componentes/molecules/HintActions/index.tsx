@@ -11,11 +11,11 @@ export const HintActions = ({
 }: HintActionsProps) => (
 	<div className="mt-8 flex w-full flex-col gap-3">
 		<Button fullWidth onClick={onContinue}>
-			{continueLabel === "Escanear código QR" && (
+			{continueLabel}
+			{continueLabel === "Encontré el codigo QR" && (
 				<IconCamera size={18} stroke={1.8} aria-hidden="true" />
 			)}
-			{continueLabel}
-			{continueLabel !== "Escanear código QR" && (
+			{continueLabel !== "Encontré el codigo QR" && (
 				<IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			)}
 		</Button>
