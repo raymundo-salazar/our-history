@@ -29,23 +29,27 @@ export const HuntPage = () => {
 	return (
 		<JourneyTemplate tone="challenge" back={location.state?.direction === "back"}>
 			<ProgressIndicator current={stationIndex} total={HUNT_TOTAL} />
-			<div className="text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
-				{stationIndex === 0 ? FIRST_HINT_LABEL : `${NEXT_HINT_LABEL} ${stationIndex + 1}`}
+			<div className="flex min-h-[calc(100dvh-9rem)] flex-1 flex-col justify-center">
+				<div className="text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
+					{stationIndex === 0
+						? FIRST_HINT_LABEL
+						: `${NEXT_HINT_LABEL} ${stationIndex + 1}`}
+				</div>
+				<h1 className="mt-5 text-center font-display text-[clamp(38px,10vw,54px)] leading-[1.12] tracking-[-.035em]">
+					{stationIndex === 0 ? HUNT_TITLE : NEXT_TITLE}
+				</h1>
+				<div className="mt-7 rounded-[28px] border border-white/25 bg-white/10 p-6 text-center">
+					<p className="text-base leading-8 text-[#f5dfec]">
+						{station.searchHints[hintLevel]}
+					</p>
+				</div>
+				<HintActions
+					canRequestHint={hasMoreHints}
+					continueLabel="Escanear código QR"
+					onContinue={() => navigate(`/escanear/${stationIndex + 1}`)}
+					onRequestHint={() => setHintLevel(level => level + 1)}
+				/>
 			</div>
-			<h1 className="mt-5 text-center font-display text-[clamp(38px,10vw,54px)] leading-[1.12] tracking-[-.035em]">
-				{stationIndex === 0 ? HUNT_TITLE : NEXT_TITLE}
-			</h1>
-			<div className="mt-7 rounded-[28px] border border-white/25 bg-white/10 p-6 text-center">
-				<p className="text-base leading-8 text-[#f5dfec]">
-					{station.searchHints[hintLevel]}
-				</p>
-			</div>
-			<HintActions
-				canRequestHint={hasMoreHints}
-				continueLabel="Escanear código QR"
-				onContinue={() => navigate(`/escanear/${stationIndex + 1}`)}
-				onRequestHint={() => setHintLevel(level => level + 1)}
-			/>
 		</JourneyTemplate>
 	)
 }
