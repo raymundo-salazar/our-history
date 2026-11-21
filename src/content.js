@@ -20,12 +20,12 @@ export const stations = [
 		label: "01",
 		intro: "Dicen que la vida da muchas vueltas, y nosotros sabemos bastante de eso. Para encontrar tu primera pista, ve a ese lugar de la casa donde las cosas también dan vueltas y vueltas, pero siempre terminan limpias.",
 		searchHints: [
-			"Cielo, dicen que la vida da muchas vueltas, y nosotros sabemos bastante de eso. Para comenzar, busca ese lugar de la casa donde las cosas también dan vueltas y vueltas, pero terminan limpias y listas para empezar de nuevo.",
+			"Cielo, dicen que la vida da muchas vueltas, y nosotros sabemos bastante de eso.\n\nPara comenzar, busca ese lugar de la casa donde las cosas también dan vueltas y vueltas, pero terminan limpias y listas para empezar de nuevo.",
 			"Piensa en el lugar donde nuestra ropa entra de una forma y sale lista para volver a acompañarnos.",
 			"Busca donde los ciclos terminan dejando todo limpio, fresco y listo para empezar otra vez. Ahí está el código QR.",
 		],
 		body: "¡Muy bien, amor! Así como la ropa pasa por diferentes ciclos, nosotros también hemos pasado por muchas etapas. Algunas más fáciles que otras, pero todas forman parte de lo que somos hoy. Y hablando de historias... hay algo del pasado que todavía tengo pendiente contigo.",
-		clue: "Tu siguiente destino ha sido testigo de muchos de nuestros viajes, salidas, aventuras familiares y hasta alguna que otra discusión sobre qué camino tomar. Pero esta vez no necesitas subirte. Lo que buscas está atrás.",
+		clue: "Tu siguiente destino ha sido testigo de muchos de nuestros viajes, salidas, aventuras familiares y hasta alguna que otra discusión sobre qué camino tomar.\n\nPero esta vez no necesitas subirte. Lo que buscas está atrás.",
 	},
 	{
 		id: 2,
@@ -38,7 +38,7 @@ export const stations = [
 			"Busca en la parte trasera de aquello que nos ha acompañado en tantos caminos.",
 		],
 		body: "El año pasado celebramos nuestras bodas de lana, y quise hacerte algo que representara nuestra historia. Por eso hice esta tabla con nuestras iniciales, un corazón y un espacio para cuatro fotografías. Pero no está terminada. Y es a propósito. Porque quiero que esas cuatro fotos las elijamos juntos. Y sí... ya sé que dice 22 de septiembre. Nuestro aniversario es el 21, pero después de aquel primer regalo en el que me equivoqué de fecha, el 22 terminó convirtiéndose en parte de nuestra historia. Hay errores que uno quisiera corregir... y otros que terminan siendo recuerdos que vale la pena conservar. Feliz séptimo aniversario atrasado, amor. Te Yoyo.",
-		clue: "Pero nuestra historia no se quedó en el año pasado. El siguiente lugar es ese espacio que compartimos para trabajar, crear proyectos y convertir ideas en realidad. Entre herramientas y alguna que otra cosa por arreglar, te espera una nueva pista.",
+		clue: "Pero nuestra historia no se quedó en el año pasado.\n\nEl siguiente lugar es ese espacio que compartimos para trabajar, crear proyectos y convertir ideas en realidad. Entre herramientas y alguna que otra cosa por arreglar, te espera una nueva pista.",
 	},
 	{
 		id: 3,
@@ -51,7 +51,7 @@ export const stations = [
 			"Busca en el espacio que compartimos para crear, arreglar y sacar adelante nuestros proyectos.",
 		],
 		body: "Aquí hemos creado cosas, resuelto problemas y trabajado para sacar adelante nuestros sueños. Y aunque no siempre todo sale como lo planeamos, este espacio representa las ganas de seguir construyendo cosas juntos. Pero bueno, cielito, no creas que por llegar hasta aquí te vas a librar de un pequeño desafío.",
-		clue: "¡Correcto! Ahora busca algo que, aunque no es tecnología, también transforma las cosas: convierte ingredientes en algo delicioso y llena la casa de aromas. Normalmente hace mucho calor, pero hoy debe estar completamente frío.",
+		clue: "¡Correcto! Ahora busca algo que, aunque no es tecnología, también transforma las cosas: convierte ingredientes en algo delicioso y llena la casa de aromas. Normalmente hace mucho calor, pero hoy debe estar completamente frío.\n\nRecuerda: el horno debe estar apagado y completamente frío antes de acercarte o abrirlo.",
 	},
 	{
 		id: 4,
@@ -64,7 +64,7 @@ export const stations = [
 			"Busca en el lugar de la cocina que transforma ingredientes y que hoy debe estar completamente frío.",
 		],
 		body: "Tal vez no salió exactamente como lo habíamos planeado, pero de ese día me traje algo que ahora tiene un significado muy especial. ¿Ves esas piedritas? Son de aquel día. Las guardé y las convertí en estos dos pingüinos porque quería regalarte algo que nos recordara que, sin importar a dónde nos lleve la vida, quiero seguir a tu lado. Este año celebramos nuestras bodas de bronce. Y aunque no encontré algo de bronce que me convenciera, terminé encontrando algo que para mí vale mucho más. Unas piedras de una aventura nuestra, convertidas en un recuerdo de lo que quiero seguir viviendo contigo. Porque no importa cuánto cambie el mundo, cuántos inviernos lleguen o qué caminos tengamos que recorrer. Mientras estemos juntos, siempre tendremos un lugar cálido al cual volver: nosotros. Feliz octavo aniversario, amor.",
-		clue: "Ahora ve a ese lugar donde descansamos, platicamos, nos reímos y terminamos nuestros días. Ese rinconcito que últimamente parece tener más cosas de las que debería, pero que poco a poco estamos arreglando juntos para convertirlo en el espacio que queremos. Ahí te espera tu siguiente pista, esponjosita.",
+		clue: "Ahora ve a ese lugar donde descansamos, platicamos, nos reímos y terminamos nuestros días.\n\nEse rinconcito que últimamente parece tener más cosas de las que debería, pero que poco a poco estamos arreglando juntos para convertirlo en el espacio que queremos. Ahí te espera tu siguiente pista, esponjosita.",
 	},
 	{
 		id: 5,
@@ -77,7 +77,7 @@ export const stations = [
 			"Busca en el espacio donde descansamos y que poco a poco estamos arreglando y acomodando juntos.",
 		],
 		body: "Pero me gusta pensar que es como muchas cosas de nuestra vida: algo que estamos trabajando juntos para mejorar. No se trata de tenerlo todo perfecto de un día para otro, sino de ir haciendo pequeños cambios, ayudarnos y construir poco a poco el lugar donde queremos estar. Y eso quiero seguir haciendo contigo, bebé: no solamente con nuestro cuarto, sino con nuestra vida.",
-		clue: "¡Exactamente! Y hablando de aventuras... creo que todavía nos falta una. Para descubrir lo último que preparé, ve a ese lugar donde podemos salir a tomar un poco de aire, mirar el cielo y recordar que todavía hay un mundo enorme por descubrir. La última pista te espera donde termina la casa y comienza el cielo.",
+		clue: "¡Exactamente! Y hablando de aventuras... creo que todavía nos falta una.\n\nPara descubrir lo último que preparé, ve a ese lugar donde podemos salir a tomar un poco de aire, mirar el cielo y recordar que todavía hay un mundo enorme por descubrir. La última pista te espera donde termina la casa y comienza el cielo.",
 	},
 	{
 		id: 6,

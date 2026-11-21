@@ -44,10 +44,12 @@ export const HuntPage = () => {
 						NEXT_TITLE
 					)}
 				</h1>
-				<div className="mt-7 rounded-[28px] border border-white/25 bg-white/10 p-6 text-center">
-					<p className="text-base leading-8 text-[#f5dfec]">
-						{station.searchHints[hintLevel]}
-					</p>
+				<div className="mt-7 rounded-[28px] border border-white/25 bg-white/10 p-6">
+					<div className="space-y-4 text-base leading-8 text-[#f5dfec]">
+						{station.searchHints[hintLevel].split("\n\n").map(paragraph => (
+							<p key={paragraph}>{paragraph}</p>
+						))}
+					</div>
 				</div>
 				<HintActions
 					canRequestHint={hasMoreHints}
