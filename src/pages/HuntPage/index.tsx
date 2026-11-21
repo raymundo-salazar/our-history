@@ -29,7 +29,7 @@ export const HuntPage = () => {
 	return (
 		<JourneyTemplate tone="challenge" back={location.state?.direction === "back"}>
 			<ProgressIndicator current={stationIndex} total={HUNT_TOTAL} />
-			<div className="flex min-h-[calc(100dvh-9rem)] flex-1 flex-col justify-center">
+			<div className="flex flex-1 flex-col justify-center">
 				<div className="text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
 					{stationIndex === 0
 						? FIRST_HINT_LABEL
