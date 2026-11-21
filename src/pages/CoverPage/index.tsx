@@ -11,7 +11,7 @@ export const CoverPage = () => {
 	return (
 		<JourneyTemplate>
 			<img
-				className="mx-auto size-40 object-contain sm:size-48"
+				className="mx-auto block aspect-square w-[90vw] max-w-[640px] object-contain"
 				src="/assets/pareja-rg.webp"
 				alt="Gina y Ray juntos, con un corazón"
 				width="640"
