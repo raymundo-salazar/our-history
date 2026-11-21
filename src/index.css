@@ -37,6 +37,28 @@ input {
 	font: inherit;
 }
 
+@keyframes slide-forward {
+	from {
+		opacity: 0;
+		transform: translateX(24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slide-back {
+	from {
+		opacity: 0;
+		transform: translateX(-24px);
+	}
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
