@@ -1,4 +1,4 @@
-import { IconArrowLeft } from "@tabler/icons-react"
+import { IconArrowLeft, IconBolt, IconBoltOff } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { useQrScanner } from "./hooks/useQrScanner"
 import { Button } from "../../atoms/Button"
@@ -8,7 +8,16 @@ import type { ScannerPanelProps } from "./types"
 
 export const ScannerPanel = ({ stationId, onBack, onCode }: ScannerPanelProps) => {
 	const [cameraNotice, setCameraNotice] = useState("")
-	const { videoRef, started, cameraActive, start, stop } = useQrScanner({
+	const {
+		videoRef,
+		started,
+		cameraActive,
+		flashEnabled,
+		flashSupported,
+		start,
+		stop,
+		toggleFlash,
+	} = useQrScanner({
 		onCode,
 		onError: setCameraNotice,
 	})
@@ -35,6 +44,20 @@ export const ScannerPanel = ({ stationId, onBack, onCode }: ScannerPanelProps) =
 				>
 					<IconArrowLeft size={18} stroke={1.8} aria-hidden="true" />
 				</IconButton>
+				{cameraActive && flashSupported && (
+					<IconButton
+						className="size-11 rounded-full bg-black/30 text-white/80"
+						onClick={() => void toggleFlash()}
+						aria-label={flashEnabled ? "Desactivar flash" : "Activar flash"}
+						aria-pressed={flashEnabled}
+					>
+						{flashEnabled ? (
+							<IconBoltOff size={19} stroke={1.8} aria-hidden="true" />
+						) : (
+							<IconBolt size={19} stroke={1.8} aria-hidden="true" />
+						)}
+					</IconButton>
+				)}
 			</div>
 			<p className="relative z-20 mt-8 text-center text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
 				CAPÍTULO {String(stationId ?? "").padStart(2, "0")} DE 06

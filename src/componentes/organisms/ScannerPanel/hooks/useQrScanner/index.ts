@@ -6,11 +6,14 @@ import type { UseQrScannerProps } from "./types"
 export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 	const videoRef = useRef<HTMLVideoElement>(null)
 	const controlsRef = useRef<{ stop: () => void } | null>(null)
+	const videoTrackRef = useRef<MediaStreamTrack | null>(null)
 	const activeRef = useRef(false)
 	const onCodeRef = useRef(onCode)
 	const onErrorRef = useRef(onError)
 	const [started, setStarted] = useState(false)
 	const [cameraActive, setCameraActive] = useState(false)
+	const [flashEnabled, setFlashEnabled] = useState(false)
+	const [flashSupported, setFlashSupported] = useState(false)
 	useEffect(() => {
 		onCodeRef.current = onCode
 		onErrorRef.current = onError
@@ -25,8 +28,11 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 			stream.getTracks().forEach(track => track.stop())
 		}
 		if (videoRef.current) videoRef.current.srcObject = null
+		videoTrackRef.current = null
 		setStarted(false)
 		setCameraActive(false)
+		setFlashEnabled(false)
+		setFlashSupported(false)
 	}, [])
 
 	const start = useCallback(async () => {
@@ -49,6 +55,14 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 					height: { ideal: 720 },
 				},
 			})
+			const videoTrack = stream.getVideoTracks()[0]
+			videoTrackRef.current = videoTrack ?? null
+			const capabilities = videoTrack?.getCapabilities?.() as
+				| (MediaTrackCapabilities & {
+						torch?: boolean
+				  })
+				| undefined
+			setFlashSupported(capabilities?.torch === true)
 			const video = videoRef.current
 			if (!video) throw new Error("Video preview is unavailable")
 
@@ -80,7 +94,31 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 		}
 	}, [stop])
 
+	const toggleFlash = useCallback(async () => {
+		const videoTrack = videoTrackRef.current
+		if (!videoTrack || !flashSupported) return
+
+		const nextFlashState = !flashEnabled
+		try {
+			await videoTrack.applyConstraints({
+				advanced: [{ torch: nextFlashState }],
+			} as unknown as MediaTrackConstraints)
+			setFlashEnabled(nextFlashState)
+		} catch {
+			return
+		}
+	}, [flashEnabled, flashSupported])
+
 	useEffect(() => stop, [stop])
 
-	return { videoRef, started, cameraActive, start, stop }
+	return {
+		videoRef,
+		started,
+		cameraActive,
+		flashEnabled,
+		flashSupported,
+		start,
+		stop,
+		toggleFlash,
+	}
 }
