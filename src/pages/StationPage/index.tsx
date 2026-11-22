@@ -231,15 +231,20 @@ const FinalChapter = ({ screen, onNext }: { screen: number; onNext: () => void }
 						: "Te sigo eligiendo"}
 			</h1>
 			<div className="mt-6 rounded-[30px] bg-white/80 p-6 shadow-soft">
-				<p className="text-base leading-[1.85] text-muted">
-					{screen === 2
+				<div className="space-y-4 text-base leading-[1.85] text-muted">
+					{(screen === 2
 						? "Tal vez esta vez sí encontremos una manera de vivir esa aventura que parecía imposible."
 						: screen === 3
 							? "Conseguí los boletos, amor. Para una noche que quiero vivir contigo: Hablemos de lo que no existe."
 							: screen === 4
 								? "1 de diciembre de 2026 · Río 70 · Monterrey"
-								: "Ocho años de matrimonio, una familia, días buenos, días difíciles y tantos caminos recorridos. Gracias por seguir construyendo conmigo. Quiero seguir eligiéndote cada día, en cada aventura y en todo lo que todavía nos espera. Te Yoyo, mi esponjosita. ♡"}
-				</p>
+								: "Ocho años de matrimonio, una familia, días buenos, días difíciles y tantos caminos recorridos. Gracias por seguir construyendo conmigo. Quiero seguir eligiéndote cada día, en cada aventura y en todo lo que todavía nos espera. Te Yoyo, mi esponjosita. ♡"
+					)
+						.split("\n\n")
+						.map(paragraph => (
+							<p key={paragraph}>{paragraph}</p>
+						))}
+				</div>
 			</div>
 		</div>
 		<Button fullWidth className="mt-8" onClick={onNext}>

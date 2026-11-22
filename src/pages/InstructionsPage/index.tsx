@@ -40,7 +40,11 @@ export const InstructionsPage = () => {
 								</div>
 								<div>
 									<h3 className="font-semibold text-ink">{step.title}</h3>
-									<p className="mt-1 text-sm leading-7 text-muted">{step.body}</p>
+									<div className="mt-1 space-y-2 text-sm leading-7 text-muted">
+										{step.body.split("\n\n").map(paragraph => (
+											<p key={paragraph}>{paragraph}</p>
+										))}
+									</div>
 								</div>
 							</div>
 						))}
