@@ -79,9 +79,11 @@ export const ChapterTransitionPage = () => {
 
 					<div className="mt-7 flex items-start gap-4">
 						<div aria-hidden="true" className="mt-2 h-px w-9 shrink-0 bg-[#ed6d8c]" />
-						<p className="max-w-[310px] text-[15px] leading-[1.9] text-[#71606f]">
-							{chapter.transitionPhrase}
-						</p>
+						<div className="max-w-[310px] space-y-4 text-[15px] leading-[1.9] text-[#71606f]">
+							{chapter.transitionPhrase.split("\n\n").map(paragraph => (
+								<p key={paragraph}>{paragraph}</p>
+							))}
+						</div>
 					</div>
 
 					<div
