@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Navigate, Route, Routes, useLocation } from "react-router-dom"
+import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom"
 import { CoverPage } from "./pages/CoverPage"
 
 import { ChapterTransitionPage } from "./pages/ChapterTransitionPage"
@@ -7,7 +7,6 @@ import { HuntPage } from "./pages/HuntPage"
 import { InstructionsPage } from "./pages/InstructionsPage"
 import { ScanPage } from "./pages/ScanPage"
 import { ScanSuccessPage } from "./pages/ScanSuccessPage"
-import { StationPage } from "./pages/StationPage"
 import { StoryPage } from "./pages/StoryPage"
 
 const ScrollToTop = () => {
@@ -18,6 +17,12 @@ const ScrollToTop = () => {
 	}, [pathname])
 
 	return null
+}
+
+const StationRedirect = () => {
+	const { stationId = "1" } = useParams()
+
+	return <Navigate to={`/pista/${stationId}`} replace />
 }
 
 export const App = () => {
@@ -63,7 +68,7 @@ export const App = () => {
 				<Route path="/escanear/:stationId" element={<ScanPage />} />
 				<Route path="/exito/:stationId" element={<ScanSuccessPage />} />
 				<Route path="/transicion/:stationId" element={<ChapterTransitionPage />} />
-				<Route path="/estacion/:stationId" element={<StationPage />} />
+				<Route path="/estacion/:stationId" element={<StationRedirect />} />
 				<Route path="*" element={<Navigate to="/" replace />} />
 			</Routes>
 		</>

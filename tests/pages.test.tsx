@@ -26,6 +26,19 @@ describe("journey pages", () => {
 		expect(screen.queryByText(/Pista 1 de 3/)).not.toBeInTheDocument()
 	})
 
+	it("redirects station routes directly to their hunt page", async () => {
+		render(
+			<MemoryRouter initialEntries={["/estacion/1"]}>
+				<App />
+			</MemoryRouter>
+		)
+
+		expect(
+			await screen.findByRole("heading", { name: /Una pista para ti/ })
+		).toBeInTheDocument()
+		expect(screen.queryByText("Un pequeño detalle")).not.toBeInTheDocument()
+	})
+
 	it("only navigates between hints that have already been revealed", async () => {
 		render(
 			<MemoryRouter initialEntries={["/pista/1"]}>
