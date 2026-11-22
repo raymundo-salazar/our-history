@@ -132,9 +132,10 @@ describe("journey pages", () => {
 			await screen.findByRole("heading", { name: "Nuestra historia continúa..." })
 		).toBeInTheDocument()
 		expect(screen.getByText("EL FINAL DE ESTA AVENTURA")).toBeInTheDocument()
-		expect(
-			screen.getByRole("button", { name: "Volver a leer nuestra historia" })
-		).toBeInTheDocument()
+		expect(screen.getByText(/Te Yoyo,/)).toHaveTextContent(/Te Yoyo,\s*mi esponjosita/)
+		expect(screen.queryByText(/<3/)).not.toBeInTheDocument()
+		expect(screen.getByText("Feliz octavo aniversario")).toBeInTheDocument()
+		expect(screen.queryByText("Fin de esta aventura. Continuará... ♡")).not.toBeInTheDocument()
 		localStorage.clear()
 	})
 

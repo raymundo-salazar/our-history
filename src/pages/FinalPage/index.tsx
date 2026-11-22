@@ -1,12 +1,10 @@
 import { IconHeart } from "@tabler/icons-react"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { Button } from "../../componentes/atoms/Button"
 import { useJourney } from "../../hooks/useJourney"
 import {
 	FINAL_ANNIVERSARY,
 	FINAL_EYEBROW,
-	FINAL_FOOTNOTE,
 	FINAL_LETTER,
 	FINAL_SIGNATURE,
 	FINAL_SUBTITLE,
@@ -75,22 +73,19 @@ export const FinalPage = () => {
 					</div>
 
 					<div className="mt-14 text-center">
-						<p className="font-display text-3xl text-plum motion-safe:animate-[final-fade-up_700ms_ease-out_300ms_both] motion-reduce:animate-none">
+						<p className="whitespace-pre-line font-display text-3xl text-plum motion-safe:animate-[final-fade-up_700ms_ease-out_300ms_both] motion-reduce:animate-none">
 							{FINAL_SIGNATURE}
+							<IconHeart
+								className="ml-2 inline-block align-[-.12em] text-rose"
+								size={24}
+								fill="currentColor"
+								aria-label="Corazón"
+							/>
 						</p>
 						<p className="mt-3 text-sm font-semibold tracking-[.04em] text-muted">
 							{FINAL_ANNIVERSARY}
 						</p>
-						<p className="mt-8 text-xs italic text-[#a58d9f]">{FINAL_FOOTNOTE}</p>
 					</div>
-
-					<Button
-						variant="outline"
-						className="mx-auto mt-12 border-[#d7b4ce] bg-white/70 text-plum"
-						onClick={() => navigate("/historia/1")}
-					>
-						Volver a leer nuestra historia
-					</Button>
 				</article>
 			</div>
 		</main>

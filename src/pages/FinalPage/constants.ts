@@ -11,6 +11,5 @@ export const FINAL_LETTER = [
 	"Porque después de ocho años, con todo lo bueno y lo difícil, te sigo eligiendo a ti.",
 	"Gracias por estos ocho años, por nuestra familia y por todas las historias que todavía nos faltan por contar.",
 ]
-export const FINAL_SIGNATURE = "Te Yoyo, mi esponjosita. ♡"
+export const FINAL_SIGNATURE = "Te Yoyo,\nmi esponjosita"
 export const FINAL_ANNIVERSARY = "Feliz octavo aniversario"
-export const FINAL_FOOTNOTE = "Fin de esta aventura. Continuará... ♡"
