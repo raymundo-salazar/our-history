@@ -3,18 +3,10 @@ import { useEffect, useState } from "react"
 import { useQrScanner } from "./hooks/useQrScanner"
 import { Button } from "../../atoms/Button"
 import { IconButton } from "../../atoms/IconButton"
-import { ManualCodeInput } from "../../molecules/ManualCodeInput"
 import { SCANNER_COPY, SCANNER_READY, SCANNER_START, SCANNER_TITLE } from "./constants"
 import type { ScannerPanelProps } from "./types"
 
-export const ScannerPanel = ({
-	stationId,
-	onBack,
-	onCode,
-	manualCode,
-	onManualCodeChange,
-	notice,
-}: ScannerPanelProps) => {
+export const ScannerPanel = ({ stationId, onBack, onCode }: ScannerPanelProps) => {
 	const [cameraNotice, setCameraNotice] = useState("")
 	const { videoRef, started, start, stop } = useQrScanner({ onCode, onError: setCameraNotice })
 
@@ -22,8 +14,13 @@ export const ScannerPanel = ({
 		void start()
 	}, [start])
 
+	const handleStart = () => {
+		setCameraNotice("")
+		void start()
+	}
+
 	return (
-		<div className="relative z-10 flex min-h-[calc(100dvh-8rem)] flex-col">
+		<div className="relative isolate z-10 flex min-h-[calc(100dvh-8rem)] flex-col">
 			<div className="relative z-20 flex items-center justify-between">
 				<IconButton
 					className="min-h-11 rounded-full bg-black/30 px-3 text-white/80"
@@ -59,17 +56,11 @@ export const ScannerPanel = ({
 					{SCANNER_READY}
 				</span>
 			</div>
-			<Button fullWidth className="mt-auto" onClick={start} disabled={started}>
-				{SCANNER_START}
-			</Button>
-			<ManualCodeInput
-				value={manualCode}
-				onChange={onManualCodeChange}
-				onSubmit={() => onCode(manualCode)}
-			/>
-			{(notice || cameraNotice) && (
-				<div className="mt-5 rounded-2xl bg-white/10 p-4 text-center text-sm text-[#f5dfec]">
-					{notice || cameraNotice}
+			{cameraNotice && (
+				<div className="relative z-20 mt-auto">
+					<Button fullWidth onClick={handleStart} disabled={started}>
+						{SCANNER_START}
+					</Button>
 				</div>
 			)}
 		</div>
