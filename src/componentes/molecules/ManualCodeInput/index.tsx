@@ -5,7 +5,7 @@ import type { ManualCodeInputProps } from "./types"
 export const ManualCodeInput = ({ value, onChange, onSubmit }: ManualCodeInputProps) => (
 	<div className="mt-6 border-t border-white/15 pt-5 text-white/80">
 		<label
-			className="mb-2 block text-xs font-bold uppercase tracking-[.15em]"
+			className="mb-2 block text-center text-xs font-bold uppercase tracking-[.15em]"
 			htmlFor="manual-code"
 		>
 			{MANUAL_CODE_LABEL}
