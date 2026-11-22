@@ -75,6 +75,7 @@ describe("journey pages", () => {
 			await screen.findByRole("heading", { name: "Las vueltas de la vida" })
 		).toBeInTheDocument()
 		expect(screen.getByText("Una carta para ti")).toBeInTheDocument()
+		expect(screen.getByRole("button", { name: /Siguiente pista/ })).toBeInTheDocument()
 		localStorage.clear()
 	})
 

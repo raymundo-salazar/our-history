@@ -42,7 +42,7 @@ export const ChapterHistoryPage = () => {
 				</div>
 			</div>
 			<Button fullWidth className="mt-8" onClick={() => navigate(nextPath)}>
-				Continuar <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+				Siguiente pista <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>
 		</JourneyTemplate>
 	)
