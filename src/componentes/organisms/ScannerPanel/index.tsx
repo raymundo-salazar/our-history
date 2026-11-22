@@ -1,4 +1,4 @@
-import { IconArrowLeft, IconBolt, IconBoltOff, IconQrcode } from "@tabler/icons-react"
+import { IconArrowLeft, IconBolt, IconBoltOff, IconHeartBroken } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { useQrScanner } from "./hooks/useQrScanner"
 import { Button } from "../../atoms/Button"
@@ -103,7 +103,7 @@ export const ScannerPanel = ({
 						aria-labelledby="scan-notice-title"
 					>
 						<div className="mx-auto grid size-16 place-items-center rounded-full bg-[#f5b7d1] text-plum">
-							<IconQrcode size={30} stroke={1.8} aria-hidden="true" />
+							<IconHeartBroken size={30} stroke={1.8} aria-hidden="true" />
 						</div>
 						<h3
 							id="scan-notice-title"
