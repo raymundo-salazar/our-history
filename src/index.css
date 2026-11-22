@@ -37,44 +37,6 @@ input {
 	font: inherit;
 }
 
-.scanner-viewport {
-	--scanner-frame-half: min(7rem, 35vw);
-}
-
-.scanner-mask-panel {
-	position: absolute;
-	z-index: 10;
-	background: #19131dcc;
-	backdrop-filter: blur(5px);
-	-webkit-backdrop-filter: blur(5px);
-}
-
-.scanner-mask-top {
-	inset: 0 0 calc(50% + var(--scanner-frame-half)) 0;
-	border-bottom-left-radius: 30px;
-	border-bottom-right-radius: 30px;
-}
-
-.scanner-mask-bottom {
-	inset: calc(50% + var(--scanner-frame-half)) 0 0 0;
-	border-top-left-radius: 30px;
-	border-top-right-radius: 30px;
-}
-
-.scanner-mask-left {
-	inset: calc(50% - var(--scanner-frame-half)) calc(50% + var(--scanner-frame-half))
-		calc(50% - var(--scanner-frame-half)) 0;
-	border-top-right-radius: 30px;
-	border-bottom-right-radius: 30px;
-}
-
-.scanner-mask-right {
-	inset: calc(50% - var(--scanner-frame-half)) 0 calc(50% - var(--scanner-frame-half))
-		calc(50% + var(--scanner-frame-half));
-	border-top-left-radius: 30px;
-	border-bottom-left-radius: 30px;
-}
-
 @keyframes slide-forward {
 	from {
 		opacity: 0;

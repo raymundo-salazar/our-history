@@ -53,11 +53,8 @@ export const ScannerPanel = ({
 					playsInline
 					muted
 				/>
-				<div className="scanner-mask-panel scanner-mask-top" />
-				<div className="scanner-mask-panel scanner-mask-bottom" />
-				<div className="scanner-mask-panel scanner-mask-left" />
-				<div className="scanner-mask-panel scanner-mask-right" />
-				<div className="relative z-20 size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[3px] border-[#f3a2bb] bg-transparent" />
+				<div className="pointer-events-none relative z-10 box-content size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[999px] border-[#19131dcc] bg-transparent" />
+				<div className="pointer-events-none absolute z-20 size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[3px] border-[#f3a2bb] bg-transparent" />
 				<span className="absolute inset-x-0 bottom-4 z-20 text-center">
 					{SCANNER_READY}
 				</span>
