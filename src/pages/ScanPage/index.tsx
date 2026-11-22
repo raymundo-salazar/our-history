@@ -51,6 +51,7 @@ export const ScanPage = () => {
 				<ScannerPanel
 					stationId={stationId}
 					scanNotice={scanNotice}
+					onDismissNotice={() => setScanNotice("")}
 					onBack={() => navigate(`/pista/${stationId}`, { state: { direction: "back" } })}
 					onCode={validateCode}
 				/>

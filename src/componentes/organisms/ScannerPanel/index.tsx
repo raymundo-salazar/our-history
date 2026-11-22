@@ -1,4 +1,4 @@
-import { IconArrowLeft, IconBolt, IconBoltOff } from "@tabler/icons-react"
+import { IconArrowLeft, IconBolt, IconBoltOff, IconQrcode } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { useQrScanner } from "./hooks/useQrScanner"
 import { Button } from "../../atoms/Button"
@@ -6,7 +6,13 @@ import { IconButton } from "../../atoms/IconButton"
 import { SCANNER_COPY, SCANNER_READY, SCANNER_START, SCANNER_TITLE } from "./constants"
 import type { ScannerPanelProps } from "./types"
 
-export const ScannerPanel = ({ stationId, scanNotice, onBack, onCode }: ScannerPanelProps) => {
+export const ScannerPanel = ({
+	stationId,
+	scanNotice,
+	onDismissNotice,
+	onBack,
+	onCode,
+}: ScannerPanelProps) => {
 	const [cameraNotice, setCameraNotice] = useState("")
 	const {
 		videoRef,
@@ -77,13 +83,6 @@ export const ScannerPanel = ({ stationId, scanNotice, onBack, onCode }: ScannerP
 					muted
 				/>
 				<div className="pointer-events-none relative z-10 size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[3px] border-[#f3a2bb] bg-transparent shadow-[0_0_0_999vmax_#19131dcc]" />
-				{scanNotice && (
-					<div className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center bg-[#19131d99] px-6 backdrop-blur-sm">
-						<div className="w-full max-w-sm rounded-[28px] border border-[#f3a2bb]/40 bg-[#19131df2] p-6 text-center text-sm leading-7 text-white shadow-soft">
-							<p role="alert">{scanNotice}</p>
-						</div>
-					</div>
-				)}
 				<span className="absolute inset-x-0 bottom-4 z-20 text-center">
 					{SCANNER_READY}
 				</span>
@@ -93,6 +92,33 @@ export const ScannerPanel = ({ stationId, scanNotice, onBack, onCode }: ScannerP
 					<Button fullWidth onClick={handleStart} disabled={started}>
 						{SCANNER_START}
 					</Button>
+				</div>
+			)}
+			{scanNotice && (
+				<div className="fixed inset-0 z-[100] flex items-center justify-center bg-[#19131db8] px-6 backdrop-blur-sm">
+					<div
+						className="w-full max-w-sm rounded-[28px] border border-[#e7a8bf] bg-[#fce1ec] p-6 text-center text-plum shadow-[0_18px_60px_rgba(25,19,29,0.35)]"
+						role="dialog"
+						aria-modal="true"
+						aria-labelledby="scan-notice-title"
+					>
+						<div className="mx-auto grid size-16 place-items-center rounded-full bg-[#f5b7d1] text-plum">
+							<IconQrcode size={30} stroke={1.8} aria-hidden="true" />
+						</div>
+						<h3
+							id="scan-notice-title"
+							className="mt-5 font-display text-3xl leading-tight"
+						>
+							¡Espera tantito, cielo!
+						</h3>
+						<p className="mt-4 text-sm leading-7 text-[#6f5369]">
+							Encontraste un código, pero no es el que estamos buscando. Vuelve a leer
+							la pista y prueba con otro.
+						</p>
+						<Button fullWidth className="mt-6" onClick={onDismissNotice}>
+							Volver a escanear
+						</Button>
+					</div>
 				</div>
 			)}
 		</div>
