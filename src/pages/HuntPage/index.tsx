@@ -74,11 +74,6 @@ const HuntPageContent = ({ stationId }: HuntPageContentProps) => {
 					<p key={paragraph}>{paragraph}</p>
 				))}
 			</div>
-			{stationIndex === 3 && (
-				<p className="mt-5 border-t border-white/15 pt-5 text-sm font-bold leading-6 text-[#f5b7d1]">
-					Antes de buscar, asegúrate de que el horno esté apagado y completamente frío
-				</p>
-			)}
 		</div>
 	)
 
