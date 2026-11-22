@@ -1,9 +1,7 @@
-import { IconArrowRight } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import { Button } from "../../componentes/atoms/Button"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
-import { SUCCESS_DURATION, SUCCESS_REDIRECT_DELAY } from "../../domain/constants"
+import { SUCCESS_DURATION } from "../../domain/constants"
 import { chapters } from "../../content"
 import { useJourney } from "../../hooks/useJourney"
 
@@ -13,7 +11,6 @@ export const ScanSuccessPage = () => {
 	const chapter = chapters[Number(stationId) - 1]
 	const { progress, nextChapter } = useJourney()
 	const [remainingSeconds, setRemainingSeconds] = useState(SUCCESS_DURATION / 1000)
-	const showFallback = remainingSeconds === 0
 
 	useEffect(() => {
 		if (!chapter || !progress.scanned.includes(Number(stationId) - 1)) {
@@ -32,10 +29,7 @@ export const ScanSuccessPage = () => {
 
 	useEffect(() => {
 		if (remainingSeconds !== 0) return
-		const timeout = window.setTimeout(() => {
-			navigate(`/transicion/${stationId}`)
-		}, SUCCESS_REDIRECT_DELAY)
-		return () => window.clearTimeout(timeout)
+		navigate(`/transicion/${stationId}`)
 	}, [navigate, remainingSeconds, stationId])
 
 	if (!chapter) return null
@@ -59,15 +53,6 @@ export const ScanSuccessPage = () => {
 						? `Continuamos en ${remainingSeconds}`
 						: "Si no avanzas, continúa manualmente"}
 				</p>
-				{showFallback && (
-					<Button
-						fullWidth
-						className="mt-6"
-						onClick={() => navigate(`/transicion/${stationId}`)}
-					>
-						Continuar <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
-					</Button>
-				)}
 			</div>
 		</JourneyTemplate>
 	)

@@ -1,16 +1,18 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { IconArrowRight } from "@tabler/icons-react"
 import { Button } from "../../componentes/atoms/Button"
 import { chapters } from "../../content"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { useJourney } from "../../hooks/useJourney"
+import { TRANSITION_BUTTON_DELAY } from "../../domain/constants"
 
 export const ChapterTransitionPage = () => {
 	const navigate = useNavigate()
 	const { stationId = "1" } = useParams()
 	const chapter = chapters[Number(stationId) - 1]
 	const { progress, nextChapter } = useJourney()
+	const [showContinue, setShowContinue] = useState(false)
 
 	useEffect(() => {
 		if (!chapter || !progress.scanned.includes(Number(stationId) - 1)) {
@@ -18,6 +20,12 @@ export const ChapterTransitionPage = () => {
 			return
 		}
 	}, [chapter, navigate, nextChapter, progress.scanned, stationId])
+
+	useEffect(() => {
+		if (!chapter || !progress.scanned.includes(Number(stationId) - 1)) return
+		const timeout = window.setTimeout(() => setShowContinue(true), TRANSITION_BUTTON_DELAY)
+		return () => window.clearTimeout(timeout)
+	}, [chapter, progress.scanned, stationId])
 
 	if (!chapter) return null
 	const chapterNumber = String(chapter.id).padStart(2, "0")
@@ -102,14 +110,16 @@ export const ChapterTransitionPage = () => {
 				</section>
 
 				<footer className="relative space-y-4">
-					<Button
-						fullWidth
-						className="rounded-2xl bg-[#e96d8d] font-semibold shadow-[0_12px_28px_rgba(218,95,135,0.18)] hover:bg-[#d85c80]"
-						onClick={() => navigate(`/estacion/${stationId}`)}
-					>
-						Comenzar capítulo{" "}
-						<IconArrowRight size={19} stroke={1.8} aria-hidden="true" />
-					</Button>
+					{showContinue && (
+						<Button
+							fullWidth
+							className="rounded-2xl bg-[#e96d8d] font-semibold shadow-[0_12px_28px_rgba(218,95,135,0.18)] hover:bg-[#d85c80]"
+							onClick={() => navigate(`/estacion/${stationId}`)}
+						>
+							Comenzar capítulo{" "}
+							<IconArrowRight size={19} stroke={1.8} aria-hidden="true" />
+						</Button>
+					)}
 					<p className="text-center text-[11px] tracking-[.04em] text-[#aa8d9d]">
 						Una historia que seguimos escribiendo ♡
 					</p>
