@@ -172,7 +172,11 @@ const NarrativeScreen = ({
 			{chapter.narrativeTitle}
 		</h1>
 		<div className="mt-6 rounded-[30px] bg-white/80 p-6 shadow-soft">
-			<p className="text-base leading-[1.85] text-muted">{chapter.narrativeBody}</p>
+			<div className="space-y-4 text-base leading-[1.85] text-muted">
+				{chapter.narrativeBody.split("\n\n").map(paragraph => (
+					<p key={paragraph}>{paragraph}</p>
+				))}
+			</div>
 		</div>
 		<ContinueButton onClick={onNext} />
 	</JourneyTemplate>
