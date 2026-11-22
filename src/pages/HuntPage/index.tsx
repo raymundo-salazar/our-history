@@ -5,7 +5,7 @@ import { HintActions } from "../../componentes/molecules/HintActions"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 import { stations } from "../../content"
-import { HINT_COUNT } from "../../domain/constants"
+import { FINAL_STATION, HINT_COUNT } from "../../domain/constants"
 import { useJourney } from "../../hooks/useJourney"
 import { FIRST_HINT_LABEL, HUNT_TITLE, HUNT_TOTAL, NEXT_HINT_LABEL, NEXT_TITLE } from "./constants"
 
@@ -31,7 +31,9 @@ const HuntPageContent = ({ stationId }: HuntPageContentProps) => {
 	const [revealedHintCount, setRevealedHintCount] = useState(() =>
 		Math.min(HINT_COUNT, Math.max(1, progress.hintLevels[String(stationIndex)] ?? 1))
 	)
-	const isOutOfOrder = stationIndex + 1 !== nextChapter
+	const isFinalChapterReplay =
+		stationIndex === FINAL_STATION && progress.scanned.includes(FINAL_STATION)
+	const isOutOfOrder = stationIndex + 1 !== nextChapter && !isFinalChapterReplay
 
 	useEffect(() => {
 		if (previousHintLevel === null) return
@@ -152,6 +154,7 @@ const HuntPageContent = ({ stationId }: HuntPageContentProps) => {
 					</div>
 				)}
 				<HintActions
+					showContinue={!isFinalChapterReplay}
 					canRequestHint={hasMoreHints}
 					continueLabel="Encontré el codigo QR"
 					onContinue={() => navigate(`/escanear/${stationIndex + 1}`)}

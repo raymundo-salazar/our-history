@@ -79,6 +79,36 @@ describe("journey pages", () => {
 		localStorage.clear()
 	})
 
+	it("moves chapter three from station to history and then to the next clue", async () => {
+		localStorage.setItem(
+			"nuestra-historia:v2",
+			JSON.stringify({
+				version: 2,
+				scanned: [0, 1, 2],
+				completed: [],
+				hintLevels: {},
+				currentScreen: {},
+				challenges: {},
+				finished: false,
+			})
+		)
+		render(
+			<MemoryRouter initialEntries={["/estacion/3"]}>
+				<App />
+			</MemoryRouter>
+		)
+
+		fireEvent.click(await screen.findByRole("button", { name: "Continuar" }))
+		expect(
+			await screen.findByRole("heading", { name: "Lo que construimos juntos" })
+		).toBeInTheDocument()
+		fireEvent.click(screen.getByRole("button", { name: /Siguiente pista/ }))
+		expect(
+			await screen.findByRole("button", { name: /Encontré el codigo QR/ })
+		).toBeInTheDocument()
+		localStorage.clear()
+	})
+
 	it("only navigates between hints that have already been revealed", async () => {
 		render(
 			<MemoryRouter initialEntries={["/pista/1"]}>

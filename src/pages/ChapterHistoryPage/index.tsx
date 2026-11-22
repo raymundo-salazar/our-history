@@ -22,8 +22,7 @@ export const ChapterHistoryPage = () => {
 
 	if (!chapter || !progress.scanned.includes(stationIndex)) return null
 
-	const hasActivity = stationIndex === 2 || stationIndex === 4 || stationIndex === 5
-	const nextPath = hasActivity ? `/estacion/${stationId}?screen=2` : `/pista/${stationIndex + 2}`
+	const nextPath = stationIndex === 5 ? "/pista/6" : `/pista/${stationIndex + 2}`
 
 	return (
 		<JourneyTemplate>
