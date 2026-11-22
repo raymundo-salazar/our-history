@@ -52,6 +52,32 @@ describe("journey pages", () => {
 		localStorage.clear()
 	})
 
+	it("renders the chapter history on its independent route", async () => {
+		localStorage.setItem(
+			"nuestra-historia:v2",
+			JSON.stringify({
+				version: 2,
+				scanned: [0],
+				completed: [],
+				hintLevels: {},
+				currentScreen: {},
+				challenges: {},
+				finished: false,
+			})
+		)
+		render(
+			<MemoryRouter initialEntries={["/historia/1"]}>
+				<App />
+			</MemoryRouter>
+		)
+
+		expect(
+			await screen.findByRole("heading", { name: "Las vueltas de la vida" })
+		).toBeInTheDocument()
+		expect(screen.getByText("Una carta para ti")).toBeInTheDocument()
+		localStorage.clear()
+	})
+
 	it("only navigates between hints that have already been revealed", async () => {
 		render(
 			<MemoryRouter initialEntries={["/pista/1"]}>

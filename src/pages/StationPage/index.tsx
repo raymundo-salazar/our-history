@@ -1,6 +1,6 @@
 import { IconArrowRight, IconHeart, IconSparkles } from "@tabler/icons-react"
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { useNavigate, useParams, useSearchParams } from "react-router-dom"
 import { Button } from "../../componentes/atoms/Button"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { ChoiceList } from "../../componentes/molecules/ChoiceList"
@@ -16,13 +16,18 @@ const detailCopy = (chapterId: number) =>
 export const StationPage = () => {
 	const navigate = useNavigate()
 	const { stationId = "1" } = useParams()
+	const [searchParams] = useSearchParams()
 	const stationIndex = Number(stationId) - 1
 	const chapter = chapters[stationIndex]
 	const { progress, nextChapter, setScreen, completeChapter, solveChallenge, finishJourney } =
 		useJourney()
 	const [words, setWords] = useState<string[]>([])
 	const [choice, setChoice] = useState("")
-	const screen = progress.currentScreen[stationIndex] ?? 0
+	const requestedScreen = Number(searchParams.get("screen"))
+	const screen =
+		requestedScreen >= 2
+			? Math.max(requestedScreen, progress.currentScreen[stationIndex] ?? 0)
+			: 0
 	const isWordGame = stationIndex === 2
 	const isChoiceGame = stationIndex === 4
 	const isFinal = stationIndex === 5
@@ -55,7 +60,9 @@ export const StationPage = () => {
 	}
 
 	if (isFinal && screen >= 2) return <FinalChapter screen={screen} onNext={advance} />
-	if (screen === 0) return <DetailScreen chapter={chapter} onNext={advance} />
+	if (screen === 0) {
+		return <DetailScreen chapter={chapter} onNext={() => navigate(`/historia/${stationId}`)} />
+	}
 	if (screen === 1) return <NarrativeScreen chapter={chapter} onNext={advance} />
 	if (isWordGame && screen === 2) {
 		return (

@@ -3,6 +3,7 @@ import { Navigate, Route, Routes, useLocation } from "react-router-dom"
 import { CoverPage } from "./pages/CoverPage"
 
 import { ChapterTransitionPage } from "./pages/ChapterTransitionPage"
+import { ChapterHistoryPage } from "./pages/ChapterHistoryPage"
 import { HuntPage } from "./pages/HuntPage"
 import { InstructionsPage } from "./pages/InstructionsPage"
 import { ScanPage } from "./pages/ScanPage"
@@ -58,6 +59,7 @@ export const App = () => {
 			<Routes>
 				<Route path="/" element={<CoverPage />} />
 				<Route path="/historia" element={<StoryPage />} />
+				<Route path="/historia/:stationId" element={<ChapterHistoryPage />} />
 				<Route path="/instrucciones" element={<InstructionsPage />} />
 				<Route path="/pista/:stationId" element={<HuntPage />} />
 				<Route path="/escanear/:stationId" element={<ScanPage />} />
