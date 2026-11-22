@@ -39,41 +39,45 @@ export const ScannerPanel = ({
 
 	return (
 		<div className="relative isolate z-10 flex min-h-[calc(100dvh-8rem)] flex-col">
-			<div className="relative z-20 flex items-center justify-between">
-				<IconButton
-					className="min-h-11 rounded-full bg-black/30 px-3 text-white/80"
-					onClick={() => {
-						stop()
-						onBack()
-					}}
-					aria-label="Volver a la pista"
-				>
-					<IconArrowLeft size={18} stroke={1.8} aria-hidden="true" />
-				</IconButton>
-				{cameraActive && flashSupported && (
+			<div className="pointer-events-none fixed inset-x-0 top-0 z-50 px-6 pt-[calc(env(safe-area-inset-top)+24px)] sm:px-10">
+				<div className="flex items-center justify-between">
 					<IconButton
-						className="size-11 rounded-full bg-black/30 text-white/80"
-						onClick={() => void toggleFlash()}
-						aria-label={flashEnabled ? "Desactivar flash" : "Activar flash"}
-						aria-pressed={flashEnabled}
+						className="pointer-events-auto min-h-11 rounded-full bg-black/30 px-3 text-white/80"
+						onClick={() => {
+							stop()
+							onBack()
+						}}
+						aria-label="Volver a la pista"
 					>
-						{flashEnabled ? (
-							<IconBoltOff size={19} stroke={1.8} aria-hidden="true" />
-						) : (
-							<IconBolt size={19} stroke={1.8} aria-hidden="true" />
-						)}
+						<IconArrowLeft size={18} stroke={1.8} aria-hidden="true" />
 					</IconButton>
-				)}
+					{cameraActive && flashSupported && (
+						<IconButton
+							className="pointer-events-auto size-11 rounded-full bg-black/30 text-white/80"
+							onClick={() => void toggleFlash()}
+							aria-label={flashEnabled ? "Desactivar flash" : "Activar flash"}
+							aria-pressed={flashEnabled}
+						>
+							{flashEnabled ? (
+								<IconBoltOff size={19} stroke={1.8} aria-hidden="true" />
+							) : (
+								<IconBolt size={19} stroke={1.8} aria-hidden="true" />
+							)}
+						</IconButton>
+					)}
+				</div>
+				<div className="pointer-events-none mt-6 text-center">
+					<p className="text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
+						CAPÍTULO {String(stationId ?? "").padStart(2, "0")} DE 06
+					</p>
+					<h2 className="mt-2 font-display text-[clamp(36px,10vw,48px)] leading-tight text-white">
+						{SCANNER_TITLE}
+					</h2>
+					<p className="mt-3 text-center text-sm leading-7 text-white/75">
+						{SCANNER_COPY}
+					</p>
+				</div>
 			</div>
-			<p className="relative z-20 mt-8 text-center text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
-				CAPÍTULO {String(stationId ?? "").padStart(2, "0")} DE 06
-			</p>
-			<h2 className="relative z-20 mt-2 text-center font-display text-[clamp(36px,10vw,48px)] leading-tight text-white">
-				{SCANNER_TITLE}
-			</h2>
-			<p className="relative z-20 mt-3 text-center text-sm leading-7 text-white/75">
-				{SCANNER_COPY}
-			</p>
 			<div className="scanner-viewport fixed inset-0 z-0 grid min-h-dvh place-items-center overflow-hidden bg-[#19131d] text-xs text-white/70">
 				<video
 					ref={videoRef}
