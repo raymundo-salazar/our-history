@@ -131,13 +131,13 @@ export const chapters = [
 		transitionTitle: "Lo que construimos juntos",
 		transitionPhrase:
 			"Entre ideas, sueños y uno que otro intento fallido, seguimos creando algo muy nuestro.",
-		detailTitle: "Entre ideas y proyectos ♡",
+		detailTitle: "Entre ideas y proyectos",
 		detailBody:
-			"¡Muy bien, mi reina! Ya llegaste al tercer capítulo.\n\nEste lugar conoce muchas de nuestras ideas, nuestros planes y también uno que otro proyecto que todavía tenemos pendiente.\n\nPero hoy no venimos a trabajar ni a resolver problemas.\n\nHoy solamente quiero que disfrutes el pequeño detalle que dejé para ti antes de continuar con nuestra aventura.",
+			"¡Lo encontraste, mi reina!\n\nEste lugar ha sido testigo de muchas de nuestras ideas. Algunas se han convertido en realidad, otras siguen esperando su momento y unas cuantas seguramente nos han dado más trabajo del que imaginábamos.\n\nAquí hemos pasado horas creando, inventando, aprendiendo y buscando la manera de hacer que las cosas funcionen.\n\nPero hoy quiero que hagamos una pequeña pausa entre tantos proyectos y pendientes.\n\nEspero que disfrutes el detallito que dejé para ti, preciosa. Porque entre tantas cosas por hacer, siempre quiero encontrar tiempo para hacerte sonreír.",
 		detailAction: "Continuar",
 		narrativeTitle: "Lo que construimos juntos",
 		narrativeBody:
-			"Aquí hemos creado cosas, resuelto problemas y trabajado para sacar adelante nuestros sueños.\n\nEste espacio no es solamente donde trabajamos: también es una muestra de las ganas que tenemos de construir una vida juntos, proyecto por proyecto.",
+			"Cielo, si algo me gusta de este espacio es que aquí no solamente hemos trabajado. También hemos compartido ideas, nos hemos ayudado cuando algo no sale bien y hemos aprendido a encontrar soluciones juntos.\n\nY creo que, de alguna manera, eso se parece mucho a nuestra historia.\n\nPorque construir una vida juntos también requiere paciencia, esfuerzo, aprender de nuestros errores y, sobre todo, no rendirnos cuando las cosas se complican.\n\nSé que todavía tenemos muchos proyectos pendientes, tanto aquí como fuera de estas cuatro paredes. Pero me emociona pensar en todo lo que aún podemos lograr, siempre que sigamos trabajando en equipo.\n\nAl final, lo más bonito no es solamente lo que construimos, sino tenerte a mi lado mientras lo hacemos.",
 		clue: `${stations[2].clue} Recuerda: el horno debe estar apagado y completamente frío antes de acercarte o abrirlo.`,
 	},
 	{
