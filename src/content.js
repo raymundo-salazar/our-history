@@ -118,11 +118,11 @@ export const chapters = [
 			"Hay cosas que el tiempo no borra, y otras que todavía nos quedan por completar.",
 		detailTitle: "Un recuerdo que nos faltaba ♡",
 		detailBody:
-			"¡Lo encontraste, bebé!\n\nLo que tienes frente a ti es algo que había quedado pendiente desde nuestro aniversario pasado. Quizá llegó un poquito tarde, pero no quería que se quedara solamente como una idea.\n\nEste es el primer pedacito de el regalo que preparé para ti.\n\nY aunque todavía le faltan algunos detalles, hay una razón muy especial para ello.",
+			"¡Lo encontraste, bebé!\n\nEste es uno de esos detalles que llevaba tiempo queriendo preparar para ti. Nació como una idea para nuestro séptimo aniversario, cuando celebramos nuestras bodas de lana, pero por una u otra razón se fue quedando pendiente.\n\nNo quería simplemente comprar algo y entregártelo. Quería hacer algo con mis propias manos, dedicarle tiempo y crear un recuerdo que fuera solamente nuestro.\n\nPor eso elegí los hilos, la madera y nuestras iniciales. Porque, aunque parece algo sencillo, cada hilo forma parte de algo más grande, igual que todos esos pequeños momentos que hemos ido sumando durante estos años.\n\nY hay algo más que quiero contarte sobre este cuadro...",
 		detailAction: "Descubrir su historia",
 		narrativeTitle: "Nuestra historia en cuatro fotografías",
 		narrativeBody:
-			"El cuadro tiene cuatro espacios vacíos porque quiero que las fotos las elijamos juntos.\n\nY sí, ya sé que dice 22 de septiembre de 2025, aunque nuestro aniversario es el 21. Aquella pequeña equivocación se quedó como un recuerdo más de nosotros: hay errores que terminan formando parte de la historia que vale la pena conservar.\n\nFeliz séptimo aniversario atrasado, amor. Te Yoyo.",
+			"Cielo, si te fijas bien, hay cuatro espacios que todavía están vacíos. Y no, no es porque se me haya olvidado poner las fotos.\n\nLos dejé así porque quiero que las elijamos juntos.\n\nHemos vivido tantos momentos que sería difícil decidir yo solo cuáles deberían estar ahí. Quiero que nos sentemos un día, revisemos nuestras fotografías, recordemos esas historias que hay detrás de cada una y escojamos cuatro que signifiquen algo especial para los dos.\n\nMe gusta pensar que este cuadro todavía no está terminado, porque nuestra historia tampoco lo está. Nos quedan muchos recuerdos por crear, muchas aventuras por vivir y seguramente muchísimas fotografías más por tomar.\n\nAsí que este detalle no solamente es algo que hice para ti. También es una pequeña invitación para que sigamos construyéndolo juntos.\n\nTe Yoyo, cielo. ♡",
 		clue: stations[1].clue,
 	},
 	{
