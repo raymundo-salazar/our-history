@@ -24,7 +24,7 @@ export const ScannerPanel = ({
 
 	return (
 		<div className="relative z-10 flex min-h-[calc(100dvh-8rem)] flex-col">
-			<div className="flex items-center justify-between">
+			<div className="relative z-20 flex items-center justify-between">
 				<IconButton
 					className="min-h-11 rounded-full bg-black/30 px-3 text-white/80"
 					onClick={() => {
@@ -35,14 +35,16 @@ export const ScannerPanel = ({
 				>
 					<IconArrowLeft size={18} stroke={1.8} aria-hidden="true" />
 				</IconButton>
-				<span className="text-[10px] font-bold uppercase tracking-[.16em] text-[#f5b7d1]">
-					Capítulo {stationId ?? ""} de 6
-				</span>
 			</div>
-			<h2 className="mt-8 text-center font-display text-[clamp(36px,10vw,48px)] leading-tight text-white">
+			<p className="relative z-20 mt-8 text-[10px] font-bold uppercase tracking-[.2em] text-[#f5b7d1]">
+				CAPÍTULO {String(stationId ?? "").padStart(2, "0")} DE 06
+			</p>
+			<h2 className="relative z-20 mt-2 text-center font-display text-[clamp(36px,10vw,48px)] leading-tight text-white">
 				{SCANNER_TITLE}
 			</h2>
-			<p className="mt-3 text-center text-sm leading-7 text-white/75">{SCANNER_COPY}</p>
+			<p className="relative z-20 mt-3 text-center text-sm leading-7 text-white/75">
+				{SCANNER_COPY}
+			</p>
 			<div className="fixed inset-0 z-0 grid min-h-dvh place-items-center overflow-hidden bg-[#19131d] text-xs text-white/70">
 				<video
 					ref={videoRef}
