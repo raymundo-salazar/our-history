@@ -4,3 +4,4 @@ export const FIRST_STATION = 0
 export const FINAL_STATION = 5
 export const HINT_COUNT = 3
 export const SUCCESS_DURATION = 5000
+export const SUCCESS_REDIRECT_DELAY = 1000

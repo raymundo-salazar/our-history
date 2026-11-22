@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Button } from "../../componentes/atoms/Button"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
-import { SUCCESS_DURATION } from "../../domain/constants"
+import { SUCCESS_DURATION, SUCCESS_REDIRECT_DELAY } from "../../domain/constants"
 import { chapters } from "../../content"
 import { useJourney } from "../../hooks/useJourney"
 
@@ -32,7 +32,10 @@ export const ScanSuccessPage = () => {
 
 	useEffect(() => {
 		if (remainingSeconds !== 0) return
-		navigate(`/transicion/${stationId}`)
+		const timeout = window.setTimeout(() => {
+			navigate(`/transicion/${stationId}`)
+		}, SUCCESS_REDIRECT_DELAY)
+		return () => window.clearTimeout(timeout)
 	}, [navigate, remainingSeconds, stationId])
 
 	if (!chapter) return null
