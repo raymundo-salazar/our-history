@@ -7,6 +7,17 @@ import { chapters } from "../../content"
 import { useJourney } from "../../hooks/useJourney"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
 
+const renderParagraph = (paragraph: string) =>
+	paragraph.split("**").map((part, index) =>
+		index % 2 === 1 ? (
+			<strong key={`${paragraph}-${index}`} className="font-bold text-ink">
+				{part}
+			</strong>
+		) : (
+			<span key={`${paragraph}-${index}`}>{part}</span>
+		)
+	)
+
 export const ChapterHistoryPage = () => {
 	const navigate = useNavigate()
 	const { stationId = "1" } = useParams()
@@ -36,7 +47,7 @@ export const ChapterHistoryPage = () => {
 			<div className="mt-6 rounded-[30px] bg-white/80 p-6 shadow-soft">
 				<div className="space-y-4 text-base leading-[1.85] text-muted">
 					{chapter.narrativeBody.split("\n\n").map(paragraph => (
-						<p key={paragraph}>{paragraph}</p>
+						<p key={paragraph}>{renderParagraph(paragraph)}</p>
 					))}
 				</div>
 			</div>
