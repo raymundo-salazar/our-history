@@ -99,7 +99,7 @@ const HuntPageContent = ({ stationId }: HuntPageContentProps) => {
 					)}
 				</h1>
 				<div className="relative mt-7">
-					<div className="relative overflow-hidden rounded-[28px]">
+					<div className="relative rounded-[28px]">
 						{renderHintCard(
 							hintLevel,
 							hintDirection === "back"
@@ -144,8 +144,8 @@ const HuntPageContent = ({ stationId }: HuntPageContentProps) => {
 								aria-hidden="true"
 								className={
 									index === hintLevel
-										? "h-1.5 w-6 rounded-full bg-rose"
-										: "size-1.5 rounded-full bg-white/45"
+										? "h-1.5 w-6 rounded-full bg-rose transition-all duration-300"
+										: "size-1.5 rounded-full bg-white/45 transition-all duration-300"
 								}
 							/>
 						))}
