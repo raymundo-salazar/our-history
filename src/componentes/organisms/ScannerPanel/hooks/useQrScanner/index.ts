@@ -10,6 +10,7 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 	const onCodeRef = useRef(onCode)
 	const onErrorRef = useRef(onError)
 	const [started, setStarted] = useState(false)
+	const [cameraActive, setCameraActive] = useState(false)
 	useEffect(() => {
 		onCodeRef.current = onCode
 		onErrorRef.current = onError
@@ -25,6 +26,7 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 		}
 		if (videoRef.current) videoRef.current.srcObject = null
 		setStarted(false)
+		setCameraActive(false)
 	}, [])
 
 	const start = useCallback(async () => {
@@ -36,6 +38,7 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 
 		activeRef.current = true
 		setStarted(true)
+		setCameraActive(false)
 		let stream: MediaStream | null = null
 		try {
 			stream = await navigator.mediaDevices.getUserMedia({
@@ -53,6 +56,7 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 			video.muted = true
 			video.playsInline = true
 			await video.play()
+			setCameraActive(true)
 
 			const reader = new BrowserQRCodeReader()
 			const controls = await reader.decodeFromStream(stream, video, result => {
@@ -66,6 +70,7 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 			stream?.getTracks().forEach(track => track.stop())
 			if (activeRef.current) {
 				setStarted(false)
+				setCameraActive(false)
 				onErrorRef.current(
 					error instanceof DOMException && error.name === "NotAllowedError"
 						? CAMERA_PERMISSION_ERROR
@@ -77,5 +82,5 @@ export const useQrScanner = ({ onCode, onError }: UseQrScannerProps) => {
 
 	useEffect(() => stop, [stop])
 
-	return { videoRef, started, start, stop }
+	return { videoRef, started, cameraActive, start, stop }
 }

@@ -8,7 +8,10 @@ import type { ScannerPanelProps } from "./types"
 
 export const ScannerPanel = ({ stationId, onBack, onCode }: ScannerPanelProps) => {
 	const [cameraNotice, setCameraNotice] = useState("")
-	const { videoRef, started, start, stop } = useQrScanner({ onCode, onError: setCameraNotice })
+	const { videoRef, started, cameraActive, start, stop } = useQrScanner({
+		onCode,
+		onError: setCameraNotice,
+	})
 
 	useEffect(() => {
 		void start()
@@ -55,7 +58,7 @@ export const ScannerPanel = ({ stationId, onBack, onCode }: ScannerPanelProps) =
 					{SCANNER_READY}
 				</span>
 			</div>
-			{cameraNotice && !started && (
+			{cameraNotice && !cameraActive && (
 				<div className="relative z-20 mt-auto">
 					<Button fullWidth onClick={handleStart} disabled={started}>
 						{SCANNER_START}
