@@ -178,11 +178,11 @@ export const chapters = [
 			"A veces, cuando creemos que una oportunidad se ha ido, la vida todavía guarda una sorpresa.",
 		detailTitle: "Llegaste hasta el final... casi ♡",
 		detailBody:
-			"¡Lo lograste, cielo!\n\nEncontraste los seis capítulos y llegaste al último rincón de esta aventura.\n\nEspero que hayas disfrutado cada pista, cada recuerdo y cada pequeño detalle que fui dejando en el camino.\n\nPero todavía no hemos terminado.\n\nHay una última cosa que quiero contarte. Algo que quizá pensaste que ya no sería posible...",
-		detailAction: "¿Qué será?",
+			"¡Lo lograste, cielo!\n\nEncontraste los seis capítulos y llegaste al último rincón de esta aventura.\n\nEspero que hayas disfrutado cada pista, cada recuerdo y cada pequeño detalle que fui dejando en el camino.\n\nPero todavía no hemos terminado.\n\nHay una última sorpresa que he estado guardando para ti. Algo que quizá pensaste que ya no sería posible y que tenía muchas ganas de compartir contigo.\n\nY ahora sí, bebé... **¡Llegó el momento de abrir ese sobre!**\n\nTómate un momento para descubrir lo que hay dentro. Yo te espero aquí. ♡",
+		detailAction: "Ya lo abrí",
 		narrativeTitle: "¿Recuerdas lo que te dije?",
 		narrativeBody:
-			"Te dije que ya casi no había lugares, que probablemente no alcanzaríamos boletos y que esta vez no íbamos a poder ir.\n\nPero resulta que todavía quedaba una oportunidad...",
+			"¡Sorpresa, preciosa! ♡\n\n¿Te acuerdas que te dije que probablemente ya no alcanzaríamos boletos y que esta vez no íbamos a poder ir?\n\nPues resulta que todavía quedaba una oportunidad... ¡y no iba a dejarla pasar!\n\n**¡Sí vamos a ir a Hablemos de lo que no existe!**\n\nSé cuánto quieres ir a ver al Narrador, y por eso me hacía tanta ilusión poder darte esta sorpresa. Quería que tuvieras la oportunidad de verlo y, sobre todo, que pudiéramos disfrutar juntos de algo que tanto has esperado.\n\nEste **1 de diciembre tenemos una cita en el Río 70**, tú y yo. ❤️\n\nEso sí, bebé, todavía tenemos una pequeña misión pendiente: **¡conseguir quién nos cuide a los niños!** Jajaja. Pero ya resolveremos ese detallito.\n\nPorque después de tantas pistas, recuerdos y aventuras, quería que la última sorpresa fuera algo que todavía nos falta por vivir.\n\nY esta vez, la aventura apenas comienza...",
 		clue: stations[5].clue,
 	},
 ]

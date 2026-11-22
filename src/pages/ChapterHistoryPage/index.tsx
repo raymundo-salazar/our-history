@@ -52,7 +52,8 @@ export const ChapterHistoryPage = () => {
 				</div>
 			</div>
 			<Button fullWidth className="mt-8" onClick={() => navigate(nextPath)}>
-				Siguiente pista <IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
+				{chapter.id === 6 ? "Una última cosa..." : "Siguiente pista"}{" "}
+				<IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>
 		</JourneyTemplate>
 	)
