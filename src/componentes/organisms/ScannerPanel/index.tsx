@@ -78,8 +78,10 @@ export const ScannerPanel = ({ stationId, scanNotice, onBack, onCode }: ScannerP
 				/>
 				<div className="pointer-events-none relative z-10 size-56 max-h-[70vw] max-w-[70vw] rounded-[30px] border-[3px] border-[#f3a2bb] bg-transparent shadow-[0_0_0_999vmax_#19131dcc]" />
 				{scanNotice && (
-					<div className="pointer-events-none absolute inset-x-6 top-[calc(env(safe-area-inset-top)+9rem)] z-30 rounded-2xl border border-[#f3a2bb]/40 bg-[#19131de6] px-4 py-3 text-center text-sm leading-6 text-white shadow-soft">
-						<p role="alert">{scanNotice}</p>
+					<div className="pointer-events-none fixed inset-0 z-40 flex items-center justify-center bg-[#19131d99] px-6 backdrop-blur-sm">
+						<div className="w-full max-w-sm rounded-[28px] border border-[#f3a2bb]/40 bg-[#19131df2] p-6 text-center text-sm leading-7 text-white shadow-soft">
+							<p role="alert">{scanNotice}</p>
+						</div>
 					</div>
 				)}
 				<span className="absolute inset-x-0 bottom-4 z-20 text-center">
