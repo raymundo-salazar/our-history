@@ -107,7 +107,7 @@ export const chapters = [
 		detailAction: "Continuar nuestra historia",
 		narrativeTitle: "Las vueltas de la vida",
 		narrativeBody:
-			"¡Encontraste la lavandería, cielito! Así como la ropa pasa por diferentes ciclos, nosotros también hemos pasado por muchas etapas. Algunas más fáciles que otras, pero todas forman parte de nuestra historia. Y aunque a veces nos toque dar otra vuelta, me encanta que sigamos encontrando la manera de volver a empezar juntos.",
+			"¡Encontraste la lavandería, cielito!\n\nAsí como la ropa pasa por diferentes ciclos, nosotros también hemos pasado por muchas etapas. Algunas más fáciles que otras, pero todas forman parte de nuestra historia.\n\nY aunque a veces nos toque dar otra vuelta, me encanta que sigamos encontrando la manera de volver a empezar juntos.",
 		clue: stations[0].clue,
 	},
 	{
@@ -122,7 +122,7 @@ export const chapters = [
 		detailAction: "Descubrir su historia",
 		narrativeTitle: "Nuestra historia en cuatro fotografías",
 		narrativeBody:
-			"El cuadro tiene cuatro espacios vacíos porque quiero que las fotos las elijamos juntos. Y sí, ya sé que dice 22 de septiembre de 2025, aunque nuestro aniversario es el 21. Aquella pequeña equivocación se quedó como un recuerdo más de nosotros: hay errores que terminan formando parte de la historia que vale la pena conservar. Feliz séptimo aniversario atrasado, amor. Te Yoyo.",
+			"El cuadro tiene cuatro espacios vacíos porque quiero que las fotos las elijamos juntos.\n\nY sí, ya sé que dice 22 de septiembre de 2025, aunque nuestro aniversario es el 21. Aquella pequeña equivocación se quedó como un recuerdo más de nosotros: hay errores que terminan formando parte de la historia que vale la pena conservar.\n\nFeliz séptimo aniversario atrasado, amor. Te Yoyo.",
 		clue: stations[1].clue,
 	},
 	{
@@ -137,7 +137,7 @@ export const chapters = [
 		detailAction: "Continuar",
 		narrativeTitle: "Lo que construimos juntos",
 		narrativeBody:
-			"Aquí hemos creado cosas, resuelto problemas y trabajado para sacar adelante nuestros sueños. Este espacio no es solamente donde trabajamos: también es una muestra de las ganas que tenemos de construir una vida juntos, proyecto por proyecto.",
+			"Aquí hemos creado cosas, resuelto problemas y trabajado para sacar adelante nuestros sueños.\n\nEste espacio no es solamente donde trabajamos: también es una muestra de las ganas que tenemos de construir una vida juntos, proyecto por proyecto.",
 		clue: `${stations[2].clue} Recuerda: el horno debe estar apagado y completamente frío antes de acercarte o abrirlo.`,
 	},
 	{
@@ -152,7 +152,7 @@ export const chapters = [
 		detailAction: "Recordar aquel día",
 		narrativeTitle: "Siempre juntos",
 		narrativeBody:
-			"Las convertí en estos dos pingüinos porque quería regalarte un recuerdo de lo que quiero seguir viviendo contigo: acompañarnos durante cada etapa, aunque cambien los caminos. Este año celebramos nuestras bodas de bronce, pero estas piedras valen para mí mucho más que cualquier material. Feliz octavo aniversario, amor. Te Yoyo, bebé.",
+			"Las convertí en estos dos pingüinos porque quería regalarte un recuerdo de lo que quiero seguir viviendo contigo: acompañarnos durante cada etapa, aunque cambien los caminos.\n\nEste año celebramos nuestras bodas de bronce, pero estas piedras valen para mí mucho más que cualquier material.\n\nFeliz octavo aniversario, amor. Te Yoyo, bebé.",
 		clue: stations[3].clue,
 	},
 	{
@@ -167,7 +167,7 @@ export const chapters = [
 		detailAction: "Continuar nuestra historia",
 		narrativeTitle: "Nuestro lugar",
 		narrativeBody:
-			"Nuestro cuarto ahorita tiene más cosas de las que debería, pero me gusta pensar que es como muchas partes de nuestra vida: algo que estamos arreglando y organizando juntos. No se trata de tenerlo todo perfecto, sino de ayudarnos y construir poco a poco el lugar donde queremos estar.",
+			"Nuestro cuarto ahorita tiene más cosas de las que debería, pero me gusta pensar que es como muchas partes de nuestra vida: algo que estamos arreglando y organizando juntos.\n\nNo se trata de tenerlo todo perfecto, sino de ayudarnos y construir poco a poco el lugar donde queremos estar.",
 		clue: stations[4].clue,
 	},
 	{
@@ -182,7 +182,7 @@ export const chapters = [
 		detailAction: "¿Qué será?",
 		narrativeTitle: "¿Recuerdas lo que te dije?",
 		narrativeBody:
-			"Te dije que ya casi no había lugares, que probablemente no alcanzaríamos boletos y que esta vez no íbamos a poder ir. Pero resulta que todavía quedaba una oportunidad...",
+			"Te dije que ya casi no había lugares, que probablemente no alcanzaríamos boletos y que esta vez no íbamos a poder ir.\n\nPero resulta que todavía quedaba una oportunidad...",
 		clue: stations[5].clue,
 	},
 ]
