@@ -109,6 +109,35 @@ describe("journey pages", () => {
 		localStorage.clear()
 	})
 
+	it("renders the final page only after completing the journey", async () => {
+		localStorage.setItem(
+			"nuestra-historia:v2",
+			JSON.stringify({
+				version: 2,
+				scanned: [0, 1, 2, 3, 4, 5],
+				completed: [0, 1, 2, 3, 4, 5],
+				hintLevels: {},
+				currentScreen: {},
+				challenges: {},
+				finished: true,
+			})
+		)
+		render(
+			<MemoryRouter initialEntries={["/final"]}>
+				<App />
+			</MemoryRouter>
+		)
+
+		expect(
+			await screen.findByRole("heading", { name: "Nuestra historia continúa..." })
+		).toBeInTheDocument()
+		expect(screen.getByText("EL FINAL DE ESTA AVENTURA")).toBeInTheDocument()
+		expect(
+			screen.getByRole("button", { name: "Volver a leer nuestra historia" })
+		).toBeInTheDocument()
+		localStorage.clear()
+	})
+
 	it("only navigates between hints that have already been revealed", async () => {
 		render(
 			<MemoryRouter initialEntries={["/pista/1"]}>

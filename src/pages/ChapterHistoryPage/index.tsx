@@ -23,7 +23,7 @@ export const ChapterHistoryPage = () => {
 	const { stationId = "1" } = useParams()
 	const stationIndex = Number(stationId) - 1
 	const chapter = chapters[stationIndex]
-	const { progress, nextChapter } = useJourney()
+	const { progress, nextChapter, finishJourney } = useJourney()
 
 	useEffect(() => {
 		if (!chapter || !progress.scanned.includes(stationIndex)) {
@@ -34,6 +34,14 @@ export const ChapterHistoryPage = () => {
 	if (!chapter || !progress.scanned.includes(stationIndex)) return null
 
 	const nextPath = stationIndex === 5 ? "/pista/6" : `/pista/${stationIndex + 2}`
+	const handleNext = () => {
+		if (chapter.id === 6) {
+			finishJourney()
+			navigate("/final")
+			return
+		}
+		navigate(nextPath)
+	}
 
 	return (
 		<JourneyTemplate>
@@ -51,7 +59,7 @@ export const ChapterHistoryPage = () => {
 					))}
 				</div>
 			</div>
-			<Button fullWidth className="mt-8" onClick={() => navigate(nextPath)}>
+			<Button fullWidth className="mt-8" onClick={handleNext}>
 				{chapter.id === 6 ? "Una última cosa..." : "Siguiente pista"}{" "}
 				<IconArrowRight size={18} stroke={1.8} aria-hidden="true" />
 			</Button>

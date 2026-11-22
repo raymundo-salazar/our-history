@@ -79,11 +79,14 @@ export const useJourney = (): UseJourneyResult => {
 	}, [])
 
 	const finishJourney = useCallback(() => {
-		setProgress(current => {
-			const next = { ...current, finished: true }
-			localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
-			return next
-		})
+		const current = readProgress()
+		const next = {
+			...current,
+			completed: Array.from({ length: 6 }, (_, index) => index),
+			finished: true,
+		}
+		localStorage.setItem(JOURNEY_STORAGE_KEY, JSON.stringify(next))
+		setProgress(next)
 	}, [])
 
 	const nextChapter = progress.scanned.length + 1
