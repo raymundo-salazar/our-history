@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
 import { ScannerPanel } from "../../componentes/organisms/ScannerPanel"
@@ -13,6 +13,7 @@ export const ScanPage = () => {
 	const station = stations[stationIndex]
 	const { markScanned, progress, nextChapter } = useJourney()
 	const validScanRef = useRef(false)
+	const [scanNotice, setScanNotice] = useState("")
 	const isOutOfOrder = stationIndex + 1 !== nextChapter
 
 	useEffect(() => {
@@ -31,11 +32,16 @@ export const ScanPage = () => {
 			return
 		}
 		if (stations.some(item => item.token === value)) {
+			setScanNotice(
+				"Este no es el código correcto. Escanea el QR de este capítulo para continuar."
+			)
 			return
 		}
 		if (progress.scanned.includes(stationIndex)) {
+			setScanNotice("Este código ya fue escaneado. Busca el QR correcto para continuar.")
 			return
 		}
+		setScanNotice("No reconocimos este código. Escanea el QR correcto para continuar.")
 	}
 
 	return (
@@ -44,6 +50,7 @@ export const ScanPage = () => {
 				<ProgressIndicator current={stationIndex} total={SCAN_TOTAL} />
 				<ScannerPanel
 					stationId={stationId}
+					scanNotice={scanNotice}
 					onBack={() => navigate(`/pista/${stationId}`, { state: { direction: "back" } })}
 					onCode={validateCode}
 				/>
