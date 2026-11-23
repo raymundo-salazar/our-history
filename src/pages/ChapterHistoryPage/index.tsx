@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Button } from "../../componentes/atoms/Button"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
+import { ChapterNavigation } from "../../componentes/molecules/ChapterNavigation"
 import { chapters } from "../../content"
 import { useJourney } from "../../hooks/useJourney"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
@@ -34,6 +35,7 @@ export const ChapterHistoryPage = () => {
 	if (!chapter || !progress.scanned.includes(stationIndex)) return null
 
 	const nextPath = stationIndex === 5 ? "/pista/6" : `/pista/${stationIndex + 2}`
+	const hasNextChapter = progress.scanned.includes(stationIndex + 1)
 	const handleNext = () => {
 		if (chapter.id === 6) {
 			finishJourney()
@@ -46,6 +48,12 @@ export const ChapterHistoryPage = () => {
 	return (
 		<JourneyTemplate>
 			<ProgressIndicator current={chapter.id} total={6} />
+			<ChapterNavigation
+				onBack={() => navigate(`/estacion/${stationId}`)}
+				onForward={
+					hasNextChapter ? () => navigate(`/estacion/${stationIndex + 2}`) : undefined
+				}
+			/>
 			<p className="text-[11px] font-bold uppercase tracking-[.2em] text-plum">
 				Una carta para ti
 			</p>

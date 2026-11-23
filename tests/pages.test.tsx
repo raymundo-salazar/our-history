@@ -136,6 +136,10 @@ describe("journey pages", () => {
 		expect(screen.queryByText(/<3/)).not.toBeInTheDocument()
 		expect(screen.getByText("Feliz octavo aniversario")).toBeInTheDocument()
 		expect(screen.queryByText("Fin de esta aventura. Continuará... ♡")).not.toBeInTheDocument()
+		fireEvent.click(screen.getByRole("button", { name: "Reiniciar el juego" }))
+		expect(screen.getByRole("alertdialog")).toBeInTheDocument()
+		fireEvent.click(screen.getByRole("button", { name: "Reiniciar" }))
+		expect(await screen.findByRole("button", { name: "COMENZAR" })).toBeInTheDocument()
 		localStorage.clear()
 	})
 

@@ -89,6 +89,11 @@ export const useJourney = (): UseJourneyResult => {
 		setProgress(next)
 	}, [])
 
+	const resetJourney = useCallback(() => {
+		localStorage.removeItem(JOURNEY_STORAGE_KEY)
+		setProgress(EMPTY_PROGRESS)
+	}, [])
+
 	const nextChapter = progress.scanned.length + 1
 
 	return {
@@ -99,6 +104,7 @@ export const useJourney = (): UseJourneyResult => {
 		completeChapter,
 		solveChallenge,
 		finishJourney,
+		resetJourney,
 		nextChapter,
 	}
 }

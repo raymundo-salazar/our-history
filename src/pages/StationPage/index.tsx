@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import { Button } from "../../componentes/atoms/Button"
 import { ProgressIndicator } from "../../componentes/atoms/ProgressIndicator"
+import { ChapterNavigation } from "../../componentes/molecules/ChapterNavigation"
 import { chapters } from "../../content"
 import { useJourney } from "../../hooks/useJourney"
 import { JourneyTemplate } from "../../templates/JourneyTemplate"
@@ -24,10 +25,17 @@ export const StationPage = () => {
 	}, [chapter, navigate, nextChapter, progress.scanned, stationIndex])
 
 	if (!chapter || !progress.scanned.includes(stationIndex)) return null
+	const hasPreviousChapter = stationIndex > 0 && progress.scanned.includes(stationIndex - 1)
 
 	return (
 		<JourneyTemplate tone="discovery">
 			<ProgressIndicator current={chapter.id} total={6} />
+			<ChapterNavigation
+				onBack={
+					hasPreviousChapter ? () => navigate(`/historia/${stationIndex}`) : undefined
+				}
+				onForward={() => navigate(`/historia/${stationId}`)}
+			/>
 			<div className="flex flex-1 flex-col justify-center">
 				<div className="grid size-16 place-items-center rounded-full bg-[#f9e0ea] text-3xl text-plum">
 					<IconHeart size={30} fill="currentColor" aria-hidden="true" />

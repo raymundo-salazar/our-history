@@ -8,5 +8,6 @@ export type UseJourneyResult = {
 	completeChapter: (station: number) => void
 	solveChallenge: (station: number) => void
 	finishJourney: () => void
+	resetJourney: () => void
 	nextChapter: number
 }

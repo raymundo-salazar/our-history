@@ -1,6 +1,8 @@
-import { IconHeart } from "@tabler/icons-react"
-import { useEffect } from "react"
+import { IconAlertTriangle, IconHeart } from "@tabler/icons-react"
+import { useEffect, useRef, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { Button } from "../../componentes/atoms/Button"
+import { ChapterNavigation } from "../../componentes/molecules/ChapterNavigation"
 import { useJourney } from "../../hooks/useJourney"
 import {
 	FINAL_ANNIVERSARY,
@@ -24,11 +26,13 @@ const renderParagraph = (paragraph: string) =>
 
 export const FinalPage = () => {
 	const navigate = useNavigate()
-	const { progress } = useJourney()
+	const { progress, resetJourney } = useJourney()
+	const [isResetDialogOpen, setIsResetDialogOpen] = useState(false)
+	const isResettingRef = useRef(false)
 	const isComplete = progress.finished && progress.completed.length === 6
 
 	useEffect(() => {
-		if (isComplete) return
+		if (isComplete || isResettingRef.current) return
 		const firstUnscanned = Array.from({ length: 6 }, (_, index) => index).find(
 			index => !progress.scanned.includes(index)
 		)
@@ -54,6 +58,7 @@ export const FinalPage = () => {
 						8 años · Nuestra historia
 					</span>
 				</header>
+				<ChapterNavigation onBack={() => navigate("/historia/6")} />
 				<article className="flex flex-1 flex-col py-12 text-center sm:py-16">
 					<div className="mx-auto grid size-16 place-items-center rounded-full bg-[#f5b7d1] text-[#a45177] motion-safe:animate-[pulse_2.4s_ease-in-out_infinite] motion-reduce:animate-none">
 						<IconHeart size={30} fill="currentColor" aria-hidden="true" />
@@ -85,9 +90,56 @@ export const FinalPage = () => {
 						<p className="mt-3 text-sm font-semibold tracking-[.04em] text-muted">
 							{FINAL_ANNIVERSARY}
 						</p>
+						<Button
+							variant="outline"
+							className="mx-auto mt-10 border-[#d7b4ce] bg-white/70 text-plum"
+							onClick={() => setIsResetDialogOpen(true)}
+						>
+							Reiniciar el juego
+						</Button>
 					</div>
 				</article>
 			</div>
+			{isResetDialogOpen && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-[#342537b8] px-6 backdrop-blur-sm">
+					<div
+						className="w-full max-w-sm rounded-[28px] border border-[#e7a8bf] bg-[#fce1ec] p-6 text-center text-plum shadow-[0_18px_60px_rgba(25,19,29,0.35)]"
+						role="alertdialog"
+						aria-modal="true"
+						aria-labelledby="reset-title"
+						aria-describedby="reset-copy"
+					>
+						<div className="mx-auto grid size-14 place-items-center rounded-full bg-[#f5b7d1] text-plum">
+							<IconAlertTriangle size={26} stroke={1.8} aria-hidden="true" />
+						</div>
+						<h2 id="reset-title" className="mt-5 font-display text-3xl leading-tight">
+							¿Reiniciar la aventura?
+						</h2>
+						<p id="reset-copy" className="mt-4 text-sm leading-7 text-[#6f5369]">
+							Se perderá el progreso actual, pero siempre podrás volver a jugar.
+						</p>
+						<div className="mt-6 flex gap-3">
+							<Button
+								variant="outline"
+								className="flex-1 border-[#d7b4ce] bg-white/70 text-plum"
+								onClick={() => setIsResetDialogOpen(false)}
+							>
+								Cancelar
+							</Button>
+							<Button
+								className="flex-1"
+								onClick={() => {
+									isResettingRef.current = true
+									resetJourney()
+									navigate("/", { replace: true })
+								}}
+							>
+								Reiniciar
+							</Button>
+						</div>
+					</div>
+				</div>
+			)}
 		</main>
 	)
 }
